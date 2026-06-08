@@ -1,0 +1,16 @@
+{
+  "name": "viethoa-state-of-decay-yose",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "extract": "node tools/extract.js",
+    "scan": "node tools/scan.js",
+    "build-jobs": "node tools/build-jobs.js",
+    "translate": "node --env-file=.env tools/translate.js",
+    "test-menu": "node tools/patch-test-menu.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
