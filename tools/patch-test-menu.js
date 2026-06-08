@@ -9,12 +9,12 @@ if (!fs.existsSync(inputFile)) {
 }
 
 const replacements = new Map([
-  ["How to Play", "Cach choi"],
-  ["Controls", "Dieu khien"],
-  ["Game Settings", "Cai dat game"],
-  ["Graphics Settings", "Cai dat do hoa"],
-  ["Sound Settings", "Cai dat am thanh"],
-  ["Help", "Tro giup"],
+  ["How to Play", "Cách chơi"],
+  ["Controls", "Điều khiển"],
+  ["Game Settings", "Cài đặt game"],
+  ["Graphics Settings", "Cài đặt đồ họa"],
+  ["Sound Settings", "Cài đặt âm thanh"],
+  ["Help", "Trợ giúp"],
 ]);
 
 let xml = fs.readFileSync(inputFile, "utf8");

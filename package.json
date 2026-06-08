@@ -8,7 +8,9 @@
     "scan": "node tools/scan.js",
     "build-jobs": "node tools/build-jobs.js",
     "translate": "node --env-file=.env tools/translate.js",
-    "test-menu": "node tools/patch-test-menu.js"
+    "test-menu": "node tools/patch-test-menu.js",
+    "test-btxt": "node tools/patch-test-btxt.js",
+    "test-font": "node tools/patch-test-font.js"
   },
   "engines": {
     "node": ">=22"

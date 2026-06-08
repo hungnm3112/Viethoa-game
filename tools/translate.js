@@ -4,6 +4,12 @@ import { readJson, writeJson } from "./lib/json-store.js";
 import { extractXmlStrings, placeholdersMatch, replaceXmlStrings } from "./lib/strings.js";
 
 const args = parseArgs(process.argv.slice(2));
+if (!args.group && process.argv[2] && !process.argv[2].startsWith("--")) {
+  args.group = process.argv[2];
+}
+if (!args.limit && process.argv[3] && !process.argv[3].startsWith("--")) {
+  args.limit = process.argv[3];
+}
 const limit = Number(args.limit ?? 5);
 const group = args.group ? String(args.group) : null;
 const cacheFile = "cache/translations.json";
@@ -62,7 +68,7 @@ async function translateBatch(strings) {
     "Translate these State of Decay game UI/dialog strings from English to Vietnamese.",
     "Return only a valid JSON object where each original string is a key and its Vietnamese translation is the value.",
     "Keep all placeholders exactly unchanged: {0}, {1}, %s, %d, \\n, XML-like tags, bracket codes.",
-    "Use natural Vietnamese suitable for a zombie survival game.",
+    "Use natural Vietnamese with proper diacritics suitable for a zombie survival game.",
     "",
     JSON.stringify(strings, null, 2),
   ].join("\n");
@@ -113,7 +119,11 @@ function parseArgs(argv) {
   for (let index = 0; index < argv.length; index += 1) {
     const arg = argv[index];
     if (!arg.startsWith("--")) continue;
-    const key = arg.slice(2);
+    const [key, inlineValue] = arg.slice(2).split("=", 2);
+    if (inlineValue !== undefined) {
+      result[key] = inlineValue;
+      continue;
+    }
     const next = argv[index + 1];
     if (!next || next.startsWith("--")) {
       result[key] = true;

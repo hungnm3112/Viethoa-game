@@ -58,25 +58,63 @@ npm run translate -- --group dialog --limit 10
 
 Can tao file `.env` theo mau `.env.example` truoc khi dich.
 
+## Test file that game doc truc tiep
+
+Tao file `english.win.btxt` test nho:
+
+```bash
+npm run test-btxt
+```
+
+Tao font override de thu ky tu tieng Viet:
+
+```bash
+npm run test-font
+```
+
+Mac dinh `test-font` copy `C:/Windows/Fonts/tahoma.ttf` thanh:
+
+```text
+output/gamedata/fonts/veramono.ttf
+```
+
+Neu muon dung font khac:
+
+```bash
+npm run test-font -- --source=C:/Windows/Fonts/arial.ttf
+```
+
 ## Test menu nho
 
-Sau khi chay:
+Neu muon test XML menu:
 
 ```bash
 npm run extract -- --group languages
 npm run test-menu
 ```
 
-File test se nam o:
+File XML test se nam o:
 
 ```text
 output/gamedata/languages/embeddedstrings.xml
 ```
 
-Buoc tiep theo can kiem chung voi game:
+Nhung game that hien tai khong doc XML roi nay cho menu, nen luong test thuc te la `english.win.btxt`.
 
-1. Chuyen XML nay sang dinh dang game that su doc.
-2. Thu copy vao dung duong dan ngoai PAK.
-3. Mo menu `Help & Options` de xem cac chuoi nhu `Controls` co doi thanh `Dieu khien` khong.
+## File can copy vao game de test dau tien
 
-Neu game khong doc XML ngoai, ta se can tim cach tao lai `.win.btxt` hoac dong goi/override dung format ma game load.
+Copy 2 file nay:
+
+```text
+output/gamedata/languages/english.win.btxt
+output/gamedata/fonts/veramono.ttf
+```
+
+Den dung cau truc:
+
+```text
+State of Decay YOSE/Game/languages/english.win.btxt
+State of Decay YOSE/Game/fonts/veramono.ttf
+```
+
+Neu thu muc `languages` hoac `fonts` chua ton tai thi tao moi. Cach nay chi override 2 file can test; 95% noi dung con lai van tiep tuc doc tu `gamedata.pak`.
