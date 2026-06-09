@@ -12,8 +12,12 @@ if (!args.limit && process.argv[3] && !process.argv[3].startsWith("--")) {
 }
 const limit = Number(args.limit ?? 5);
 const group = args.group ? String(args.group) : null;
+const matchers = String(args.match ?? "")
+  .split(",")
+  .map((value) => value.trim())
+  .filter(Boolean);
 const cacheFile = "cache/translations.json";
-const model = process.env.GEMINI_MODEL || "gemini-1.5-flash";
+const fallbackModels = buildModelList();
 const apiKey = process.env.GEMINI_API_KEY;
 
 if (!apiKey) {
@@ -29,6 +33,7 @@ let processed = 0;
 for (const job of [...pending]) {
   if (processed >= limit) break;
   if (group && job.group !== group) continue;
+  if (matchers.length > 0 && !matchers.some((matcher) => job.inputFile.includes(matcher))) continue;
 
   try {
     const missing = job.strings.filter((text) => !cache.has(text));
@@ -73,28 +78,47 @@ async function translateBatch(strings) {
     JSON.stringify(strings, null, 2),
   ].join("\n");
 
-  const response = await fetch(
-    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contents: [{ parts: [{ text: prompt }] }],
-        generationConfig: {
-          temperature: 0.2,
-          responseMimeType: "application/json",
+  let lastError = null;
+  for (const model of fallbackModels) {
+    try {
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: {
+              temperature: 0.2,
+              responseMimeType: "application/json",
+            },
+          }),
         },
-      }),
-    },
-  );
+      );
 
-  if (!response.ok) {
-    throw new Error(`Gemini HTTP ${response.status}: ${await response.text()}`);
+      if (!response.ok) {
+        const body = await response.text();
+        if (shouldFallback(response.status)) {
+          lastError = new Error(`Gemini HTTP ${response.status} on ${model}: ${body}`);
+          console.warn(`Model ${model} failed with ${response.status}. Trying fallback...`);
+          await delay(1500);
+          continue;
+        }
+        throw new Error(`Gemini HTTP ${response.status} on ${model}: ${body}`);
+      }
+
+      const data = await response.json();
+      const text = data.candidates?.[0]?.content?.parts?.map((part) => part.text).join("") ?? "";
+      return JSON.parse(cleanJson(text));
+    } catch (error) {
+      lastError = error;
+      if (!shouldFallback(error?.message)) throw error;
+      console.warn(`Model ${model} errored. Trying fallback...`);
+      await delay(1500);
+    }
   }
 
-  const data = await response.json();
-  const text = data.candidates?.[0]?.content?.parts?.map((part) => part.text).join("") ?? "";
-  return JSON.parse(cleanJson(text));
+  throw lastError ?? new Error("No Gemini model succeeded");
 }
 
 function writeOutput(job, cache) {
@@ -133,4 +157,29 @@ function parseArgs(argv) {
     }
   }
   return result;
+}
+
+function buildModelList() {
+  const configured = [
+    process.env.GEMINI_MODEL,
+    ...(process.env.GEMINI_MODELS ?? "").split(","),
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-2.5-pro",
+  ]
+    .map((value) => String(value ?? "").trim())
+    .filter(Boolean);
+
+  return [...new Set(configured)];
+}
+
+function shouldFallback(value) {
+  const text = typeof value === "number" ? String(value) : String(value ?? "");
+  return ["429", "500", "502", "503", "504", "overloaded", "quota", "rate limit", "unavailable"].some((token) =>
+    text.toLowerCase().includes(token),
+  );
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
