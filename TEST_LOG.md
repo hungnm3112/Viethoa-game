@@ -163,3 +163,62 @@ Copy target:
 ```text
 D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game\libs\ui\class3_frontend.gfx
 ```
+
+## 2026-06-09 - New Game confirm popup font route
+
+Goal:
+
+- fix Vietnamese glyph loss in the "Start New Game" confirmation popup
+- complete the remaining Phase 1 frontend path that does not use `class3_frontend.gfx`
+
+Findings:
+
+- The confirm popup is loaded by [menus_startmenu.as](C:\Workspace\Viethoa-game\output\extracted\libs\ui\flashassets\scripts\mainmenu\menus_startmenu.as:2287) via `Menus_Confirmation.swf`.
+- `menus_confirmation.gfx` does not embed its own body font.
+- It imports symbol `Font_Body` from `HUD_Font_LocFont.swf`.
+
+Action:
+
+- Added [tools/build-font-swf.js](C:\Workspace\Viethoa-game\tools\build-font-swf.js).
+- The script builds a minimal [HUD_Font_LocFont.swf](C:\Workspace\Viethoa-game\output\gamedata\libs\ui\HUD_Font_LocFont.swf) that exports `Font_Body` using the embedded `Arial` font taken from [class3_pause.gfx](C:\Workspace\Viethoa-game\output\gfxdump\libs\ui\class3_pause.gfx).
+
+Current output:
+
+```text
+output/gamedata/libs/ui/HUD_Font_LocFont.swf
+```
+
+Copy target:
+
+```text
+D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game\libs\ui\HUD_Font_LocFont.swf
+```
+
+## 2026-06-09 - Cluster A direct embed patch
+
+Goal:
+
+- stop relying on loose `HUD_Font_LocFont.swf`
+- embed a Vietnamese-capable body font directly into the front-end assets that were importing `Font_Body`
+
+Action:
+
+- Added [tools/patch-cluster-a-fonts.js](C:\Workspace\Viethoa-game\tools\patch-cluster-a-fonts.js)
+- Replaced `Font_Body` imports with embedded `Arial` in:
+  - [output/gamedata/libs/ui/menus_startmenu.gfx](C:\Workspace\Viethoa-game\output\gamedata\libs\ui\menus_startmenu.gfx)
+  - [output/gamedata/libs/ui/menus_confirmation.gfx](C:\Workspace\Viethoa-game\output\gamedata\libs\ui\menus_confirmation.gfx)
+  - [output/gamedata/libs/ui/entityflashtag.gfx](C:\Workspace\Viethoa-game\output\gamedata\libs\ui\entityflashtag.gfx)
+
+Verification:
+
+- `menus_startmenu.gfx` now contains embedded `Arial` with `fontId 27`
+- `menus_confirmation.gfx` now contains embedded `Arial` with `fontId 3`
+- `entityflashtag.gfx` now contains embedded `Arial` with `fontId 1`
+
+Copy targets:
+
+```text
+D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game\libs\ui\menus_startmenu.gfx
+D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game\libs\ui\menus_confirmation.gfx
+D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game\libs\ui\entityflashtag.gfx
+```

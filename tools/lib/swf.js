@@ -125,6 +125,15 @@ function parseKnownTag(tag, content) {
     parseDefineEditText(tag, content);
     return;
   }
+
+  if (tag.code === 56 || tag.code === 76) {
+    parseExports(tag, content);
+    return;
+  }
+
+  if (tag.code === 57 || tag.code === 71) {
+    parseImports(tag, content);
+  }
 }
 
 function parseDefineFont2Or3(tag, content) {
@@ -222,6 +231,50 @@ function parseDefineEditText(tag, content) {
     const initialText = readCString(content, offset);
     tag.initialText = initialText.value;
     offset = initialText.nextOffset;
+  }
+}
+
+function parseExports(tag, content) {
+  let offset = 0;
+  const count = content.readUInt16LE(offset);
+  offset += 2;
+  tag.exports = [];
+
+  for (let index = 0; index < count; index += 1) {
+    const characterId = content.readUInt16LE(offset);
+    offset += 2;
+    const parsed = readCString(content, offset);
+    offset = parsed.nextOffset;
+    tag.exports.push({ characterId, name: parsed.value });
+  }
+}
+
+function parseImports(tag, content) {
+  let offset = 0;
+  const url = readCString(content, offset);
+  offset = url.nextOffset;
+
+  if (tag.code === 71) {
+    tag.importFlags = {
+      hasDigest: Boolean(content[offset] & 0x01),
+      useNetwork: Boolean(content[offset] & 0x02),
+    };
+    offset += 1;
+    offset += 1;
+  }
+
+  const count = content.readUInt16LE(offset);
+  offset += 2;
+
+  tag.importUrl = url.value;
+  tag.imports = [];
+
+  for (let index = 0; index < count; index += 1) {
+    const characterId = content.readUInt16LE(offset);
+    offset += 2;
+    const parsed = readCString(content, offset);
+    offset = parsed.nextOffset;
+    tag.imports.push({ characterId, name: parsed.value });
   }
 }
 

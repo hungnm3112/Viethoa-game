@@ -1,0 +1,66 @@
+{
+  "gameRootEnv": "SOD_GAME_ROOT",
+  "defaultGameRoot": "D:/SteamLibrary/steamapps/common/State of Decay YOSE/Game",
+  "files": [
+    {
+      "source": "output/gamedata/languages/english.win.btxt",
+      "target": "languages/english.win.btxt",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/class3_frontend.gfx",
+      "target": "libs/ui/class3_frontend.gfx",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/HUD_Font_LocFont.swf",
+      "target": "libs/ui/HUD_Font_LocFont.swf",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/menus_startmenu.gfx",
+      "target": "libs/ui/menus_startmenu.gfx",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/Menus_Startmenu.swf",
+      "target": "libs/ui/Menus_Startmenu.swf",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/menus_confirmation.gfx",
+      "target": "libs/ui/menus_confirmation.gfx",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/Menus_Confirmation.swf",
+      "target": "libs/ui/Menus_Confirmation.swf",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/entityflashtag.gfx",
+      "target": "libs/ui/entityflashtag.gfx",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/EntityFlashTag.swf",
+      "target": "libs/ui/EntityFlashTag.swf",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/class3/contentmanager/hints.xml",
+      "target": "libs/class3/contentmanager/hints.xml",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/class3/contentmanager/radiooptions.xml",
+      "target": "libs/class3/contentmanager/radiooptions.xml",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/class3/contentmanager/todolist.xml",
+      "target": "libs/class3/contentmanager/todolist.xml",
+      "phase": "phase-1"
+    }
+  ]
+}

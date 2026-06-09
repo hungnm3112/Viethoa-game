@@ -58,6 +58,17 @@ npm run translate -- --group dialog --limit 10
 
 Can tao file `.env` theo mau `.env.example` truoc khi dich.
 
+Neu muon dong bo file `output` vao game that de test nhanh:
+
+```bash
+npm run sync-game
+```
+
+Script nay doc:
+
+- `config/deploy-manifest.json`
+- bien moi truong `SOD_GAME_ROOT` trong `.env` neu ban muon doi thu muc game
+
 Luu y ve fallback model:
 
 - translator khong con tu chen danh sach model mac dinh nua
@@ -90,6 +101,18 @@ Tao ban `class3_frontend.gfx` da doi embedded menu font sang glyph kieu Arial:
 
 ```bash
 npm run test-gfx-font
+```
+
+Tao thu vien font body cho popup/xac nhan frontend:
+
+```bash
+npm run build-font-swf
+```
+
+Va patch truc tiep cum A cua frontend de embed Arial vao cac asset dang import `Font_Body`:
+
+```bash
+npm run patch-cluster-a
 ```
 
 Mac dinh `test-font` copy `C:/Windows/Fonts/tahoma.ttf` thanh:
@@ -128,6 +151,7 @@ Copy 2 file nay:
 ```text
 output/gamedata/languages/english.win.btxt
 output/gamedata/libs/ui/class3_frontend.gfx
+output/gamedata/libs/ui/HUD_Font_LocFont.swf
 ```
 
 Den dung cau truc:
@@ -135,6 +159,27 @@ Den dung cau truc:
 ```text
 State of Decay YOSE/Game/languages/english.win.btxt
 State of Decay YOSE/Game/libs/ui/class3_frontend.gfx
+State of Decay YOSE/Game/libs/ui/HUD_Font_LocFont.swf
 ```
 
 Neu thu muc `languages` hoac `libs/ui` chua ton tai thi tao moi. Cach nay chi override 2 file can test; 95% noi dung con lai van tiep tuc doc tu `gamedata.pak`.
+
+## Tu dong copy vao game
+
+Manifest copy hien tai nam o:
+
+```text
+config/deploy-manifest.json
+```
+
+Moi khi ket thuc mot phase, chi can cap nhat manifest nay va chay:
+
+```bash
+npm run sync-game
+```
+
+Script se:
+
+- tao thu muc dich neu chua co
+- copy de ghi de file test cu
+- bo qua file nao chua duoc build
