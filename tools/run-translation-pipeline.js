@@ -1,7 +1,8 @@
 import { spawnSync } from "node:child_process";
-import { readJson, writeJson } from "./lib/json-store.js";
+import { writeJson } from "./lib/json-store.js";
 import { buildJobs, parsePlannerArgs, readProfiles, resolveProfileMatchers } from "./lib/job-planner.js";
 import { appendEvent, createSession, saveSession, updateDashboard } from "./lib/translation-monitor.js";
+import { readStateJson, writeStateJson } from "./lib/state-repository.js";
 
 const args = parsePlannerArgs(process.argv.slice(2));
 const profiles = readProfiles("config/translation-phases.json");
@@ -18,19 +19,23 @@ const maxCycles = Number(args["max-cycles"] ?? 999);
 const rebuild = String(args.rebuild ?? "true") === "true";
 const scope = profile === "all" && matchers.length === 0 ? "all" : profile;
 
-if (rebuild || readJson("jobs/pending.json", []).length === 0) {
+if (rebuild || (await readStateJson("jobs.pending", "jobs/pending.json", [])).length === 0) {
   const jobs = buildJobs({ maxStrings, matchers });
   writeJson("jobs/pending.json", jobs);
   writeJson("jobs/done.json", []);
   writeJson("jobs/failed.json", []);
+  await writeStateJson("jobs.pending", "jobs/pending.json", jobs);
+  await writeStateJson("jobs.done", "jobs/done.json", []);
+  await writeStateJson("jobs.failed", "jobs/failed.json", []);
+
   const session = createSession({
     status: "queued",
     scope,
     notes: [`Queued ${jobs.length} job(s) for ${scope}`],
   });
-  saveSession(session);
-  appendEvent("pipeline-queued", { sessionId: session.id, scope, jobs: jobs.length });
-  updateDashboard({ session, scope, notes: session.notes });
+  await saveSession(session);
+  await appendEvent("pipeline-queued", { sessionId: session.id, scope, jobs: jobs.length });
+  await updateDashboard({ session, scope, notes: session.notes });
   console.log(`Queued ${jobs.length} job(s) for ${scope}`);
 }
 
@@ -38,8 +43,8 @@ let previousPending = -1;
 let previousDone = -1;
 
 for (let cycle = 1; cycle <= maxCycles; cycle += 1) {
-  const pendingBefore = readJson("jobs/pending.json", []).length;
-  const doneBefore = readJson("jobs/done.json", []).length;
+  const pendingBefore = (await readStateJson("jobs.pending", "jobs/pending.json", [])).length;
+  const doneBefore = (await readStateJson("jobs.done", "jobs/done.json", [])).length;
   if (pendingBefore === 0) {
     console.log("No pending jobs left.");
     break;
@@ -58,8 +63,8 @@ for (let cycle = 1; cycle <= maxCycles; cycle += 1) {
     process.exit(result.status ?? 1);
   }
 
-  const pendingAfter = readJson("jobs/pending.json", []).length;
-  const doneAfter = readJson("jobs/done.json", []).length;
+  const pendingAfter = (await readStateJson("jobs.pending", "jobs/pending.json", [])).length;
+  const doneAfter = (await readStateJson("jobs.done", "jobs/done.json", [])).length;
 
   if (pendingAfter === 0) {
     console.log("Translation pipeline completed.");

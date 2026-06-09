@@ -110,8 +110,28 @@ Dashboard local hien tai:
 - co the bam chay lenh truc tiep tu UI
 - hien trang thai `running/success/failed`
 - hien log gan nhat cua moi lan chay
+- `npm run dev` uu tien kill tien trinh dang chan port dashboard roi moi bind lai
 
 Can tao file `.env` theo mau `.env.example` truoc khi dich.
+
+## MongoDB luu trang thai
+
+Project hien tai ho tro luu vao MongoDB neu co:
+
+```text
+MONGODB_URI
+MONGODB_DB
+```
+
+Mongo duoc dung de luu:
+
+- translation cache
+- job queue state
+- translation session
+- dashboard state
+- event log / phase activity / command runs
+
+Neu Mongo tam thoi khong san sang, he thong se fallback ve file mirror trong workspace.
 
 ## Phase viet hoa de choi som
 

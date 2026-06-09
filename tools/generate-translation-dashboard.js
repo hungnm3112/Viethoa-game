@@ -2,8 +2,8 @@ import { loadSession, updateDashboard } from "./lib/translation-monitor.js";
 
 const args = parseArgs(process.argv.slice(2));
 const scope = args.profile ?? "all";
-const dashboard = updateDashboard({
-  session: loadSession(),
+const dashboard = await updateDashboard({
+  session: await loadSession(),
   scope,
 });
 

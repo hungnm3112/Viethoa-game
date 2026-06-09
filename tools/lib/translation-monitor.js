@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { readJson, writeJson } from "./json-store.js";
 import { extractXmlStrings, normalizeText } from "./strings.js";
+import { appendCollectionLog, readRecentCollectionLogs, readStateJson, writeStateJson } from "./state-repository.js";
 
 export const REPORT_DIR = "output/reports";
 export const DASHBOARD_FILE = `${REPORT_DIR}/translation-dashboard.json`;
@@ -32,30 +33,31 @@ export function createSession(partial = {}) {
   };
 }
 
-export function saveSession(session) {
+export async function saveSession(session) {
   session.updatedAt = new Date().toISOString();
-  writeJson(SESSION_FILE, session);
+  await writeStateJson("translation.session", SESSION_FILE, session);
 }
 
-export function loadSession() {
-  return readJson(SESSION_FILE, createSession());
+export async function loadSession() {
+  return readStateJson("translation.session", SESSION_FILE, createSession());
 }
 
-export function appendEvent(type, details = {}) {
-  fs.mkdirSync(REPORT_DIR, { recursive: true });
-  const line = JSON.stringify({
+export async function appendEvent(type, details = {}) {
+  const line = {
     at: new Date().toISOString(),
     type,
     ...details,
-  });
-  fs.appendFileSync(EVENT_FILE, `${line}\n`, "utf8");
+  };
+  await appendCollectionLog(EVENT_FILE, "translation_events", line);
 }
 
-export function updateDashboard({ session = loadSession(), scope = "all", notes = [] } = {}) {
+export async function updateDashboard(options = {}) {
+  const { scope = "all", notes = [] } = options;
+  const session = options.session ?? (await loadSession());
   const jobs = {
-    pending: readJson("jobs/pending.json", []),
-    done: readJson("jobs/done.json", []),
-    failed: readJson("jobs/failed.json", []),
+    pending: await readStateJson("jobs.pending", "jobs/pending.json", []),
+    done: await readStateJson("jobs.done", "jobs/done.json", []),
+    failed: await readStateJson("jobs.failed", "jobs/failed.json", []),
   };
 
   const files = collectFileCoverage(scope);
@@ -68,7 +70,7 @@ export function updateDashboard({ session = loadSession(), scope = "all", notes 
     { total: 0, translated: 0 },
   );
 
-  const recentEvents = readRecentEvents(50);
+  const recentEvents = await readRecentEvents(50);
   const dashboard = {
     generatedAt: new Date().toISOString(),
     session,
@@ -88,6 +90,7 @@ export function updateDashboard({ session = loadSession(), scope = "all", notes 
   };
 
   writeJson(DASHBOARD_FILE, dashboard);
+  await writeStateJson("translation.dashboard", DASHBOARD_FILE, dashboard);
   return dashboard;
 }
 
@@ -156,23 +159,8 @@ function loadStrings(filePath) {
   return extractXmlStrings(xml).map((item) => item.value);
 }
 
-function readRecentEvents(limit) {
-  if (!fs.existsSync(EVENT_FILE)) return [];
-  const lines = fs
-    .readFileSync(EVENT_FILE, "utf8")
-    .split(/\r?\n/)
-    .map((line) => line.trim())
-    .filter(Boolean);
-  return lines
-    .slice(-limit)
-    .map((line) => {
-      try {
-        return JSON.parse(line);
-      } catch {
-        return { at: new Date().toISOString(), type: "corrupt-event", raw: line };
-      }
-    })
-    .reverse();
+async function readRecentEvents(limit) {
+  return readRecentCollectionLogs(EVENT_FILE, "translation_events", limit);
 }
 
 function resolveScopeMatchers(scope) {

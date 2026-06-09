@@ -1,0 +1,249 @@
+{
+  "sections": [
+    {
+      "id": "foundation",
+      "title": "Nen tang va khoi tao",
+      "description": "Dung de mo server local, trich xuat du lieu game va quet text truoc khi vao cac phase viet hoa.",
+      "actions": [
+        {
+          "script": "dev",
+          "label": "Mo Dashboard Local",
+          "summary": "Khoi dong local control center de thao tac bang UI.",
+          "coverage": "He thong dashboard local",
+          "phase": "foundation"
+        },
+        {
+          "script": "extract",
+          "label": "Trich xuat du lieu game",
+          "summary": "Lay XML, font va UI asset tu cac file pak vao thu muc input/output.",
+          "coverage": "Toan bo du lieu game can cho viet hoa",
+          "phase": "foundation"
+        },
+        {
+          "script": "scan",
+          "label": "Quet toan bo text",
+          "summary": "Thong ke cac chuoi co the dich va giup xac dinh pham vi cong viec.",
+          "coverage": "Toan bo text XML co the viet hoa",
+          "phase": "foundation"
+        },
+        {
+          "script": "build-jobs:all",
+          "label": "Tao queue viet hoa toan bo",
+          "summary": "Tao queue cong viec cho full translation, bo qua text da duoc dich.",
+          "coverage": "Tat ca phase viet hoa",
+          "phase": "foundation"
+        }
+      ]
+    },
+    {
+      "id": "phase1",
+      "title": "Phase 1 - UI, tips, radio, todo",
+      "description": "Bao phu text can thiet nhat de vao game khong bi mu UI va loading tip.",
+      "actions": [
+        {
+          "script": "build-jobs:phase1",
+          "label": "Tao queue Phase 1",
+          "summary": "Tao queue cho embeddedstrings, hints, radiooptions va todolist.",
+          "coverage": "UI runtime, loading tips, radio command, crisis/todo",
+          "phase": "phase1"
+        },
+        {
+          "script": "translate:phase1",
+          "label": "Chay dich Phase 1",
+          "summary": "Dich batch phase 1 bang Gemini, co cache va fallback model.",
+          "coverage": "UI runtime, tips, radio, todo",
+          "phase": "phase1"
+        },
+        {
+          "script": "translation-status:phase1",
+          "label": "Bao cao tien do Phase 1",
+          "summary": "Xem % da dich cua phase 1 tren cac file gameplay som.",
+          "coverage": "Thong ke phase 1",
+          "phase": "phase1"
+        }
+      ]
+    },
+    {
+      "id": "phase2",
+      "title": "Phase 2 - Mission, objective, hoi thoai",
+      "description": "Tap trung vao story, objective va noi dung campaign mo dau den giua game.",
+      "actions": [
+        {
+          "script": "build-jobs:phase2",
+          "label": "Tao queue Phase 2",
+          "summary": "Tao queue cho missions.xml va scenes.xml.",
+          "coverage": "Mission, objective, story, hoi thoai",
+          "phase": "phase2"
+        },
+        {
+          "script": "translate:phase2",
+          "label": "Chay dich Phase 2",
+          "summary": "Dich mission va hoi thoai theo batch, co fallback va resume.",
+          "coverage": "Missions, scenes, campaign text",
+          "phase": "phase2"
+        }
+      ]
+    },
+    {
+      "id": "phase3",
+      "title": "Phase 3 - Item, survivor, facility, RTS",
+      "description": "Bao phu inventory, ky nang, nhan vat, co so va event he thong de choi tron ven.",
+      "actions": [
+        {
+          "script": "build-jobs:phase3",
+          "label": "Tao queue Phase 3",
+          "summary": "Tao queue cho item, character, facility va cac file RTS.",
+          "coverage": "Items, characters, facilities, expertise, rts events",
+          "phase": "phase3"
+        },
+        {
+          "script": "translate:phase3",
+          "label": "Chay dich Phase 3",
+          "summary": "Dich item, trait, skill, base management va world system text.",
+          "coverage": "Item/survivor/facility/RTS text",
+          "phase": "phase3"
+        }
+      ]
+    },
+    {
+      "id": "fullrun",
+      "title": "Van hanh toan bo",
+      "description": "Dung khi muon chay full translation pipeline, tiep tuc neu bi ngat giua chung.",
+      "actions": [
+        {
+          "script": "translate:all",
+          "label": "Chay viet hoa toan bo",
+          "summary": "Full translation pipeline co resume, fallback, rollback va dashboard progress.",
+          "coverage": "Tat ca phase con lai trong queue",
+          "phase": "fullrun"
+        },
+        {
+          "script": "translation-status",
+          "label": "Bao cao tien do toan bo",
+          "summary": "Xem % viet hoa tren toan bo he thong file XML.",
+          "coverage": "Toan bo project",
+          "phase": "fullrun"
+        },
+        {
+          "script": "dashboard:generate",
+          "label": "Lam moi dashboard data",
+          "summary": "Sinh lai file bao cao JSON de UI cap nhat du lieu moi nhat.",
+          "coverage": "He thong bao cao",
+          "phase": "fullrun"
+        }
+      ]
+    },
+    {
+      "id": "builddeploy",
+      "title": "Build va dua vao game",
+      "description": "Dung sau khi co ket qua dich de build file game thuc te va copy vao folder game.",
+      "actions": [
+        {
+          "script": "build-btxt",
+          "label": "Build english.win.btxt",
+          "summary": "Patch text da dich vao file ngôn ngu game dung thuc te.",
+          "coverage": "Output text cho game",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "sync-game",
+          "label": "Copy output vao game",
+          "summary": "Dong bo file output hien tai vao dung folder game theo manifest.",
+          "coverage": "Deployment local de test trong game",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "rollback:output",
+          "label": "Rollback output gan nhat",
+          "summary": "Khoi phuc cac file output tu backup gan nhat neu build/dich co van de.",
+          "coverage": "An toan output",
+          "phase": "builddeploy"
+        }
+      ]
+    },
+    {
+      "id": "fontui",
+      "title": "Font va UI patch",
+      "description": "Nhom cong cu de patch font/UI khi can fix hien thi tieng Viet trong menu, popup va HUD.",
+      "actions": [
+        {
+          "script": "build-font-swf",
+          "label": "Build font body SWF",
+          "summary": "Tao file font body de UI co the dung glyph tieng Viet.",
+          "coverage": "HUD/UI font body",
+          "phase": "fontui"
+        },
+        {
+          "script": "build-ui-aliases",
+          "label": "Build UI aliases",
+          "summary": "Tao cac file alias SWF cho UI runtime.",
+          "coverage": "UI alias runtime",
+          "phase": "fontui"
+        },
+        {
+          "script": "patch-cluster-a",
+          "label": "Patch font Cluster A",
+          "summary": "Patch frontend/menu confirmation cluster sang font viet hoa.",
+          "coverage": "Main menu va confirmation popup",
+          "phase": "fontui"
+        },
+        {
+          "script": "patch-cluster-b",
+          "label": "Patch font Cluster B",
+          "summary": "Patch gameplay pause/alert/menu cluster sang glyph Arial.",
+          "coverage": "Pause menu, alert, menu gameplay",
+          "phase": "fontui"
+        },
+        {
+          "script": "patch-cluster-c",
+          "label": "Patch font Cluster C",
+          "summary": "Patch journal va stats cluster sang glyph tieng Viet.",
+          "coverage": "Journal, stats",
+          "phase": "fontui"
+        }
+      ]
+    },
+    {
+      "id": "diagnostics",
+      "title": "Test va chan doan",
+      "description": "Dung khi can thu nghiem nhanh mot gia thuyet hoac kiem tra output cu the.",
+      "actions": [
+        {
+          "script": "font-audit",
+          "label": "Kiem tra font audit",
+          "summary": "Quet cac asset font/UI de xem noi nao dang embed/import font.",
+          "coverage": "Font audit",
+          "phase": "diagnostics"
+        },
+        {
+          "script": "test-menu",
+          "label": "Test XML menu",
+          "summary": "Thu nghiem thay doi menu XML nhanh de debug.",
+          "coverage": "Menu XML test",
+          "phase": "diagnostics"
+        },
+        {
+          "script": "test-btxt",
+          "label": "Test BTXT",
+          "summary": "Thu patch nho english.win.btxt de kiem tra pipeline text.",
+          "coverage": "BTXT test",
+          "phase": "diagnostics"
+        },
+        {
+          "script": "test-font",
+          "label": "Test font file",
+          "summary": "Thu copy font vao output de test glyph tieng Viet.",
+          "coverage": "Font file test",
+          "phase": "diagnostics"
+        },
+        {
+          "script": "test-gfx-font",
+          "label": "Test GFX font",
+          "summary": "Thu patch nhanh font vao class3_frontend.gfx.",
+          "coverage": "GFX font test",
+          "phase": "diagnostics"
+        }
+      ]
+    }
+  ]
+}

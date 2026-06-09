@@ -1,6 +1,7 @@
 import { writeJson } from "./lib/json-store.js";
 import { appendEvent, createSession, saveSession, updateDashboard } from "./lib/translation-monitor.js";
 import { buildJobs, parsePlannerArgs, readProfiles, resolveProfileMatchers } from "./lib/job-planner.js";
+import { writeStateJson } from "./lib/state-repository.js";
 
 const INPUT_ROOT = "input";
 const JOB_FILE = "jobs/pending.json";
@@ -18,6 +19,9 @@ const jobs = buildJobs({ inputRoot: INPUT_ROOT, maxStrings, matchers });
 writeJson(JOB_FILE, jobs);
 writeJson("jobs/done.json", []);
 writeJson("jobs/failed.json", []);
+await writeStateJson("jobs.pending", JOB_FILE, jobs);
+await writeStateJson("jobs.done", "jobs/done.json", []);
+await writeStateJson("jobs.failed", "jobs/failed.json", []);
 
 console.log(`Created ${jobs.length} jobs in ${JOB_FILE}`);
 if (matchers.length > 0) {
@@ -29,10 +33,10 @@ const session = createSession({
   scope: args.profile ? `profile:${args.profile}` : matchers.length > 0 ? matchers.join(",") : "all",
   notes: [`Queued ${jobs.length} job(s)`],
 });
-saveSession(session);
-appendEvent("jobs-built", {
+await saveSession(session);
+await appendEvent("jobs-built", {
   scope: session.scope,
   jobs: jobs.length,
   matchers,
 });
-updateDashboard({ session, scope: args.profile ?? "all", notes: session.notes });
+await updateDashboard({ session, scope: args.profile ?? "all", notes: session.notes });

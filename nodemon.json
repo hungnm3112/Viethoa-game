@@ -1,0 +1,21 @@
+{
+  "watch": [
+    "tools",
+    "dashboard",
+    "config",
+    "package.json",
+    ".env",
+    ".env.example"
+  ],
+  "ignore": [
+    "cache/**",
+    "data-game-park/**",
+    "input/**",
+    "jobs/**",
+    "node_modules/**",
+    "output/**"
+  ],
+  "ext": "js,json,html,css,env",
+  "delay": "300",
+  "exec": "node --env-file=.env tools/serve-dashboard.js"
+}

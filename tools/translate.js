@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import path from "node:path";
-import { readJson, writeJson } from "./lib/json-store.js";
 import { extractXmlStrings, placeholdersMatch, replaceXmlStrings } from "./lib/strings.js";
 import {
   appendEvent,
@@ -12,6 +11,7 @@ import {
   updateDashboard,
 } from "./lib/translation-monitor.js";
 import { readProfiles, resolveProfileMatchers } from "./lib/job-planner.js";
+import { loadTranslationCache, persistTranslationEntries, readStateJson, writeStateJson } from "./lib/state-repository.js";
 
 const args = parseArgs(process.argv.slice(2));
 if (!args.group && process.argv[2] && !process.argv[2].startsWith("--")) {
@@ -38,20 +38,20 @@ if (!apiKey) {
   throw new Error("Missing GEMINI_API_KEY. Copy .env.example to .env, then load it before running.");
 }
 
-let pending = readJson("jobs/pending.json", []);
-let done = readJson("jobs/done.json", []);
-let failed = readJson("jobs/failed.json", []);
-const cache = new Map(Object.entries(readJson(cacheFile, {})));
+let pending = await readStateJson("jobs.pending", "jobs/pending.json", []);
+let done = await readStateJson("jobs.done", "jobs/done.json", []);
+let failed = await readStateJson("jobs.failed", "jobs/failed.json", []);
+const cache = new Map(Object.entries(await loadTranslationCache(cacheFile)));
 let processed = 0;
-const session = createOrResumeSession();
+const session = await createOrResumeSession();
 
-appendEvent("translate-start", {
+await appendEvent("translate-start", {
   sessionId: session.id,
   scope,
   limit,
   pendingJobs: pending.length,
 });
-updateDashboard({ session, scope, notes: session.notes });
+await updateDashboard({ session, scope, notes: session.notes });
 
 for (const job of [...pending]) {
   if (processed >= limit) break;
@@ -62,49 +62,54 @@ for (const job of [...pending]) {
     const missing = job.strings.filter((text) => !cache.has(text));
     let translatedNow = 0;
     let reusedCached = 0;
+
     if (missing.length > 0) {
-      const translated = await translateBatch(missing);
+      const translated = await translateBatch(missing, session);
+      const updatedEntries = {};
       for (const [source, value] of Object.entries(translated)) {
         if (!missing.includes(source)) continue;
         if (!placeholdersMatch(source, value)) {
           throw new Error(`Placeholder mismatch for: ${source}`);
         }
         cache.set(source, value);
+        updatedEntries[source] = value;
         translatedNow += 1;
       }
-      writeJson(cacheFile, Object.fromEntries(cache));
+      await persistTranslationEntries(cacheFile, Object.fromEntries(cache), updatedEntries);
     }
     reusedCached = job.strings.length - missing.length;
 
-    writeOutput(job, cache);
+    await writeOutput(job, cache, session);
     pending = pending.filter((item) => item.id !== job.id);
     done.push({ ...job, doneAt: new Date().toISOString() });
-    writeJson("jobs/pending.json", pending);
-    writeJson("jobs/done.json", done);
+    await writeStateJson("jobs.pending", "jobs/pending.json", pending);
+    await writeStateJson("jobs.done", "jobs/done.json", done);
+
     processed += 1;
     session.processedJobs += 1;
     session.successfulJobs += 1;
     session.translatedStrings += translatedNow;
     session.reusedCachedStrings += reusedCached;
     session.lastError = null;
-    session.notes = [`Last success: ${job.inputFile}`];
-    saveSession(session);
-    appendEvent("job-done", {
+    session.notes = [`Lan thanh cong gan nhat: ${job.inputFile}`];
+    await saveSession(session);
+    await appendEvent("job-done", {
       sessionId: session.id,
       jobId: job.id,
       inputFile: job.inputFile,
       translatedNow,
       reusedCached,
     });
-    updateDashboard({ session, scope, notes: session.notes });
+    await updateDashboard({ session, scope, notes: session.notes });
     console.log(`Done job ${job.id} (${job.group}) ${job.inputFile}`);
   } catch (error) {
     const attempts = Number(job.attempts ?? 0) + 1;
     const failedRecord = { ...job, attempts, error: error.message, failedAt: new Date().toISOString() };
     pending = pending.filter((item) => item.id !== job.id);
+
     if (attempts >= maxAttempts) {
       failed.push(failedRecord);
-      appendEvent("job-failed-final", {
+      await appendEvent("job-failed-final", {
         sessionId: session.id,
         jobId: job.id,
         inputFile: job.inputFile,
@@ -113,7 +118,7 @@ for (const job of [...pending]) {
       });
     } else {
       pending.push({ ...job, attempts });
-      appendEvent("job-failed-requeue", {
+      await appendEvent("job-failed-requeue", {
         sessionId: session.id,
         jobId: job.id,
         inputFile: job.inputFile,
@@ -121,14 +126,15 @@ for (const job of [...pending]) {
         error: error.message,
       });
     }
-    writeJson("jobs/pending.json", pending);
-    writeJson("jobs/failed.json", failed);
+
+    await writeStateJson("jobs.pending", "jobs/pending.json", pending);
+    await writeStateJson("jobs.failed", "jobs/failed.json", failed);
     session.processedJobs += 1;
     session.failedJobs += 1;
     session.lastError = error.message;
-    session.notes = [`Last failure: ${job.inputFile}`];
-    saveSession(session);
-    updateDashboard({ session, scope, notes: session.notes });
+    session.notes = [`Lan loi gan nhat: ${job.inputFile}`];
+    await saveSession(session);
+    await updateDashboard({ session, scope, notes: session.notes });
     console.error(`Failed job ${job.id}: ${error.message}`);
     if (String(args["stop-on-error"] ?? "false") === "true") break;
   }
@@ -138,17 +144,17 @@ session.status = pending.length === 0 ? "completed" : "paused";
 if (pending.length === 0) {
   session.completedAt = new Date().toISOString();
 }
-saveSession(session);
-appendEvent("translate-stop", {
+await saveSession(session);
+await appendEvent("translate-stop", {
   sessionId: session.id,
   status: session.status,
   processed,
   pendingJobs: pending.length,
 });
-updateDashboard({ session, scope, notes: session.notes });
+await updateDashboard({ session, scope, notes: session.notes });
 console.log(`Processed ${processed} job(s). Pending: ${pending.length}`);
 
-async function translateBatch(strings) {
+async function translateBatch(strings, activeSession) {
   const prompt = [
     "Translate these State of Decay game UI/dialog strings from English to Vietnamese.",
     "Return only a valid JSON object where each original string is a key and its Vietnamese translation is the value.",
@@ -161,8 +167,8 @@ async function translateBatch(strings) {
   let lastError = null;
   for (const model of fallbackModels) {
     try {
-      session.activeModel = model;
-      saveSession(session);
+      activeSession.activeModel = model;
+      await saveSession(activeSession);
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`,
         {
@@ -182,10 +188,10 @@ async function translateBatch(strings) {
         const body = await response.text();
         if (shouldFallback(response.status)) {
           lastError = new Error(`Gemini HTTP ${response.status} on ${model}: ${body}`);
-          session.fallbackCount += 1;
-          saveSession(session);
-          appendEvent("model-fallback", {
-            sessionId: session.id,
+          activeSession.fallbackCount += 1;
+          await saveSession(activeSession);
+          await appendEvent("model-fallback", {
+            sessionId: activeSession.id,
             model,
             reason: `HTTP ${response.status}`,
           });
@@ -202,10 +208,10 @@ async function translateBatch(strings) {
     } catch (error) {
       lastError = error;
       if (!shouldFallback(error?.message)) throw error;
-      session.fallbackCount += 1;
-      saveSession(session);
-      appendEvent("model-fallback", {
-        sessionId: session.id,
+      activeSession.fallbackCount += 1;
+      await saveSession(activeSession);
+      await appendEvent("model-fallback", {
+        sessionId: activeSession.id,
         model,
         reason: error?.message ?? "unknown",
       });
@@ -217,12 +223,12 @@ async function translateBatch(strings) {
   throw lastError ?? new Error("No Gemini model succeeded");
 }
 
-function writeOutput(job, cache) {
+async function writeOutput(job, cacheMap, activeSession) {
   const xml = fs.readFileSync(job.inputFile, "utf8");
   const translations = new Map(
     extractXmlStrings(xml)
       .map((item) => item.value)
-      .map((text) => [text, cache.get(text)])
+      .map((text) => [text, cacheMap.get(text)])
       .filter(([, value]) => value),
   );
   const output = replaceXmlStrings(xml, translations);
@@ -233,10 +239,10 @@ function writeOutput(job, cache) {
   } catch (error) {
     const restored = restoreBackup(job.outputFile, backupPath);
     if (restored) {
-      session.rollbackCount += 1;
-      saveSession(session);
-      appendEvent("rollback-applied", {
-        sessionId: session.id,
+      activeSession.rollbackCount += 1;
+      await saveSession(activeSession);
+      await appendEvent("rollback-applied", {
+        sessionId: activeSession.id,
         outputFile: job.outputFile,
         backupPath,
       });
@@ -306,8 +312,8 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-function createOrResumeSession() {
-  const existing = loadSession();
+async function createOrResumeSession() {
+  const existing = await loadSession();
   const shouldResume = existing.status === "running" || existing.status === "queued" || existing.status === "paused";
   const session = shouldResume
     ? {
@@ -322,6 +328,6 @@ function createOrResumeSession() {
         scope,
       });
 
-  saveSession(session);
+  await saveSession(session);
   return session;
 }

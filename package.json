@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node tools/serve-dashboard.js",
+    "dev": "nodemon --config nodemon.json",
     "extract": "node tools/extract.js",
     "scan": "node tools/scan.js",
     "build-jobs": "node tools/build-jobs.js",
@@ -20,7 +20,7 @@
     "translation-status": "node tools/translation-status.js",
     "translation-status:phase1": "node tools/translation-status.js --profile=phase1",
     "dashboard:generate": "node tools/generate-translation-dashboard.js",
-    "dashboard:serve": "node tools/serve-dashboard.js",
+    "dashboard:serve": "node --env-file=.env tools/serve-dashboard.js",
     "rollback:output": "node tools/rollback-output.js",
     "build-btxt": "node tools/build-btxt.js",
     "build-font-swf": "node tools/build-font-swf.js",
@@ -37,5 +37,11 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "dependencies": {
+    "mongodb": "^7.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }
