@@ -1,0 +1,45 @@
+{
+  "phase1": {
+    "description": "Gameplay text can thiet de choi duoc som: UI runtime, tips, radio, todo.",
+    "match": [
+      "languages/embeddedstrings.xml",
+      "contentmanager/hints.xml",
+      "contentmanager/radiooptions.xml",
+      "contentmanager/todolist.xml"
+    ]
+  },
+  "phase2": {
+    "description": "Mission va story slice cho base game som.",
+    "match": [
+      "contentmanager/missions.xml",
+      "contentmanager/scenes.xml"
+    ]
+  },
+  "phase3": {
+    "description": "He thong item, character, facility va RTS.",
+    "match": [
+      "items/items.xml",
+      "rts/facilities.xml",
+      "rts/characters.xml",
+      "rts/expertise.xml",
+      "rts/rtsevents.xml",
+      "rts/search.xml",
+      "rts/enclaves.xml",
+      "rts/fatecards.xml"
+    ]
+  },
+  "playable-base": {
+    "description": "Gom phase1 + phase2 + phan system gap som.",
+    "match": [
+      "languages/embeddedstrings.xml",
+      "contentmanager/hints.xml",
+      "contentmanager/radiooptions.xml",
+      "contentmanager/todolist.xml",
+      "contentmanager/missions.xml",
+      "contentmanager/scenes.xml",
+      "items/items.xml",
+      "rts/facilities.xml",
+      "rts/characters.xml"
+    ]
+  }
+}

@@ -48,6 +48,14 @@ Tao job dich:
 npm run build-jobs
 ```
 
+Tao job theo phase uu tien:
+
+```bash
+npm run build-jobs:phase1
+npm run build-jobs:phase2
+npm run build-jobs:phase3
+```
+
 Dich dan dan bang Gemini:
 
 ```bash
@@ -56,7 +64,119 @@ npm run translate -- --group ui --limit 10
 npm run translate -- --group dialog --limit 10
 ```
 
+Chay nhanh theo phase:
+
+```bash
+npm run translate:phase1 -- --limit 5
+npm run translate:phase2 -- --limit 5
+npm run translate:phase3 -- --limit 5
+```
+
+Chay full pipeline va tu resume neu bi ngat:
+
+```bash
+npm run translate:all
+```
+
+Xem do phu ban dich:
+
+```bash
+npm run translation-status:phase1
+npm run translation-status -- --profile=phase2
+```
+
+Sinh dashboard JSON va mo UI bao cao local:
+
+```bash
+npm run dev
+```
+
+Hoac neu muon tach rieng:
+
+```bash
+npm run dashboard:generate
+npm run dashboard:serve
+```
+
+Sau do mo:
+
+```text
+http://localhost:4173/
+```
+
+Dashboard local hien tai:
+
+- tu dong doc toan bo `npm run` trong `package.json`
+- co the bam chay lenh truc tiep tu UI
+- hien trang thai `running/success/failed`
+- hien log gan nhat cua moi lan chay
+
 Can tao file `.env` theo mau `.env.example` truoc khi dich.
+
+## Phase viet hoa de choi som
+
+`phase1`:
+
+- `embeddedstrings.xml`
+- `hints.xml`
+- `radiooptions.xml`
+- `todolist.xml`
+
+Day la cum co gia tri cao nhat de vao game khong bi "mu" UI.
+
+`phase2`:
+
+- `missions.xml`
+- `scenes.xml`
+
+Tap trung cho campaign mo dau, objective, story slice.
+
+`phase3`:
+
+- `items.xml`
+- `facilities.xml`
+- `characters.xml`
+- `expertise.xml`
+- cac file RTS lien quan
+
+## Log, rollback va resume
+
+Bao cao tong hop:
+
+```text
+output/reports/translation-dashboard.json
+```
+
+Session hien tai:
+
+```text
+output/reports/translation-session.json
+```
+
+Event log:
+
+```text
+output/reports/translation-events.ndjson
+```
+
+Backup rollback:
+
+```text
+output/rollback/
+```
+
+Khoi phuc output gan nhat:
+
+```bash
+npm run rollback:output
+```
+
+Translator hien tai:
+
+- co fallback model theo `.env`
+- se requeue job neu loi tam thoi
+- khong lap lai chuoi da dich trong `output/` hoac da co trong `cache/translations.json`
+- khi chay lai `npm run translate:all`, tien trinh se tiep tuc tren phan con lai
 
 Neu muon dong bo file `output` vao game that de test nhanh:
 

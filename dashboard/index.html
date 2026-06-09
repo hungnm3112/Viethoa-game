@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Translation Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="topbar">
+        <div>
+          <h1>Translation Dashboard</h1>
+          <p id="generatedAt">Dang tai bao cao...</p>
+        </div>
+        <div class="actions">
+          <button id="refreshBtn" title="Tai lai bao cao">Lam moi</button>
+        </div>
+      </section>
+
+      <section class="grid summary">
+        <article class="panel">
+          <h2>Session</h2>
+          <div class="metric" id="sessionStatus">-</div>
+          <div class="sub" id="sessionScope">-</div>
+          <div class="list" id="sessionMeta"></div>
+        </article>
+        <article class="panel">
+          <h2>Coverage</h2>
+          <div class="metric" id="coveragePercent">0%</div>
+          <div class="progress"><div id="coverageBar"></div></div>
+          <div class="sub" id="coverageMeta">-</div>
+        </article>
+        <article class="panel">
+          <h2>Queue</h2>
+          <div class="queue-stats" id="queueStats"></div>
+        </article>
+        <article class="panel">
+          <h2>Notes</h2>
+          <div class="list" id="notes">-</div>
+        </article>
+      </section>
+
+      <section class="grid command-grid">
+        <article class="panel wide">
+          <div class="section-head">
+            <h2>Command Center</h2>
+            <div class="sub">Chay tat ca `npm run` ngay tren UI local</div>
+          </div>
+          <div id="scriptButtons" class="script-grid"></div>
+        </article>
+        <article class="panel">
+          <h2>Run Status</h2>
+          <div id="runSummary" class="list">Chua co lenh nao.</div>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="panel wide">
+          <h2>File Coverage</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>File</th>
+                <th>Translated</th>
+                <th>Total</th>
+                <th>%</th>
+              </tr>
+            </thead>
+            <tbody id="filesBody"></tbody>
+          </table>
+        </article>
+        <article class="panel">
+          <h2>Recent Events</h2>
+          <div class="events" id="events"></div>
+        </article>
+      </section>
+
+      <section class="grid command-grid">
+        <article class="panel wide">
+          <h2>Command Runs</h2>
+          <div id="runsList" class="runs"></div>
+        </article>
+        <article class="panel">
+          <h2>Selected Log</h2>
+          <pre id="runLog" class="run-log">Chon mot lenh de xem log.</pre>
+        </article>
+      </section>
+    </main>
+
+    <script src="./main.js"></script>
+  </body>
+  </html>
