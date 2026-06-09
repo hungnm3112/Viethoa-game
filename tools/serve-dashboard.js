@@ -93,6 +93,18 @@ async function handleApi(req, res, pathname) {
     return sendJson(res, result, result.ok ? 200 : 404);
   }
 
+  if (req.method === "POST" && pathname === "/api/retry-failed") {
+    const failed = safeReadJsonArray("jobs/failed.json");
+    if (failed.length === 0) {
+      return sendJson(res, { ok: true, retried: 0 });
+    }
+    const pending = safeReadJsonArray("jobs/pending.json");
+    const retried = failed.map(({ attempts, error, failedAt, ...job }) => ({ ...job }));
+    await writeStateJson("jobs.pending", "jobs/pending.json", [...pending, ...retried]);
+    await writeStateJson("jobs.failed", "jobs/failed.json", []);
+    return sendJson(res, { ok: true, retried: retried.length });
+  }
+
   if (req.method === "POST" && pathname === "/api/dashboard/refresh") {
     const body = await readBody(req);
     const payload = body ? JSON.parse(body) : {};

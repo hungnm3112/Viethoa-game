@@ -1,421 +1,72 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bảng điều khiển Việt hóa</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body class="dashboard-body">
-    <main class="container-fluid dashboard-shell py-4 px-3 px-lg-4">
-      <section class="hero-card card border-0 shadow-sm mb-4">
-        <div class="card-body p-4 p-lg-5">
-          <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3">
-            <div>
-              <div class="text-uppercase small text-secondary fw-semibold mb-2">
-                <i class="fa-solid fa-language me-2"></i>Trung tâm điều khiển Việt hóa local
-              </div>
-              <h1 class="display-6 fw-semibold mb-2">Bảng điều khiển Việt hóa</h1>
-              <p id="generatedAt" class="text-secondary mb-0">Đang tải báo cáo...</p>
-            </div>
-            <div class="d-flex flex-wrap gap-2">
-              <button
-                id="runWorkflowBtn"
-                class="btn btn-outline-warning fw-semibold"
-                data-bs-toggle="tooltip"
-                title="Cuộn xuống khu vực Trung tâm hành động để chọn và chạy tác vụ thủ công"
-              >
-                <i class="fa-solid fa-terminal me-2"></i>Khu vực chạy
-              </button>
-              <button
-                id="refreshBtn"
-                class="btn btn-warning text-dark fw-semibold"
-                data-bs-toggle="tooltip"
-                title="Tải lại dữ liệu dashboard mới nhất"
-              >
-                <i class="fa-solid fa-rotate-right me-2"></i>Làm mới
-              </button>
-            </div>
-          </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Việt hóa Dashboard</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="shell">
+
+    <!-- Zone 1: Tiến độ tổng thể -->
+    <header class="zone zone-header">
+      <div class="big-pct" id="big-pct">…%</div>
+      <div class="header-right">
+        <div class="strings-count" id="strings-count">Đang tải...</div>
+        <div class="progress-wrap">
+          <div class="progress-fill" id="progress-fill"></div>
         </div>
-      </section>
+        <div class="status-line" id="status-line">Đang kết nối...</div>
+      </div>
+    </header>
 
-      <section class="mb-4">
-        <div id="runQueueBanner" class="run-queue-banner d-none" role="status" aria-live="polite"></div>
-      </section>
+    <!-- Zone 2: Điều khiển và log -->
+    <div class="zone zone-action">
 
-      <section class="row g-3 mb-4">
-        <div class="col-12">
-          <article class="card dashboard-card border-0 shadow-sm">
-            <div class="card-body">
-              <div class="d-flex flex-column flex-xl-row justify-content-between align-items-xl-center gap-3 mb-3">
-                <div>
-                  <h2 class="h5 mb-1"><i class="fa-solid fa-gauge-high me-2 text-warning"></i>Tiến trình hiện tại</h2>
-                  <div class="sub">Khu vực này cho biết task đang chạy là gì, đang ở bước nào, đã xong bao nhiêu bước trong task và tổng tiến độ Việt hóa hiện tại.</div>
-                </div>
-                <div class="d-flex flex-wrap gap-2">
-                  <button
-                    id="openProgressModalBtn"
-                    class="btn btn-outline-light fw-semibold"
-                    data-bs-toggle="tooltip"
-                    title="Mở popup theo dõi tiến trình chi tiết của task hiện tại"
-                  >
-                    <i class="fa-solid fa-up-right-and-down-left-from-center me-2"></i>Mở popup
-                  </button>
-                  <button
-                    id="stopRunBtn"
-                    class="btn btn-danger fw-semibold"
-                    data-bs-toggle="tooltip"
-                    title="Dừng tác vụ đang chạy hiện tại"
-                  >
-                    <i class="fa-solid fa-stop me-2"></i>Stop
-                  </button>
-                </div>
-              </div>
-
-              <div class="current-run-grid mb-3">
-                <article class="progress-meta-card">
-                  <div class="progress-meta-label">Task hiện tại</div>
-                  <div id="currentRunLabel" class="progress-meta-value">Chưa có task đang chạy</div>
-                </article>
-                <article class="progress-meta-card">
-                  <div class="progress-meta-label">Bước hiện tại</div>
-                  <div id="currentRunStep" class="progress-meta-value">-</div>
-                </article>
-                <article class="progress-meta-card">
-                  <div class="progress-meta-label">Tiến độ task</div>
-                  <div id="currentRunTaskProgress" class="progress-meta-value">0 / 0 bước</div>
-                </article>
-                <article class="progress-meta-card">
-                  <div class="progress-meta-label">Tiến độ tổng thể</div>
-                  <div id="currentRunOverallProgress" class="progress-meta-value">0 / 0 chuỗi</div>
-                </article>
-              </div>
-
-              <div class="current-run-grid mb-3">
-                <article class="progress-meta-card">
-                  <div class="progress-meta-label">Chuỗi đã dịch</div>
-                  <div id="overallTranslatedStrings" class="progress-meta-value">0</div>
-                </article>
-                <article class="progress-meta-card">
-                  <div class="progress-meta-label">Chuỗi còn lại</div>
-                  <div id="overallRemainingStrings" class="progress-meta-value">0</div>
-                </article>
-                <article class="progress-meta-card">
-                  <div class="progress-meta-label">Tệp đã xong</div>
-                  <div id="overallCompletedFiles" class="progress-meta-value">0</div>
-                </article>
-                <article class="progress-meta-card">
-                  <div class="progress-meta-label">Tệp chưa xong</div>
-                  <div id="overallUnfinishedFiles" class="progress-meta-value">0</div>
-                </article>
-              </div>
-
-              <div class="progress-panel mb-3">
-                <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-3 mb-2">
-                  <div>
-                    <h3 class="h6 mb-1"><i class="fa-solid fa-arrows-rotate me-2 text-warning"></i>Khả năng tiếp tục khi tiến trình bị ngắt</h3>
-                    <div id="resumeStateTitle" class="fw-semibold">Đang kiểm tra queue hiện tại...</div>
-                  </div>
-                  <div class="d-flex flex-wrap gap-2">
-                    <button
-                      id="resumeRunBtn"
-                      class="btn btn-warning text-dark fw-semibold"
-                      data-bs-toggle="tooltip"
-                      title="Chạy tiếp đúng script phù hợp với queue hiện tại mà không làm lặp phần đã dịch"
-                    >
-                      <i class="fa-solid fa-play me-2"></i>Tiếp tục
-                    </button>
-                    <button
-                      id="openPendingFilesBtn"
-                      class="btn btn-outline-light fw-semibold"
-                      data-bs-toggle="tooltip"
-                      title="Cuộn xuống phần danh sách file còn dang dở"
-                    >
-                      <i class="fa-solid fa-list-ul me-2"></i>Xem file dở
-                    </button>
-                  </div>
-                </div>
-                <div id="resumeStateDescription" class="small text-secondary mb-3">
-                  Dashboard sẽ cho biết còn việc gì chưa xong và script nào nên chạy tiếp.
-                </div>
-                <div class="current-run-metrics mb-3">
-                  <div><strong id="resumePendingJobs">0</strong> job đang chờ</div>
-                  <div><strong id="resumeFailedJobs">0</strong> job lỗi</div>
-                  <div><strong id="resumePendingFiles">0</strong> file còn dang dở trong queue</div>
-                  <div><strong id="resumeRecommendedScript">-</strong> là script nên chạy tiếp</div>
-                </div>
-                <div id="resumePhaseBadgeRow" class="badge-row"></div>
-              </div>
-
-              <div class="row g-3">
-                <div class="col-12 col-xl-7">
-                  <div class="progress-panel h-100">
-                    <div class="d-flex justify-content-between align-items-center gap-3 mb-2">
-                      <div class="small text-secondary">Thanh tiến trình task hiện tại</div>
-                      <div id="currentRunPercent" class="progress-percent-inline">0%</div>
-                    </div>
-                    <div class="progress dashboard-progress progress-modal-bar mb-3">
-                      <div id="currentRunBar" class="progress-bar bg-warning text-dark fw-semibold" style="width: 0%">0%</div>
-                    </div>
-                    <div class="current-run-metrics">
-                      <div><strong id="currentRunDoneInTask">0</strong> bước đã hoàn thành trong task</div>
-                      <div><strong id="currentRunDoneOverall">0</strong> công việc hoàn thành tổng thể</div>
-                      <div><strong id="currentRunPendingOverall">0</strong> công việc còn chờ</div>
-                      <div><strong id="currentRunFailedOverall">0</strong> công việc lỗi</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 col-xl-5">
-                  <div class="progress-panel h-100">
-                    <div class="small text-secondary mb-2">Thông tin nhanh của task</div>
-                    <div id="currentRunMeta" class="list"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="progress-panel mt-3">
-                <div class="d-flex justify-content-between align-items-center gap-3 mb-2">
-                  <h3 class="h6 mb-0"><i class="fa-solid fa-terminal me-2 text-warning"></i>Log realtime kiểu terminal</h3>
-                  <div class="small text-secondary">Tự làm mới khi task đang chạy</div>
-                </div>
-                <pre id="currentRunTerminal" class="progress-modal-log">Chưa có log realtime.</pre>
-              </div>
-            </div>
-          </article>
+      <!-- Hàng trên: tên task + nút điều khiển -->
+      <div class="action-top">
+        <div class="run-name-row">
+          <span class="run-name" id="run-name"></span>
+          <span class="run-since" id="run-since"></span>
         </div>
-      </section>
-
-      <section class="row g-3 mb-4">
-        <div class="col-12 col-md-6 col-xl-3">
-          <article class="card dashboard-card h-100 border-0 shadow-sm">
-            <div class="card-body">
-              <div class="section-label"><i class="fa-solid fa-play-circle"></i> Phiên xử lý</div>
-              <div class="metric" id="sessionStatus">-</div>
-              <div class="sub mb-3" id="sessionScope">-</div>
-              <div class="list" id="sessionMeta"></div>
-            </div>
-          </article>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <article class="card dashboard-card h-100 border-0 shadow-sm">
-            <div class="card-body">
-              <div class="section-label"><i class="fa-solid fa-chart-line"></i> Độ phủ Việt hóa</div>
-              <div class="metric" id="coveragePercent">0%</div>
-              <div class="progress dashboard-progress mb-3">
-                <div id="coverageBar" class="progress-bar bg-warning"></div>
-              </div>
-              <div class="sub" id="coverageMeta">-</div>
-            </div>
-          </article>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <article class="card dashboard-card h-100 border-0 shadow-sm">
-            <div class="card-body">
-              <div class="section-label"><i class="fa-solid fa-bars-progress"></i> Hàng đợi công việc</div>
-              <div class="queue-stats" id="queueStats"></div>
-            </div>
-          </article>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <article class="card dashboard-card h-100 border-0 shadow-sm">
-            <div class="card-body">
-              <div class="section-label"><i class="fa-solid fa-note-sticky"></i> Ghi chú nhanh</div>
-              <div class="list" id="notes">-</div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="actionCenter" class="row g-3 mb-4">
-        <div class="col-12 col-xl-9">
-          <article class="card dashboard-card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-2 mb-3">
-                <div>
-                  <h2 class="h5 mb-1"><i class="fa-solid fa-terminal me-2 text-warning"></i>Trung tâm hành động</h2>
-                  <div class="sub">Các nút được sắp theo giai đoạn, có mô tả chức năng và phạm vi Việt hóa để bạn dễ quyết định.</div>
-                </div>
-              </div>
-              <div id="scriptSections" class="vstack gap-3"></div>
-            </div>
-          </article>
-        </div>
-        <div class="col-12 col-xl-3">
-          <article class="card dashboard-card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h2 class="h5 mb-3"><i class="fa-solid fa-signal me-2 text-warning"></i>Trạng thái chạy</h2>
-              <div class="sub mb-3">Theo dõi tổng quan các lệnh đang chạy, đã xong và thất bại.</div>
-              <div id="runSummary" class="list">Chưa có lệnh nào.</div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="row g-3 mb-4">
-        <div class="col-12 col-xl-8">
-          <article class="card dashboard-card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h2 class="h5 mb-3"><i class="fa-solid fa-table-list me-2 text-warning"></i>Độ phủ theo file</h2>
-              <div class="sub mb-3">Bảng này giúp biết file nào đã được Việt hóa nhiều, file nào còn là điểm nghẽn.</div>
-              <div class="table-responsive">
-                <table class="table table-dark table-hover align-middle mb-0">
-                  <thead>
-                    <tr>
-                      <th>Tệp</th>
-                      <th>Đã dịch</th>
-                      <th>Tổng</th>
-                      <th>Tỉ lệ</th>
-                    </tr>
-                  </thead>
-                  <tbody id="filesBody"></tbody>
-                </table>
-              </div>
-            </div>
-          </article>
-        </div>
-        <div class="col-12 col-xl-4">
-          <article class="card dashboard-card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h2 class="h5 mb-3"><i class="fa-solid fa-clock-rotate-left me-2 text-warning"></i>Sự kiện gần đây</h2>
-              <div class="sub mb-3">Sự kiện hệ thống như fallback model, job xong, job lỗi và rollback.</div>
-              <div class="events" id="events"></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="row g-3 mb-4">
-        <div class="col-12">
-          <article class="card dashboard-card border-0 shadow-sm">
-            <div class="card-body">
-              <h2 class="h5 mb-3"><i class="fa-solid fa-road me-2 text-warning"></i>Nhật ký theo giai đoạn</h2>
-              <div class="sub mb-3">Mỗi khi bạn bấm nút ở một phase, hệ thống sẽ ghi log để mọi người biết phase nào đã được khởi chạy, đã thành công hay gặp lỗi.</div>
-              <div id="phaseActivity" class="phase-activity-grid"></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="row g-3 mb-4">
-        <div class="col-12 col-xl-5">
-          <article class="card dashboard-card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h2 class="h5 mb-3"><i class="fa-solid fa-triangle-exclamation me-2 text-warning"></i>File còn dang dở</h2>
-              <div class="sub mb-3">Đây là các file còn nhiều chuỗi chưa dịch nhất ở thời điểm hiện tại. Phần này giúp nhìn ngay nơi nào đang nghẽn để ưu tiên phase hợp lý.</div>
-              <div id="pendingFilesList" class="runs"></div>
-            </div>
-          </article>
-        </div>
-        <div class="col-12 col-xl-7">
-          <article class="card dashboard-card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h2 class="h5 mb-3"><i class="fa-solid fa-layer-group me-2 text-warning"></i>Tiến độ theo phase</h2>
-              <div class="sub mb-3">Mỗi phase hiển thị số chuỗi đã dịch, số chuỗi còn lại, queue đang chờ và script nên bấm tiếp nếu bạn muốn nối lại công việc.</div>
-              <div id="phaseProgressList" class="phase-progress-grid"></div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="row g-3">
-        <div class="col-12 col-xl-7">
-          <article class="card dashboard-card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h2 class="h5 mb-3"><i class="fa-solid fa-list-check me-2 text-warning"></i>Lịch sử lần chạy</h2>
-              <div class="sub mb-3">Mỗi lần bấm nút sẽ tạo một bản ghi ở đây. Bấm vào từng dòng để xem log chi tiết.</div>
-              <div id="runsList" class="runs"></div>
-            </div>
-          </article>
-        </div>
-        <div class="col-12 col-xl-5">
-          <article class="card dashboard-card border-0 shadow-sm h-100">
-            <div class="card-body">
-              <h2 class="h5 mb-3"><i class="fa-solid fa-file-lines me-2 text-warning"></i>Log chi tiết</h2>
-              <div class="sub mb-3">Phần này hiện kết quả thực tế của lệnh đã chọn, giúp debug nhanh mà không cần mở terminal.</div>
-              <pre id="runLog" class="run-log">Chọn một lệnh để xem log.</pre>
-            </div>
-          </article>
-        </div>
-      </section>
-    </main>
-
-    <div class="modal fade" id="progressModal" tabindex="-1" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content progress-modal-content">
-          <div class="modal-header border-0 pb-2">
-            <div>
-              <div class="text-uppercase small text-secondary fw-semibold mb-1">Theo dõi tiến trình</div>
-              <h2 id="progressModalTitle" class="h4 mb-1">Đang chuẩn bị chạy lệnh</h2>
-              <div id="progressModalSubtitle" class="text-secondary small">Hệ thống sẽ cập nhật tiến độ riêng cho từng nút chạy.</div>
-            </div>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Đóng"></button>
-          </div>
-          <div class="modal-body pt-2">
-            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center gap-2 mb-3">
-              <div>
-                <div class="small text-secondary mb-1">Trạng thái hiện tại</div>
-                <div id="progressCurrentStep" class="fw-semibold fs-5">Đang khởi động...</div>
-              </div>
-              <div class="text-lg-end">
-                <div class="small text-secondary mb-1">Phần trăm hoàn thành</div>
-                <div id="progressPercentLabel" class="progress-percent-label">0%</div>
-              </div>
-            </div>
-
-            <div class="progress dashboard-progress progress-modal-bar mb-3">
-              <div id="progressModalBar" class="progress-bar bg-warning text-dark fw-semibold" style="width: 0%">0%</div>
-            </div>
-
-            <div class="progress-meta-grid mb-3">
-              <article class="progress-meta-card">
-                <div class="progress-meta-label">Mã lượt chạy</div>
-                <div id="progressRunId" class="progress-meta-value">-</div>
-              </article>
-              <article class="progress-meta-card">
-                <div class="progress-meta-label">Lệnh đang chạy</div>
-                <div id="progressScriptName" class="progress-meta-value">-</div>
-              </article>
-              <article class="progress-meta-card">
-                <div class="progress-meta-label">Pha / phạm vi</div>
-                <div id="progressCoverage" class="progress-meta-value">-</div>
-              </article>
-            </div>
-
-            <div class="row g-3">
-              <div class="col-12 col-lg-6">
-                <div class="progress-panel">
-                  <h3 class="h6 mb-3"><i class="fa-solid fa-list-check me-2 text-warning"></i>Công việc đã hoàn thành</h3>
-                  <div id="progressCompletedSteps" class="progress-step-list"></div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-6">
-                <div class="progress-panel">
-                  <h3 class="h6 mb-3"><i class="fa-solid fa-file-lines me-2 text-warning"></i>Log gần nhất</h3>
-                  <pre id="progressModalLog" class="progress-modal-log">Chưa có log.</pre>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer border-0 pt-0">
-            <button type="button" id="progressModalStopBtn" class="btn btn-danger">
-              <i class="fa-solid fa-stop me-2"></i>Stop
-            </button>
-            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Đóng</button>
-          </div>
+        <div class="control-btns">
+          <button id="btn-start" class="btn-start" disabled>▶ Bắt đầu Việt hóa</button>
+          <button id="btn-resume" class="btn-resume hidden">↺ Tiếp tục</button>
+          <button id="btn-stop" class="btn-stop" disabled>■ Stop</button>
         </div>
       </div>
+
+      <!-- Thông báo phụ: retry job lỗi / queue trống -->
+      <div id="action-msg" class="action-msg hidden"></div>
+
+      <!-- Log output: luôn hiển thị -->
+      <pre id="log-box" class="log-box">Đang chờ dữ liệu...</pre>
+
+      <!-- Danh sách script khác (ẩn khi đang chạy) -->
+      <div id="scripts-panel" class="scripts-panel"></div>
+
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="./main.js"></script>
-  </body>
+    <!-- Zone 3: Bảng độ phủ theo file -->
+    <div class="zone zone-table">
+      <div class="zone-title">Độ phủ theo file</div>
+      <table>
+        <thead>
+          <tr>
+            <th>File</th>
+            <th class="num">Đã dịch</th>
+            <th class="num">Tổng</th>
+            <th class="num">%</th>
+          </tr>
+        </thead>
+        <tbody id="files-body">
+          <tr><td colspan="4" class="empty-row">Đang tải...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <script type="module" src="./main.js"></script>
+</body>
 </html>

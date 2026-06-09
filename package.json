@@ -17,6 +17,7 @@
     "translate:phase2": "node --env-file=.env tools/translate.js --match=missions.xml,scenes.xml",
     "translate:phase3": "node --env-file=.env tools/translate.js --match=items.xml,facilities.xml,characters.xml,expertise.xml,rtsevents.xml,search.xml,enclaves.xml,fatecards.xml",
     "translate:all": "node tools/run-translation-pipeline.js --profile=all --limit=8",
+    "translate:resume": "node --env-file=.env tools/run-translation-pipeline.js --profile=all --limit=8 --rebuild=false",
     "translation-status": "node tools/translation-status.js",
     "translation-status:phase1": "node tools/translation-status.js --profile=phase1",
     "dashboard:generate": "node tools/generate-translation-dashboard.js",

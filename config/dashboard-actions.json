@@ -118,6 +118,13 @@
           "phase": "fullrun"
         },
         {
+          "script": "translate:resume",
+          "label": "Tiep tuc viet hoa (khong tao lai queue)",
+          "summary": "Tiep tuc tu dung dang — giu nguyen pending jobs, khong reset queue. Dung khi bi crash hoac stop bat ngo.",
+          "coverage": "Cac job con lai trong queue hien tai",
+          "phase": "fullrun"
+        },
+        {
           "script": "translation-status",
           "label": "Bao cao tien do toan bo",
           "summary": "Xem % viet hoa tren toan bo he thong file XML.",
