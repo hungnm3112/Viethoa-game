@@ -13,6 +13,21 @@
       "phase": "phase-1"
     },
     {
+      "source": "output/gamedata/libs/ui/class3_pause.gfx",
+      "target": "libs/ui/class3_pause.gfx",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/class3_journal.gfx",
+      "target": "libs/ui/class3_journal.gfx",
+      "phase": "phase-1"
+    },
+    {
+      "source": "output/gamedata/libs/ui/class3_stats.gfx",
+      "target": "libs/ui/class3_stats.gfx",
+      "phase": "phase-1"
+    },
+    {
       "source": "output/gamedata/libs/ui/HUD_Font_LocFont.swf",
       "target": "libs/ui/HUD_Font_LocFont.swf",
       "phase": "phase-1"

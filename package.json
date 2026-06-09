@@ -13,6 +13,8 @@
     "build-ui-aliases": "node tools/build-ui-aliases.js",
     "font-audit": "node tools/font-audit.js",
     "patch-cluster-a": "node tools/patch-cluster-a-fonts.js",
+    "patch-cluster-b": "node tools/patch-cluster-b-fonts.js",
+    "patch-cluster-c": "node tools/patch-cluster-c-fonts.js",
     "sync-game": "powershell -ExecutionPolicy Bypass -File scripts/sync-output-to-game.ps1",
     "test-menu": "node tools/patch-test-menu.js",
     "test-btxt": "node tools/patch-test-btxt.js",
