@@ -10,7 +10,8 @@
     "translate": "node --env-file=.env tools/translate.js",
     "test-menu": "node tools/patch-test-menu.js",
     "test-btxt": "node tools/patch-test-btxt.js",
-    "test-font": "node tools/patch-test-font.js"
+    "test-font": "node tools/patch-test-font.js",
+    "test-gfx-font": "node tools/patch-test-gfx-font.js"
   },
   "engines": {
     "node": ">=22"

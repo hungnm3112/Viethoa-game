@@ -66,10 +66,22 @@ Tao file `english.win.btxt` test nho:
 npm run test-btxt
 ```
 
+Ban hien tai tao mot test UTF-8 nho:
+
+```text
+Continue -> Tiếp tục
+```
+
 Tao font override de thu ky tu tieng Viet:
 
 ```bash
 npm run test-font
+```
+
+Tao ban `class3_frontend.gfx` da doi embedded menu font sang glyph kieu Arial:
+
+```bash
+npm run test-gfx-font
 ```
 
 Mac dinh `test-font` copy `C:/Windows/Fonts/tahoma.ttf` thanh:
@@ -107,14 +119,14 @@ Copy 2 file nay:
 
 ```text
 output/gamedata/languages/english.win.btxt
-output/gamedata/fonts/veramono.ttf
+output/gamedata/libs/ui/class3_frontend.gfx
 ```
 
 Den dung cau truc:
 
 ```text
 State of Decay YOSE/Game/languages/english.win.btxt
-State of Decay YOSE/Game/fonts/veramono.ttf
+State of Decay YOSE/Game/libs/ui/class3_frontend.gfx
 ```
 
-Neu thu muc `languages` hoac `fonts` chua ton tai thi tao moi. Cach nay chi override 2 file can test; 95% noi dung con lai van tiep tuc doc tu `gamedata.pak`.
+Neu thu muc `languages` hoac `libs/ui` chua ton tai thi tao moi. Cach nay chi override 2 file can test; 95% noi dung con lai van tiep tuc doc tu `gamedata.pak`.

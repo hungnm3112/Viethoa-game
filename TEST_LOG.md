@@ -65,7 +65,7 @@ Goal:
 Current test:
 
 - Exact one-string patch only.
-- `Continue -> Tiêp tuc`
+- `Continue -> Tiếp tục`
 
 Result in workspace:
 
@@ -76,8 +76,8 @@ output/gamedata/languages/english.win.btxt
 Verification:
 
 - ASCII `Continue` is no longer present in the patched file.
-- The patched file contains the byte sequence for `Tiêp tuc`.
-- This variant keeps the replacement length exactly equal to the original string length.
+- The patched file contains the UTF-8 byte sequence for `Tiếp tục`.
+- This test no longer keeps byte length fixed. It follows the real shipped localized `.win.btxt` files, which vary in total size across languages and store accented characters in UTF-8.
 
 ## 2026-06-08 - Font override route
 
@@ -105,3 +105,61 @@ Notes:
 - `input/gamedata/fonts/default.xml`, `hud.xml`, and `console.xml` all point to `VeraMono.ttf`.
 - `npm run test-font` currently uses `C:/Windows/Fonts/tahoma.ttf` as the override source because it has Vietnamese glyph coverage and is present on a default Windows install.
 - This keeps the test narrow: only one localized string plus one font file are overridden, while the rest of the game continues loading from the original `.pak`.
+
+## 2026-06-09 - Embedded UI font investigation
+
+Goal:
+
+- Determine whether the main menu text uses loose `Game/fonts/veramono.ttf` or embedded fonts inside Scaleform `.gfx` assets.
+
+Findings:
+
+- Main menu strings are assigned in ActionScript via plain `.text`, not `.htmlText`, in [output/extracted/libs/ui/flashassets/scripts/class3frontend/class3_frontend.as](C:\Workspace\Viethoa-game\output\extracted\libs\ui\flashassets\scripts\class3frontend\class3_frontend.as).
+- The menu asset [output/gfxdump/libs/ui/class3_frontend.gfx](C:\Workspace\Viethoa-game\output\gfxdump\libs\ui\class3_frontend.gfx) contains embedded font resources named `Decaying Kuntry` and `BrainsForSale`.
+- The pause/credits asset [output/gfxdump/libs/ui/class3_pause.gfx](C:\Workspace\Viethoa-game\output\gfxdump\libs\ui\class3_pause.gfx) also contains an embedded `Arial` font and uses HTML `<font face="Arial">...</font>` fragments for special characters.
+- This strongly suggests the main menu is not driven by loose `veramono.ttf` for the visible title/menu text. Instead, it is using embedded Scaleform font faces from `class3_frontend.gfx`.
+
+Conclusion:
+
+- Replacing `Game/fonts/veramono.ttf` is not sufficient for Vietnamese menu text with diacritics.
+- The next real fix path is editing or rebuilding `class3_frontend.gfx` so the menu text field uses a font face with Vietnamese glyph support, most likely `Arial` or another embedded replacement.
+
+## 2026-06-09 - Encoding correction
+
+Goal:
+
+- Verify whether the visible `?` comes from the wrong text encoding rather than from a missing menu glyph.
+
+Findings:
+
+- The shipped files `french.win.btxt`, `german.win.btxt`, and `pt-br.win.btxt` differ in total size from `english.win.btxt`.
+- Their accented characters appear in raw bytes as UTF-8 sequences such as `c3 b4`.
+- `class3_frontend.gfx` already embeds menu fonts that include at least `ê` and `á`, so the earlier `?` result is more consistent with a bad byte encoding than with a missing glyph.
+
+Action:
+
+- `tools/patch-test-btxt.js` now patches the exact string `Continue` using UTF-8 and allows the file size to change.
+- Current test strings include the visible main menu labels in Vietnamese with UTF-8.
+
+## 2026-06-09 - Embedded menu font replacement
+
+Goal:
+
+- Replace the main menu embedded fonts with Arial glyph coverage instead of relying on loose `veramono.ttf`.
+
+Action:
+
+- `tools/patch-test-gfx-font.js` reads [class3_frontend.gfx](C:\Workspace\Viethoa-game\output\gfxdump\libs\ui\class3_frontend.gfx) and swaps the embedded font payload for `Decaying Kuntry` and `BrainsForSale` with the embedded `Arial` font payload taken from [class3_pause.gfx](C:\Workspace\Viethoa-game\output\gfxdump\libs\ui\class3_pause.gfx).
+- The target font IDs are preserved so the frontend asset keeps referencing the same symbols, but now with Arial glyph data.
+
+Current output:
+
+```text
+output/gamedata/libs/ui/class3_frontend.gfx
+```
+
+Copy target:
+
+```text
+D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game\libs\ui\class3_frontend.gfx
+```
