@@ -160,24 +160,35 @@ function parseArgs(argv) {
 }
 
 function buildModelList() {
-  const configured = [
-    process.env.GEMINI_MODEL,
-    ...(process.env.GEMINI_MODELS ?? "").split(","),
-    "gemini-2.5-flash",
-    "gemini-2.5-flash-lite",
-    "gemini-2.5-pro",
-  ]
+  const configured = [process.env.GEMINI_MODEL, ...(process.env.GEMINI_MODELS ?? "").split(",")]
     .map((value) => String(value ?? "").trim())
     .filter(Boolean);
+
+  if (configured.length === 0) {
+    throw new Error(
+      "Missing GEMINI_MODEL or GEMINI_MODELS. Configure the exact Gemini API model ids in .env before running translate.",
+    );
+  }
 
   return [...new Set(configured)];
 }
 
 function shouldFallback(value) {
   const text = typeof value === "number" ? String(value) : String(value ?? "");
-  return ["429", "500", "502", "503", "504", "overloaded", "quota", "rate limit", "unavailable"].some((token) =>
-    text.toLowerCase().includes(token),
-  );
+  return [
+    "404",
+    "429",
+    "500",
+    "502",
+    "503",
+    "504",
+    "overloaded",
+    "quota",
+    "rate limit",
+    "unavailable",
+    "not found",
+    "model not found",
+  ].some((token) => text.toLowerCase().includes(token));
 }
 
 function delay(ms) {

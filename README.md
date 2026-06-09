@@ -58,6 +58,14 @@ npm run translate -- --group dialog --limit 10
 
 Can tao file `.env` theo mau `.env.example` truoc khi dich.
 
+Luu y ve fallback model:
+
+- translator khong con tu chen danh sach model mac dinh nua
+- no chi fallback qua cac model ban khai bao trong `.env`
+- `GEMINI_MODEL` la model chinh
+- `GEMINI_MODELS` la danh sach fallback, phan tach bang dau phay
+- can dung **exact Gemini API model ids**, khong dung ten hien thi trong AI Studio
+
 ## Test file that game doc truc tiep
 
 Tao file `english.win.btxt` test nho:

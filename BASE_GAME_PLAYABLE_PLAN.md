@@ -45,21 +45,22 @@ Do la muc tieu hop ly nhat va sat nhu cau cua ban.
 
 ## Uoc luong theo Gemini
 
-Tu anh rate limit ban gui:
+Tu anh rate limit ban gui, cac model text dang xuat hien trong tai khoan la:
 
-- `Gemini 2.5 Flash`: RPM cao, hop nhat cho batch text
-- `Gemini 3.1 Flash Lite`: throughput cao, hop de fallback
-- `Gemini 3.1 Pro`: RPM thap hon, nen dung fallback cuoi cho batch kho
+- `Gemini 2.5 Flash`
+- `Gemini 3.1 Pro`
+- `Gemini 3.1 Flash Lite`
 
-Theo docs Google AI cho Gemini API, cac ma model on dinh hien tai gom:
+Can tach 2 lop:
 
-- `gemini-2.5-flash`
-- `gemini-2.5-flash-lite`
-- `gemini-2.5-pro`
+1. **ten hien thi trong AI Studio**
+2. **API model id that su goi qua code**
 
-Nguon:
+Vi Google co the dat ten hien thi va API id khac nhau theo tung giai doan rollout, workflow nen:
 
-- https://ai.google.dev/gemini-api/docs/models
+- khong hard-code fallback model trong ma nguon
+- chi doc danh sach model tu `.env`
+- cho phep bo qua model fallback bi sai ten / het hieu luc de chuyen sang model tiep theo
 
 ### Uoc luong thuc te
 
@@ -169,17 +170,22 @@ Muc tieu:
 
 ## Fallback model
 
-Translator nen dung thu tu:
+Translator nen dung thu tu theo **tai khoan hien tai**:
 
-1. `gemini-2.5-flash`
-2. `gemini-2.5-flash-lite`
-3. `gemini-2.5-pro`
+1. `Gemini 2.5 Flash`
+2. `Gemini 3.1 Flash Lite`
+3. `Gemini 3.1 Pro`
 
 Ly do:
 
-- `2.5-flash` la lua chon chinh cho throughput / gia tri
-- `2.5-flash-lite` dung khi can lat choi nhanh, model chinh bi nghen
-- `2.5-pro` de fallback cuoi, khong phai model chay dai hang loat
+- `2.5 Flash` la lua chon chinh cho throughput / gia tri
+- `3.1 Flash Lite` dung khi can throughput cao va model chinh dang nghen
+- `3.1 Pro` la fallback cuoi cho batch kho / it batch hon
+
+Luu y:
+
+- thu tu tren la **thu tu logic**
+- khi cau hinh `.env`, van phai dien **API model id exact** thay vi ten hien thi
 
 ## Lenh chay de dung cho scope nay
 
