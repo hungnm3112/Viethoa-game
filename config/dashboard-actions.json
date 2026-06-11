@@ -2,114 +2,338 @@
   "sections": [
     {
       "id": "foundation",
-      "title": "Nen tang va khoi tao",
-      "description": "Dung de mo server local, trich xuat du lieu game va quet text truoc khi vao cac phase viet hoa.",
+      "title": "Nen tang va trich xuat",
+      "description": "Mo dashboard, trich xuat XML/BTXT tu PAK va lam moi bao cao sau khi co input moi.",
       "actions": [
         {
           "script": "dev",
           "label": "Mo Dashboard Local",
-          "summary": "Khoi dong local control center de thao tac bang UI.",
+          "summary": "Khoi dong local control center bang nodemon.",
+          "coverage": "He thong dashboard local",
+          "phase": "foundation"
+        },
+        {
+          "script": "dashboard:serve",
+          "label": "Serve dashboard truc tiep",
+          "summary": "Chay server dashboard khong qua nodemon.",
           "coverage": "He thong dashboard local",
           "phase": "foundation"
         },
         {
           "script": "extract",
-          "label": "Trich xuat du lieu game",
-          "summary": "Lay XML, font va UI asset tu cac file pak vao thu muc input/output.",
-          "coverage": "Toan bo du lieu game can cho viet hoa",
+          "label": "Trich XML tu toan bo PAK",
+          "summary": "Lay XML tu cac file pak trong data-game-park vao input.",
+          "coverage": "XML co the viet hoa",
+          "phase": "foundation"
+        },
+        {
+          "script": "extract:runtime",
+          "label": "Trich XML + BTXT/DRL",
+          "summary": "Lay XML va runtime text win.btxt/win.drl de doi chieu build.",
+          "coverage": "XML va runtime text",
           "phase": "foundation"
         },
         {
           "script": "scan",
           "label": "Quet toan bo text",
-          "summary": "Thong ke cac chuoi co the dich va giup xac dinh pham vi cong viec.",
+          "summary": "Thong ke cac chuoi co the dich trong input.",
           "coverage": "Toan bo text XML co the viet hoa",
           "phase": "foundation"
         },
         {
-          "script": "build-jobs:all",
-          "label": "Tao queue viet hoa toan bo",
-          "summary": "Tao queue cong viec cho full translation, bo qua text da duoc dich.",
-          "coverage": "Tat ca phase viet hoa",
+          "script": "dashboard:generate",
+          "label": "Lam moi dashboard data",
+          "summary": "Sinh lai output/reports/translation-dashboard.json sau khi extract/dich/build.",
+          "coverage": "He thong bao cao",
           "phase": "foundation"
         }
       ]
     },
     {
       "id": "phase1",
-      "title": "Phase 1 - UI, tips, radio, todo",
-      "description": "Bao phu text can thiet nhat de vao game khong bi mu UI va loading tip.",
+      "title": "Base Phase 1 - UI, tips, radio, todo",
+      "description": "Base game: UI runtime, loading tips, radio command va todo/crisis.",
       "actions": [
         {
           "script": "build-jobs:phase1",
-          "label": "Tao queue Phase 1",
-          "summary": "Tao queue cho embeddedstrings, hints, radiooptions va todolist.",
-          "coverage": "UI runtime, loading tips, radio command, crisis/todo",
+          "label": "Tao queue Base Phase 1",
+          "summary": "Tao queue rieng cho embeddedstrings, hints, radiooptions va todolist cua gamedata.",
+          "coverage": "Base UI runtime, tips, radio, todo",
           "phase": "phase1"
         },
         {
           "script": "translate:phase1",
-          "label": "Chay dich Phase 1",
-          "summary": "Dich batch phase 1 bang Gemini, co cache va fallback model.",
-          "coverage": "UI runtime, tips, radio, todo",
+          "label": "Chay dich Base Phase 1",
+          "summary": "Chay pipeline dich den khi het queue cua Base Phase 1.",
+          "coverage": "Base UI runtime, tips, radio, todo",
           "phase": "phase1"
         },
         {
           "script": "translation-status:phase1",
-          "label": "Bao cao tien do Phase 1",
-          "summary": "Xem % da dich cua phase 1 tren cac file gameplay som.",
-          "coverage": "Thong ke phase 1",
+          "label": "Bao cao Base Phase 1",
+          "summary": "Xem tien do cua Base Phase 1.",
+          "coverage": "Thong ke Base Phase 1",
           "phase": "phase1"
         }
       ]
     },
     {
       "id": "phase2",
-      "title": "Phase 2 - Mission, objective, hoi thoai",
-      "description": "Tap trung vao story, objective va noi dung campaign mo dau den giua game.",
+      "title": "Base Phase 2 - Mission va hoi thoai",
+      "description": "Base game: missions.xml va scenes.xml trong gamedata.",
       "actions": [
         {
           "script": "build-jobs:phase2",
-          "label": "Tao queue Phase 2",
-          "summary": "Tao queue cho missions.xml va scenes.xml.",
-          "coverage": "Mission, objective, story, hoi thoai",
+          "label": "Tao queue Base Phase 2",
+          "summary": "Tao queue cho missions.xml va scenes.xml cua base game.",
+          "coverage": "Base mission, objective, story, hoi thoai",
           "phase": "phase2"
         },
         {
           "script": "translate:phase2",
-          "label": "Chay dich Phase 2",
-          "summary": "Dich mission va hoi thoai theo batch, co fallback va resume.",
-          "coverage": "Missions, scenes, campaign text",
+          "label": "Chay dich Base Phase 2",
+          "summary": "Chay pipeline dich den khi het queue cua Base Phase 2.",
+          "coverage": "Base missions va scenes",
+          "phase": "phase2"
+        },
+        {
+          "script": "translation-status:phase2",
+          "label": "Bao cao Base Phase 2",
+          "summary": "Xem tien do mission/hoi thoai cua base game.",
+          "coverage": "Thong ke Base Phase 2",
           "phase": "phase2"
         }
       ]
     },
     {
       "id": "phase3",
-      "title": "Phase 3 - Item, survivor, facility, RTS",
-      "description": "Bao phu inventory, ky nang, nhan vat, co so va event he thong de choi tron ven.",
+      "title": "Base Phase 3 - Item, survivor, RTS",
+      "description": "Base game: item, character, facility, expertise va cac file RTS.",
       "actions": [
         {
           "script": "build-jobs:phase3",
-          "label": "Tao queue Phase 3",
-          "summary": "Tao queue cho item, character, facility va cac file RTS.",
-          "coverage": "Items, characters, facilities, expertise, rts events",
+          "label": "Tao queue Base Phase 3",
+          "summary": "Tao queue cho item, character, facility va RTS cua base game.",
+          "coverage": "Base item/survivor/facility/RTS",
           "phase": "phase3"
         },
         {
           "script": "translate:phase3",
-          "label": "Chay dich Phase 3",
-          "summary": "Dich item, trait, skill, base management va world system text.",
-          "coverage": "Item/survivor/facility/RTS text",
+          "label": "Chay dich Base Phase 3",
+          "summary": "Chay pipeline dich den khi het queue cua Base Phase 3.",
+          "coverage": "Base item/survivor/facility/RTS",
           "phase": "phase3"
+        },
+        {
+          "script": "translation-status:phase3",
+          "label": "Bao cao Base Phase 3",
+          "summary": "Xem tien do item/RTS cua base game.",
+          "coverage": "Thong ke Base Phase 3",
+          "phase": "phase3"
+        }
+      ]
+    },
+    {
+      "id": "basefinish",
+      "title": "Base game con lai",
+      "description": "Dung de quet het phan con lai trong gamedata sau khi da uu tien phase 1-3.",
+      "actions": [
+        {
+          "script": "build-jobs:base",
+          "label": "Tao queue Base con lai",
+          "summary": "Tao queue cho tat ca XML trong input/gamedata.",
+          "coverage": "Toan bo base gamedata",
+          "phase": "basefinish"
+        },
+        {
+          "script": "translate:base",
+          "label": "Chay dich Base con lai",
+          "summary": "Chay pipeline cho toan bo gamedata, bo qua chuoi da dich.",
+          "coverage": "Toan bo base gamedata",
+          "phase": "basefinish"
+        },
+        {
+          "script": "translation-status:base",
+          "label": "Bao cao Base game",
+          "summary": "Xem tien do rieng cua input/gamedata.",
+          "coverage": "Thong ke base gamedata",
+          "phase": "basefinish"
+        }
+      ]
+    },
+    {
+      "id": "dlccore",
+      "title": "DLC uu tien tong hop",
+      "description": "Gom noi dung uu tien cua Breakdown, Lifeline va level mission nho.",
+      "actions": [
+        {
+          "script": "build-jobs:dlc-core",
+          "label": "Tao queue DLC uu tien",
+          "summary": "Tao queue cho breakdown-core + lifeline-core + level-missions.",
+          "coverage": "DLC story, mission, item, survivor, facility",
+          "phase": "dlccore"
+        },
+        {
+          "script": "translate:dlc-core",
+          "label": "Chay dich DLC uu tien",
+          "summary": "Chay pipeline cho cac file DLC co text hien thi truc tiep.",
+          "coverage": "DLC story, mission, item, survivor, facility",
+          "phase": "dlccore"
+        },
+        {
+          "script": "translation-status:dlc-core",
+          "label": "Bao cao DLC uu tien",
+          "summary": "Xem tien do chung cua breakdown-core + lifeline-core + level-missions.",
+          "coverage": "Thong ke DLC uu tien",
+          "phase": "dlccore"
+        }
+      ]
+    },
+    {
+      "id": "breakdown",
+      "title": "Breakdown DLC",
+      "description": "BreakdownC.pak: uu tien scenes, missions, items va RTS truoc, sau do co the chay full.",
+      "actions": [
+        {
+          "script": "build-jobs:breakdown-core",
+          "label": "Tao queue Breakdown core",
+          "summary": "Tao queue cho scenes, missions, items, hints va RTS trong Breakdown.",
+          "coverage": "Breakdown noi dung hien thi chinh",
+          "phase": "breakdown"
+        },
+        {
+          "script": "translate:breakdown-core",
+          "label": "Chay dich Breakdown core",
+          "summary": "Chay pipeline cho noi dung uu tien cua Breakdown.",
+          "coverage": "Breakdown noi dung hien thi chinh",
+          "phase": "breakdown"
+        },
+        {
+          "script": "translation-status:breakdown-core",
+          "label": "Bao cao Breakdown core",
+          "summary": "Xem tien do noi dung uu tien cua Breakdown.",
+          "coverage": "Thong ke Breakdown core",
+          "phase": "breakdown"
+        },
+        {
+          "script": "build-jobs:breakdown-all",
+          "label": "Tao queue Breakdown full",
+          "summary": "Tao queue cho tat ca XML trong input/BreakdownC.",
+          "coverage": "Toan bo BreakdownC",
+          "phase": "breakdown"
+        },
+        {
+          "script": "translate:breakdown-all",
+          "label": "Chay dich Breakdown full",
+          "summary": "Chay pipeline cho toan bo BreakdownC, bo qua chuoi da dich.",
+          "coverage": "Toan bo BreakdownC",
+          "phase": "breakdown"
+        },
+        {
+          "script": "translation-status:breakdown-all",
+          "label": "Bao cao Breakdown full",
+          "summary": "Xem tien do toan bo BreakdownC.",
+          "coverage": "Thong ke Breakdown full",
+          "phase": "breakdown"
+        }
+      ]
+    },
+    {
+      "id": "lifeline",
+      "title": "Lifeline DLC",
+      "description": "BeltwayC.pak va BeltwayU.pak: uu tien scenes, missions, items, RTS va mission_mission0.",
+      "actions": [
+        {
+          "script": "build-jobs:lifeline-core",
+          "label": "Tao queue Lifeline core",
+          "summary": "Tao queue cho scenes, missions, items, hints, radio, todo, RTS va BeltwayU mission.",
+          "coverage": "Lifeline noi dung hien thi chinh",
+          "phase": "lifeline"
+        },
+        {
+          "script": "translate:lifeline-core",
+          "label": "Chay dich Lifeline core",
+          "summary": "Chay pipeline cho noi dung uu tien cua Lifeline.",
+          "coverage": "Lifeline noi dung hien thi chinh",
+          "phase": "lifeline"
+        },
+        {
+          "script": "translation-status:lifeline-core",
+          "label": "Bao cao Lifeline core",
+          "summary": "Xem tien do noi dung uu tien cua Lifeline.",
+          "coverage": "Thong ke Lifeline core",
+          "phase": "lifeline"
+        },
+        {
+          "script": "build-jobs:lifeline-all",
+          "label": "Tao queue Lifeline full",
+          "summary": "Tao queue cho tat ca XML trong input/BeltwayC va input/BeltwayU.",
+          "coverage": "Toan bo Lifeline",
+          "phase": "lifeline"
+        },
+        {
+          "script": "translate:lifeline-all",
+          "label": "Chay dich Lifeline full",
+          "summary": "Chay pipeline cho toan bo Lifeline, bo qua chuoi da dich.",
+          "coverage": "Toan bo Lifeline",
+          "phase": "lifeline"
+        },
+        {
+          "script": "translation-status:lifeline-all",
+          "label": "Bao cao Lifeline full",
+          "summary": "Xem tien do toan bo BeltwayC/BeltwayU.",
+          "coverage": "Thong ke Lifeline full",
+          "phase": "lifeline"
+        }
+      ]
+    },
+    {
+      "id": "levelmissions",
+      "title": "Level.pak mission nho",
+      "description": "Cac mission/gametoken nho trong level.pak, it chuoi nhung nen chay de kin noi dung.",
+      "actions": [
+        {
+          "script": "build-jobs:level-missions",
+          "label": "Tao queue Level mission",
+          "summary": "Tao queue cho mission_mission0.xml va gametokens trong input/level.",
+          "coverage": "Level mission va gametoken",
+          "phase": "levelmissions"
+        },
+        {
+          "script": "translate:level-missions",
+          "label": "Chay dich Level mission",
+          "summary": "Chay pipeline cho cac chuoi level mission nho.",
+          "coverage": "Level mission va gametoken",
+          "phase": "levelmissions"
+        },
+        {
+          "script": "translation-status:level-missions",
+          "label": "Bao cao Level mission",
+          "summary": "Xem tien do level mission.",
+          "coverage": "Thong ke level mission",
+          "phase": "levelmissions"
         }
       ]
     },
     {
       "id": "fullrun",
       "title": "Van hanh toan bo",
-      "description": "Dung khi muon chay full translation pipeline, tiep tuc neu bi ngat giua chung.",
+      "description": "Dung khi muon tao queue/running pipeline tren toan bo input hien co.",
       "actions": [
+        {
+          "script": "build-jobs:all",
+          "label": "Tao queue toan bo",
+          "summary": "Tao queue cho tat ca XML trong input, bo qua text da duoc dich.",
+          "coverage": "Tat ca input hien co",
+          "phase": "fullrun"
+        },
+        {
+          "script": "build-jobs",
+          "label": "Tao queue mac dinh",
+          "summary": "Lenh thap cap: tao queue khong ap profile.",
+          "coverage": "Tat ca input hien co",
+          "phase": "fullrun"
+        },
         {
           "script": "translate:all",
           "label": "Chay viet hoa toan bo",
@@ -119,9 +343,16 @@
         },
         {
           "script": "translate:resume",
-          "label": "Tiep tuc viet hoa (khong tao lai queue)",
-          "summary": "Tiep tuc tu dung dang — giu nguyen pending jobs, khong reset queue. Dung khi bi crash hoac stop bat ngo.",
+          "label": "Chay queue hien tai",
+          "summary": "Chay cac job dang co trong jobs/pending.json, khong tao lai queue.",
           "coverage": "Cac job con lai trong queue hien tai",
+          "phase": "fullrun"
+        },
+        {
+          "script": "translate",
+          "label": "Chay dich batch mac dinh",
+          "summary": "Lenh thap cap: chay mot batch theo queue hien tai.",
+          "coverage": "Queue hien tai",
           "phase": "fullrun"
         },
         {
@@ -130,32 +361,53 @@
           "summary": "Xem % viet hoa tren toan bo he thong file XML.",
           "coverage": "Toan bo project",
           "phase": "fullrun"
-        },
-        {
-          "script": "dashboard:generate",
-          "label": "Lam moi dashboard data",
-          "summary": "Sinh lai file bao cao JSON de UI cap nhat du lieu moi nhat.",
-          "coverage": "He thong bao cao",
-          "phase": "fullrun"
         }
       ]
     },
     {
       "id": "builddeploy",
-      "title": "Build va dua vao game",
-      "description": "Dung sau khi co ket qua dich de build file game thuc te va copy vao folder game.",
+      "title": "Build PAK va dua vao game",
+      "description": "Sau khi dich xong: build runtime BTXT/BMD, dong goi PAK va copy PAK vao folder game.",
       "actions": [
         {
           "script": "build-btxt",
           "label": "Build english.win.btxt",
-          "summary": "Patch text da dich vao file ngôn ngu game dung thuc te.",
-          "coverage": "Output text cho game",
+          "summary": "Patch embeddedstrings vao file english.win.btxt.",
+          "coverage": "Runtime UI language",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "build-bmd",
+          "label": "Build cac file .win.bmd",
+          "summary": "Patch subtitle, mission, item va RTS XML vao cac file .win.bmd runtime.",
+          "coverage": "Runtime subtitle/item/mission",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "build-runtime",
+          "label": "Build BTXT + BMD",
+          "summary": "Chay build-btxt va build-bmd lien tiep.",
+          "coverage": "Runtime text game",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "build-pak",
+          "label": "Dong goi gamedata.pak",
+          "summary": "Dong goi output runtime vao output/paks/gamedata.pak.",
+          "coverage": "PAK viet hoa san sang test",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "build-game",
+          "label": "Build game PAK",
+          "summary": "Build BTXT, BMD va dong goi PAK trong mot lenh.",
+          "coverage": "PAK viet hoa san sang copy vao game",
           "phase": "builddeploy"
         },
         {
           "script": "sync-game",
-          "label": "Copy output vao game",
-          "summary": "Dong bo file output hien tai vao dung folder game theo manifest.",
+          "label": "Copy PAK vao game",
+          "summary": "Backup PAK goc, vo hieu loose mod folder va copy output/paks vao thu muc Game.",
           "coverage": "Deployment local de test trong game",
           "phase": "builddeploy"
         },
@@ -171,7 +423,7 @@
     {
       "id": "fontui",
       "title": "Font va UI patch",
-      "description": "Nhom cong cu de patch font/UI khi can fix hien thi tieng Viet trong menu, popup va HUD.",
+      "description": "Cong cu patch font/UI khi can fix hien thi tieng Viet trong menu, popup va HUD.",
       "actions": [
         {
           "script": "build-font-swf",

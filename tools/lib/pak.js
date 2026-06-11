@@ -26,13 +26,14 @@ export function readPakIndex(pakPath) {
     const extraLength = buffer.readUInt16LE(offset + 30);
     const commentLength = buffer.readUInt16LE(offset + 32);
     const localHeaderOffset = buffer.readUInt32LE(offset + 42);
-    const name = buffer
-      .subarray(offset + 46, offset + 46 + nameLength)
+    const rawName = buffer.subarray(offset + 46, offset + 46 + nameLength);
+    const name = rawName
       .toString("utf8")
       .replaceAll("\\", "/");
 
     entries.push({
       name,
+      centralNameBytes: Buffer.from(rawName),
       method,
       compressedSize,
       uncompressedSize,
@@ -112,4 +113,3 @@ function findEndOfCentralDirectory(buffer) {
 
   throw new Error("End of central directory not found");
 }
-

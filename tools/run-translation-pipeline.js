@@ -3,6 +3,7 @@ import { writeJson } from "./lib/json-store.js";
 import { buildJobs, parsePlannerArgs, readProfiles, resolveProfileMatchers } from "./lib/job-planner.js";
 import { appendEvent, createSession, saveSession, updateDashboard } from "./lib/translation-monitor.js";
 import { readStateJson, writeStateJson } from "./lib/state-repository.js";
+import { closeMongoClient } from "./lib/mongo-store.js";
 
 const args = parsePlannerArgs(process.argv.slice(2));
 const profiles = readProfiles("config/translation-phases.json");
@@ -79,3 +80,5 @@ for (let cycle = 1; cycle <= maxCycles; cycle += 1) {
   previousPending = pendingAfter;
   previousDone = doneAfter;
 }
+
+await closeMongoClient();

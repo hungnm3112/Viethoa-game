@@ -1,4 +1,5 @@
 import { loadSession, updateDashboard } from "./lib/translation-monitor.js";
+import { closeMongoClient } from "./lib/mongo-store.js";
 
 const args = parseArgs(process.argv.slice(2));
 const scope = args.profile ?? "all";
@@ -8,6 +9,7 @@ const dashboard = await updateDashboard({
 });
 
 console.log(`Wrote ${dashboard.files.length} file rows to output/reports/translation-dashboard.json`);
+await closeMongoClient();
 
 function parseArgs(argv) {
   const result = {};

@@ -25,6 +25,18 @@ export async function getMongoDb() {
   }
 }
 
+export async function closeMongoClient() {
+  if (!clientPromise) return;
+  try {
+    const client = await clientPromise;
+    await client.close();
+  } catch {
+    // Ignore close errors during one-shot script shutdown.
+  } finally {
+    clientPromise = null;
+  }
+}
+
 export async function readStateDocument(key, fallback) {
   const db = await getMongoDb();
   if (!db) return fallback;

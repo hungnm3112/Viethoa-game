@@ -15,7 +15,7 @@ const CHAR_TO_XML_ENTITY = {
 };
 
 const PLACEHOLDER_PATTERN =
-  /(\{[0-9A-Za-z_]+\}|%[0-9.]*[sdif]|\\n|\\r|<[^>]+>|\[[A-Za-z0-9_:/.-]+\])/g;
+  /(\{[0-9A-Za-z_]+\}|%\d+\$[sdif]|%[0-9.]*[sdif]|%%|##|\\n|\\r|<[^>]+>|\[[A-Za-z0-9_:/.-]+\])/g;
 
 export function decodeXml(value) {
   return value.replace(/&(#x?[0-9a-fA-F]+|amp|lt|gt|quot|apos);/g, (match, entity) => {
@@ -34,8 +34,7 @@ export function encodeXmlText(value) {
 }
 
 export function encodeXmlAttribute(value, quote) {
-  const escaped = value.replace(/[&<>"']/g, (char) => CHAR_TO_XML_ENTITY[char]);
-  return quote === "'" ? escaped.replaceAll("&apos;", "'") : escaped.replaceAll("&quot;", "\"");
+  return value.replace(/[&<>"']/g, (char) => CHAR_TO_XML_ENTITY[char]);
 }
 
 export function normalizeText(value) {
@@ -117,4 +116,3 @@ export function groupForPath(filePath) {
   }
   return "misc";
 }
-

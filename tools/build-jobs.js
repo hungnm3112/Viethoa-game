@@ -2,6 +2,7 @@ import { writeJson } from "./lib/json-store.js";
 import { appendEvent, createSession, saveSession, updateDashboard } from "./lib/translation-monitor.js";
 import { buildJobs, parsePlannerArgs, readProfiles, resolveProfileMatchers } from "./lib/job-planner.js";
 import { writeStateJson } from "./lib/state-repository.js";
+import { closeMongoClient } from "./lib/mongo-store.js";
 
 const INPUT_ROOT = "input";
 const JOB_FILE = "jobs/pending.json";
@@ -40,3 +41,4 @@ await appendEvent("jobs-built", {
   matchers,
 });
 await updateDashboard({ session, scope: args.profile ?? "all", notes: session.notes });
+await closeMongoClient();

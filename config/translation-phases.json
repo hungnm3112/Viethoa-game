@@ -1,45 +1,109 @@
 {
   "phase1": {
-    "description": "Gameplay text can thiet de choi duoc som: UI runtime, tips, radio, todo.",
+    "description": "Base game: UI runtime, tips, radio, todo.",
     "match": [
-      "languages/embeddedstrings.xml",
-      "contentmanager/hints.xml",
-      "contentmanager/radiooptions.xml",
-      "contentmanager/todolist.xml"
+      "input/gamedata/languages/embeddedstrings.xml",
+      "input/gamedata/libs/class3/contentmanager/hints.xml",
+      "input/gamedata/libs/class3/contentmanager/radiooptions.xml",
+      "input/gamedata/libs/class3/contentmanager/todolist.xml"
     ]
   },
   "phase2": {
-    "description": "Mission va story slice cho base game som.",
+    "description": "Base game: mission, objective, story va hoi thoai.",
     "match": [
-      "contentmanager/missions.xml",
-      "contentmanager/scenes.xml"
+      "input/gamedata/libs/class3/contentmanager/missions.xml",
+      "input/gamedata/libs/class3/contentmanager/scenes.xml"
     ]
   },
   "phase3": {
-    "description": "He thong item, character, facility va RTS.",
+    "description": "Base game: item, survivor, facility va RTS.",
     "match": [
-      "items/items.xml",
-      "rts/facilities.xml",
-      "rts/characters.xml",
-      "rts/expertise.xml",
-      "rts/rtsevents.xml",
-      "rts/search.xml",
-      "rts/enclaves.xml",
-      "rts/fatecards.xml"
+      "input/gamedata/libs/class3/items/items.xml",
+      "input/gamedata/libs/class3/rts/facilities.xml",
+      "input/gamedata/libs/class3/rts/characters.xml",
+      "input/gamedata/libs/class3/rts/expertise.xml",
+      "input/gamedata/libs/class3/rts/rtsevents.xml",
+      "input/gamedata/libs/class3/rts/search.xml",
+      "input/gamedata/libs/class3/rts/enclaves.xml",
+      "input/gamedata/libs/class3/rts/fatecards.xml"
     ]
   },
   "playable-base": {
     "description": "Gom phase1 + phase2 + phan system gap som.",
     "match": [
-      "languages/embeddedstrings.xml",
-      "contentmanager/hints.xml",
-      "contentmanager/radiooptions.xml",
-      "contentmanager/todolist.xml",
-      "contentmanager/missions.xml",
-      "contentmanager/scenes.xml",
-      "items/items.xml",
-      "rts/facilities.xml",
-      "rts/characters.xml"
+      "input/gamedata/languages/embeddedstrings.xml",
+      "input/gamedata/libs/class3/contentmanager/hints.xml",
+      "input/gamedata/libs/class3/contentmanager/radiooptions.xml",
+      "input/gamedata/libs/class3/contentmanager/todolist.xml",
+      "input/gamedata/libs/class3/contentmanager/missions.xml",
+      "input/gamedata/libs/class3/contentmanager/scenes.xml",
+      "input/gamedata/libs/class3/items/items.xml",
+      "input/gamedata/libs/class3/rts/facilities.xml",
+      "input/gamedata/libs/class3/rts/characters.xml"
+    ]
+  },
+  "base-game": {
+    "description": "Tat ca XML dang co trong gamedata.pak cua base game.",
+    "match": [
+      "input/gamedata/"
+    ]
+  },
+  "breakdown-core": {
+    "description": "Breakdown DLC: noi dung uu tien co kha nang hien thi truc tiep trong gameplay.",
+    "match": [
+      "input/BreakdownC/Game/libs/class3.1/contentmanager/scenes.xml",
+      "input/BreakdownC/Game/libs/class3.1/contentmanager/missions.xml",
+      "input/BreakdownC/Game/libs/class3.1/contentmanager/hints.xml",
+      "input/BreakdownC/Game/libs/class3.1/contentmanager/activities.xml",
+      "input/BreakdownC/Game/libs/class3.1/items/items.xml",
+      "input/BreakdownC/Game/libs/class3.1/rts/characters.xml",
+      "input/BreakdownC/Game/libs/class3.1/rts/facilities.xml",
+      "input/BreakdownC/Game/libs/class3.1/rts/fatecards.xml",
+      "input/BreakdownC/Game/libs/class3.1/rts/expertise.xml",
+      "input/BreakdownC/Game/libs/class3.1/rts/rtsevents.xml",
+      "input/BreakdownC/Game/libs/class3.1/rts/search.xml",
+      "input/BreakdownC/Game/libs/class3.1/rts/enclaves.xml"
+    ]
+  },
+  "breakdown-all": {
+    "description": "Tat ca XML dang co trong BreakdownC.pak.",
+    "match": [
+      "input/BreakdownC/"
+    ]
+  },
+  "lifeline-core": {
+    "description": "Lifeline DLC: noi dung uu tien trong BeltwayC/BeltwayU.",
+    "match": [
+      "input/BeltwayC/Game/libs/class3.2/contentmanager/scenes.xml",
+      "input/BeltwayC/Game/libs/class3.2/contentmanager/missions.xml",
+      "input/BeltwayC/Game/libs/class3.2/contentmanager/hints.xml",
+      "input/BeltwayC/Game/libs/class3.2/contentmanager/activities.xml",
+      "input/BeltwayC/Game/libs/class3.2/contentmanager/radiooptions.xml",
+      "input/BeltwayC/Game/libs/class3.2/contentmanager/todolist.xml",
+      "input/BeltwayC/Game/libs/class3.2/items/items.xml",
+      "input/BeltwayC/Game/libs/class3.2/rts/characters.xml",
+      "input/BeltwayC/Game/libs/class3.2/rts/facilities.xml",
+      "input/BeltwayC/Game/libs/class3.2/rts/fatecards.xml",
+      "input/BeltwayC/Game/libs/class3.2/rts/expertise.xml",
+      "input/BeltwayC/Game/libs/class3.2/rts/rtsevents.xml",
+      "input/BeltwayC/Game/libs/class3.2/rts/search.xml",
+      "input/BeltwayC/Game/libs/class3.2/rts/enclaves.xml",
+      "input/BeltwayU/Game/levels/C3_beltway/mission_mission0.xml",
+      "input/BeltwayU/Game/levels/C3_beltway/levelinfo.xml"
+    ]
+  },
+  "lifeline-all": {
+    "description": "Tat ca XML dang co trong BeltwayC.pak va BeltwayU.pak.",
+    "match": [
+      "input/BeltwayC/",
+      "input/BeltwayU/"
+    ]
+  },
+  "level-missions": {
+    "description": "Level.pak: mission va gametoken co text hien thi.",
+    "match": [
+      "input/level/mission_mission0.xml",
+      "input/level/gametokens/"
     ]
   }
 }

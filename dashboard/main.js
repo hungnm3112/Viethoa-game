@@ -61,7 +61,7 @@ function renderZone1(progress, dashboard) {
     statusEl.textContent = "Đang chạy: " + (run?.label || run?.script || "...");
     statusEl.className = "status-line is-running";
   } else if (pending > 0) {
-    statusEl.textContent = pending + " job đang chờ — sẵn sàng tiếp tục";
+    statusEl.textContent = pending + " job đang chờ - bấm Chạy queue hiện tại";
     statusEl.className = "status-line has-queue";
   } else {
     statusEl.textContent = "Rảnh — không có job nào trong queue";
@@ -75,6 +75,8 @@ function renderZone2(progress, dashboard) {
   const run = progress.currentRun;
   const pending = progress.queue?.pendingJobs ?? 0;
   const failed = progress.queue?.failedJobs ?? 0;
+  const hasResumeQueue = !isRunning && (pending > 0 || failed > 0);
+  const runStatus = getRunStatusMeta(run, isRunning, pending, failed);
 
   // Lần trước bị dừng/crash (không phải success, không đang running)
   const lastWasStopped = !isRunning && run && (run.status === "stopped" || run.status === "failed");
@@ -98,13 +100,23 @@ function renderZone2(progress, dashboard) {
 
   // --- Nút Bắt đầu ---
   const btnStart = el("btn-start");
-  btnStart.disabled = isRunning || pending === 0;
+  btnStart.disabled = isRunning || hasResumeQueue;
+  btnStart.textContent = hasResumeQueue ? "▶ Bắt đầu lại từ đầu (đang khóa)" : "▶ Bắt đầu Việt hóa từ đầu";
+  btnStart.title = hasResumeQueue
+    ? "Đang có queue dang dở. Hãy dùng nút Tiếp tục để chỉ chạy phần chưa dịch và job lỗi."
+    : "Dùng khi bạn muốn tạo/chạy lại workflow từ đầu.";
 
-  // --- Nút Tiếp tục: chỉ khi idle + có pending + lần trước bị dừng/crash ---
+  // --- Nút chạy queue hiện tại: chỉ cần idle + còn pending/failed ---
   const btnResume = el("btn-resume");
-  const showResume = !!(lastWasStopped && pending > 0);
+  const showResume = hasResumeQueue;
   btnResume.classList.toggle("hidden", !showResume);
-  if (showResume) btnResume.textContent = `↺ Tiếp tục (${pending} job)`;
+  if (showResume) {
+    const queueCount = pending + failed;
+    btnResume.textContent = `▶ Chạy queue hiện tại (${queueCount} job)`;
+    btnResume.title = failed > 0
+      ? `Chạy tiếp queue hiện tại và xử lý cả ${failed} job lỗi nếu bạn đã retry.`
+      : "Chạy các job đang có trong queue hiện tại, không tạo lại queue.";
+  }
 
   // --- Nút Stop ---
   const btnStop = el("btn-stop");
@@ -113,7 +125,25 @@ function renderZone2(progress, dashboard) {
 
   // --- Thông báo phụ: retry hoặc no-queue ---
   const msgEl = el("action-msg");
-  if (!isRunning && failed > 0) {
+  if (isRunning) {
+    msgEl.className = `action-msg ${runStatus.tone}`;
+    msgEl.innerHTML = `
+      <div class="msg-resume-title">${esc(runStatus.title)}</div>
+      <div class="msg-resume-body">${esc(runStatus.body)}</div>
+    `;
+  } else if (!isRunning && hasResumeQueue) {
+    const parts = [];
+    if (pending > 0) parts.push(`${pending} job chưa xong`);
+    if (failed > 0) parts.push(`${failed} job lỗi`);
+    msgEl.className = "action-msg msg-resume";
+    msgEl.innerHTML = `
+      <div class="msg-resume-title">Queue hiện tại đã sẵn sàng</div>
+      <div class="msg-resume-body">
+        Hệ thống đang còn ${esc(parts.join(" và "))}. Bấm <strong>Chạy queue hiện tại</strong> để dịch tiếp, không tạo lại queue và không làm lại các file đã xong.
+      </div>
+      ${failed > 0 ? `<button class="btn-retry" data-action="retry">↩ Đưa ${esc(String(failed))} job lỗi về queue</button>` : ""}
+    `;
+  } else if (!isRunning && failed > 0) {
     msgEl.className = "action-msg";
     msgEl.innerHTML = `<button class="btn-retry" data-action="retry">↩ Thử lại ${esc(String(failed))} job lỗi</button>`;
   } else if (!isRunning && pending === 0) {
@@ -165,6 +195,14 @@ function renderZone3(dashboard) {
 // === HÀNH ĐỘNG ===
 async function runScript(name) {
   try {
+    if (name === RESUME_SCRIPT) {
+      await fetch(RETRY_FAILED_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({}),
+      });
+    }
+
     const res = await fetch(RUN_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -207,6 +245,7 @@ async function retryFailed() {
     const data = await res.json();
     if (!res.ok || !data.ok) throw new Error(data.error || "Không thể thử lại job lỗi.");
     await poll();
+    alert(`Đã đưa ${data.retried ?? 0} job lỗi trở lại queue. Bây giờ bạn có thể bấm "Tiếp tục Việt hóa".`);
   } catch (err) {
     alert(err.message);
   }
@@ -220,11 +259,76 @@ async function loadScripts() {
 
 async function fetchJson(url) {
   try {
-    const res = await fetch(url);
+    const res = await fetch(url, { cache: "no-store" });
     return res.ok ? res.json() : null;
   } catch {
     return null;
   }
+}
+
+function getRunStatusMeta(run, isRunning, pending, failed) {
+  if (!isRunning || !run) {
+    return {
+      tone: "msg-info",
+      title: "Sẵn sàng",
+      body: "Hiện không có tác vụ nào đang chạy.",
+    };
+  }
+
+  const now = Date.now();
+  const logUpdatedAt = run.logUpdatedAt ? Date.parse(run.logUpdatedAt) : NaN;
+  const idleMs = Number.isFinite(logUpdatedAt) ? Math.max(0, now - logUpdatedAt) : 0;
+  const idleLabel = idleMs > 0 ? formatDuration(idleMs) : null;
+  const logTail = String(run.logTail ?? "");
+  if (String(run.script ?? "").startsWith("build-jobs")) {
+    const createdMatch = logTail.match(/Created\s+(\d+)\s+jobs/i);
+    if (createdMatch) {
+      return {
+        tone: "msg-info",
+        title: "Queue đã tạo xong",
+        body: `Đã tạo ${createdMatch[1]} job. Khi lệnh tạo queue kết thúc, bấm Chạy queue hiện tại để bắt đầu dịch.`,
+      };
+    }
+    return {
+      tone: "msg-running",
+      title: "Đang tạo queue",
+      body: "Hệ thống đang quét input và ghi jobs/pending.json.",
+    };
+  }
+  const batchLooksDone = /Processed \d+ job\(s\)\. Pending: \d+/i.test(logTail);
+
+  if (batchLooksDone && idleMs >= 20000) {
+    return {
+      tone: "msg-warn",
+      title: "Tác vụ có dấu hiệu đang chờ sau khi xong một batch",
+      body: `Batch gần nhất đã xử lý xong nhưng chưa thấy sang chu kỳ tiếp theo trong ${idleLabel}. Nếu trạng thái này giữ nguyên quá lâu, bạn có thể bấm Stop rồi bấm Tiếp tục Việt hóa để nối lại ${pending} job còn lại.`,
+    };
+  }
+
+  if (batchLooksDone) {
+    return {
+      tone: "msg-info",
+      title: "Đang chờ sang chu kỳ kế tiếp",
+      body: `Batch hiện tại đã xong. Hệ thống thường sẽ tiếp tục sang chu kỳ mới để xử lý phần còn lại. Hiện còn ${pending} job trong queue.`,
+    };
+  }
+
+  return {
+    tone: "msg-running",
+    title: "Đang dịch bình thường",
+    body: `Tác vụ đang chạy và sẽ xử lý theo từng batch tối đa 8 job mỗi chu kỳ. Hiện còn ${pending} job chờ và ${failed} job lỗi.`,
+  };
+}
+
+function formatDuration(ms) {
+  const seconds = Math.max(1, Math.floor(ms / 1000));
+  if (seconds < 60) return `${seconds} giây`;
+  const minutes = Math.floor(seconds / 60);
+  const remainSeconds = seconds % 60;
+  if (minutes < 60) return remainSeconds > 0 ? `${minutes} phút ${remainSeconds} giây` : `${minutes} phút`;
+  const hours = Math.floor(minutes / 60);
+  const remainMinutes = minutes % 60;
+  return remainMinutes > 0 ? `${hours} giờ ${remainMinutes} phút` : `${hours} giờ`;
 }
 
 function renderScriptsPanel() {

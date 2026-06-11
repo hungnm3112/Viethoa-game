@@ -304,22 +304,47 @@ State of Decay YOSE/Game/libs/ui/HUD_Font_LocFont.swf
 
 Neu thu muc `languages` hoac `libs/ui` chua ton tai thi tao moi. Cach nay chi override 2 file can test; 95% noi dung con lai van tiep tuc doc tu `gamedata.pak`.
 
-## Tu dong copy vao game
+## Dong goi va copy vao game
 
-Manifest copy hien tai nam o:
+Muc tieu chinh cua project la dong goi lai file `.pak`, khong rai loose XML/BMD vao thu muc game.
 
-```text
-config/deploy-manifest.json
+Runtime cua game doc cac file `.win.bmd` trong `gamedata.pak` cho mission, subtitle, item va RTS.
+XML la source/authoring; copy moi XML se khong lam subtitle/item doi trong game.
+
+Moi khi ket thuc mot phase, build artifact runtime, dong goi lai pak, roi sync:
+
+```bash
+npm run build-game
+npm run sync-game
 ```
 
-Moi khi ket thuc mot phase, chi can cap nhat manifest nay va chay:
+`build-game` thuc hien:
+
+- build `english.win.btxt`
+- build cac `.win.bmd` runtime tu XML da dich
+- build `output/paks/gamedata.pak`
+
+Neu muon chay tung buoc:
+
+```bash
+npm run build-runtime
+npm run build-bmd
+npm run build-pak
+```
+
+File pak da build nam o:
+
+```text
+output/paks/gamedata.pak
+```
+
+`sync-game` se:
+
+- yeu cau game da tat
+- backup pak goc vao `Game/_codex_pak_backup/...`
+- vo hieu hoa cac thu muc loose override cu nhu `libs`, `scripts`, `languages`, `fonts`
+- copy pak da build vao thu muc `Game`
 
 ```bash
 npm run sync-game
 ```
-
-Script se:
-
-- tao thu muc dich neu chua co
-- copy de ghi de file test cu
-- bo qua file nao chua duoc build

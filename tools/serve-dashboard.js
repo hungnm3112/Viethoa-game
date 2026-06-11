@@ -23,10 +23,25 @@ const runs = new Map();
 const childProcesses = new Map();
 const progressPlans = buildProgressPlans(scriptSections);
 const progressFlushTimers = new Map();
+const bootTimestamp = new Date();
+const bootLabel = formatBootStamp(bootTimestamp);
+const bootPid = process.pid;
 
+console.log(`[dashboard] boot=${bootLabel} pid=${bootPid} cwd=${root}`);
+console.log(`[dashboard] source=tools/serve-dashboard.js mode=${process.env.NODE_ENV ?? "development"} basePort=${basePort}`);
+
+let hasOrphanedRuns = false;
 for (const run of await loadRuns()) {
+  // Runs still marked "running" from a previous server session are orphaned — no child process exists.
+  if (run.status === "running") {
+    run.status = "stopped";
+    run.stoppedByUser = false;
+    run.finishedAt = run.finishedAt ?? new Date().toISOString();
+    hasOrphanedRuns = true;
+  }
   runs.set(run.id, run);
 }
+if (hasOrphanedRuns) await persistRuns();
 
 const server = http.createServer(async (req, res) => {
   const parsed = url.parse(req.url || "/", true);
@@ -43,6 +58,8 @@ const server = http.createServer(async (req, res) => {
 listenWithFallback(basePort);
 
 async function handleApi(req, res, pathname) {
+  await reconcileRunStates();
+
   if (req.method === "GET" && pathname === "/api/scripts") {
     return sendJson(res, {
       sections: scriptSections,
@@ -141,7 +158,12 @@ function serveStatic(res, pathname) {
     return;
   }
 
-  res.writeHead(200, { "Content-Type": contentType(fullPath) });
+  res.writeHead(200, {
+    "Content-Type": contentType(fullPath),
+    "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+    Pragma: "no-cache",
+    Expires: "0",
+  });
   fs.createReadStream(fullPath).pipe(res);
 }
 
@@ -266,6 +288,39 @@ async function summarizeRuns() {
     .map(summarizeRun);
 }
 
+async function reconcileRunStates() {
+  let changed = false;
+  const session = await loadSession().catch(() => null);
+
+  for (const run of runs.values()) {
+    if (run.status !== "running") continue;
+
+    const child = childProcesses.get(run.id);
+    const pid = child?.pid ?? run.pid;
+    if (child && isProcessAlive(pid)) continue;
+    if (!child && isProcessAlive(pid)) continue;
+
+    const nextState = inferRecoveredRunState(run, session);
+    if (
+      run.status !== nextState.status ||
+      run.finishedAt !== nextState.finishedAt ||
+      run.exitCode !== nextState.exitCode ||
+      run.stoppedByUser !== nextState.stoppedByUser
+    ) {
+      run.status = nextState.status;
+      run.finishedAt = nextState.finishedAt;
+      run.exitCode = nextState.exitCode;
+      run.stoppedByUser = nextState.stoppedByUser;
+      changed = true;
+    }
+  }
+
+  if (changed) {
+    await persistRuns();
+    await persistProgressSnapshot();
+  }
+}
+
 async function persistProgressSnapshot(runId = null) {
   const snapshot = await buildProgressSnapshot(runId);
   await writeStateJson("dashboard.progress.current", progressStateFile, snapshot);
@@ -276,10 +331,13 @@ async function persistProgressSnapshot(runId = null) {
 }
 
 async function readProgressSnapshot(runId = "") {
+  const snapshot = await buildProgressSnapshot(runId || null);
   if (runId) {
-    return readStateJson(`dashboard.progress.run.${runId}`, progressFileForRun(runId), await buildProgressSnapshot(runId));
+    await writeStateJson(`dashboard.progress.run.${runId}`, progressFileForRun(runId), snapshot);
+    return snapshot;
   }
-  return readStateJson("dashboard.progress.current", progressStateFile, await buildProgressSnapshot());
+  await writeStateJson("dashboard.progress.current", progressStateFile, snapshot);
+  return snapshot;
 }
 
 async function buildProgressSnapshot(runId = null) {
@@ -303,17 +361,21 @@ async function buildProgressSnapshot(runId = null) {
 function summarizeRun(run) {
   let logContent = "";
   let logTail = "";
+  let logUpdatedAt = null;
   try {
     logContent = fs.readFileSync(run.logPath, "utf8");
     logTail = logContent.split(/\r?\n/).slice(-60).join("\n");
+    logUpdatedAt = fs.statSync(run.logPath).mtime.toISOString();
   } catch {
     logContent = "";
     logTail = "";
+    logUpdatedAt = null;
   }
   const progress = inferProgress(run, logContent);
   return {
     ...run,
     logTail,
+    logUpdatedAt,
     progress,
   };
 }
@@ -348,7 +410,12 @@ async function refreshDashboard(scope) {
 }
 
 function sendJson(res, payload, status = 200) {
-  res.writeHead(status, { "Content-Type": "application/json; charset=utf-8" });
+  res.writeHead(status, {
+    "Content-Type": "application/json; charset=utf-8",
+    "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+    Pragma: "no-cache",
+    Expires: "0",
+  });
   res.end(JSON.stringify(payload));
 }
 
@@ -402,6 +469,7 @@ function listenWithFallback(startPort) {
 
     server.listen(port, async () => {
       await refreshDashboard("all");
+      console.log(`[dashboard] ready=${formatBootStamp(new Date())} pid=${bootPid} url=http://localhost:${port}/`);
       console.log(`Dashboard: http://localhost:${port}/`);
     });
   };
@@ -518,6 +586,57 @@ function progressFileForRun(runId) {
 function parsedQueryValue(requestUrl, key) {
   const parsed = url.parse(requestUrl || "/", true);
   return parsed.query?.[key];
+}
+
+function formatBootStamp(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}
+
+function inferRecoveredRunState(run, session) {
+  const finishedAt = session?.updatedAt ?? new Date().toISOString();
+
+  if (run.script.startsWith("translate") && session && String(session.startedAt) >= String(run.startedAt)) {
+    if (session.status === "completed") {
+      return {
+        status: "success",
+        finishedAt: session.completedAt ?? session.updatedAt ?? finishedAt,
+        exitCode: 0,
+        stoppedByUser: false,
+      };
+    }
+
+    if (session.status === "paused") {
+      return {
+        status: "stopped",
+        finishedAt: session.updatedAt ?? finishedAt,
+        exitCode: 0,
+        stoppedByUser: false,
+      };
+    }
+  }
+
+  return {
+    status: "stopped",
+    finishedAt,
+    exitCode: run.exitCode ?? null,
+    stoppedByUser: false,
+  };
+}
+
+function isProcessAlive(pid) {
+  if (!pid) return false;
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function buildProgressPlans(sections) {
