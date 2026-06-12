@@ -1,0 +1,66 @@
+{
+  "description": "Pilot scope for variable-length BTXT rebuild. Keep this small until the game confirms the rebuilt file boots cleanly.",
+  "replaceAll": true,
+  "replacements": [
+    {
+      "id": "SYS_CONTINUE",
+      "sourceText": "Continue",
+      "translatedText": "Tiếp tục",
+      "scope": "main-menu"
+    },
+    {
+      "id": "SYS_NEW_GAME",
+      "sourceText": "Start a New Game",
+      "translatedText": "Bắt đầu trò chơi mới",
+      "scope": "main-menu"
+    },
+    {
+      "id": "FE_SELECT_PROFILE",
+      "sourceText": "Select Profile",
+      "translatedText": "Chọn hồ sơ",
+      "scope": "main-menu"
+    },
+    {
+      "id": "SYS_LEADERBOARDS",
+      "sourceText": "Leaderboards",
+      "translatedText": "Bảng xếp hạng",
+      "scope": "main-menu"
+    },
+    {
+      "id": "SYS_ACHIEVEMENTS",
+      "sourceText": "Achievements",
+      "translatedText": "Thành tích",
+      "scope": "main-menu"
+    },
+    {
+      "id": "SYS_HELP_OPTIONS",
+      "sourceText": "Help & Options",
+      "translatedText": "Trợ giúp & Tùy chọn",
+      "scope": "main-menu"
+    },
+    {
+      "id": "SYS_EXIT_GAME",
+      "sourceText": "Exit Game",
+      "translatedText": "Thoát game",
+      "scope": "main-menu"
+    },
+    {
+      "id": "OPT_TEXT_YES",
+      "sourceText": "Yes",
+      "translatedText": "Có",
+      "scope": "confirmation"
+    },
+    {
+      "id": "OPT_TEXT_NO",
+      "sourceText": "No",
+      "translatedText": "Không",
+      "scope": "confirmation"
+    },
+    {
+      "id": "CTNR_CLOSE",
+      "sourceText": "Close",
+      "translatedText": "Đóng",
+      "scope": "common-ui"
+    }
+  ]
+}

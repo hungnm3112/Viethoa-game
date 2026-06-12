@@ -50,9 +50,11 @@ if ($pakFiles.Count -eq 0) {
 
 $backupRoot = Join-Path $gameRoot ("_codex_pak_backup\" + (Get-Date -Format "yyyyMMdd-HHmmss"))
 $disabledLooseRoot = Join-Path $gameRoot ("_codex_disabled_loose_" + (Get-Date -Format "yyyyMMdd-HHmmss"))
+$strayPakBackupRoot = Join-Path $backupRoot "root-strays"
 $copied = @()
 $backedUp = @()
 $disabledLoose = @()
+$movedStrayPaks = @()
 
 foreach ($folderName in @("libs", "scripts", "languages", "fonts")) {
   $loosePath = Join-Path $gameRoot $folderName
@@ -69,6 +71,22 @@ foreach ($folderName in @("libs", "scripts", "languages", "fonts")) {
   $disabledLoose += [PSCustomObject]@{
     Source = $loosePath
     Backup = $targetLoosePath
+  }
+}
+
+foreach ($pattern in @("gamedata.pak.bak", "gamedata.pak.codexbak-*", "gamedata-aligned*.pak")) {
+  foreach ($strayPak in Get-ChildItem -LiteralPath $gameRoot -File -Filter $pattern -ErrorAction SilentlyContinue) {
+    if (-not (Test-Path -LiteralPath $strayPakBackupRoot)) {
+      New-Item -ItemType Directory -Path $strayPakBackupRoot -Force | Out-Null
+    }
+
+    $targetStrayPath = Join-Path $strayPakBackupRoot $strayPak.Name
+    Move-Item -LiteralPath $strayPak.FullName -Destination $targetStrayPath -Force
+    $movedStrayPaks += [PSCustomObject]@{
+      Source = $strayPak.FullName
+      Backup = $targetStrayPath
+      Size = $strayPak.Length
+    }
   }
 }
 
@@ -121,6 +139,12 @@ if ($disabledLoose.Count -gt 0) {
   Write-Output ""
   Write-Output "Disabled loose override folders:"
   $disabledLoose | Format-Table -AutoSize
+}
+
+if ($movedStrayPaks.Count -gt 0) {
+  Write-Output ""
+  Write-Output "Moved stray root pak-like backups:"
+  $movedStrayPaks | Format-Table -AutoSize
 }
 
 if ($copied.Count -gt 0) {

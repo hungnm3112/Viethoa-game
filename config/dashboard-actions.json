@@ -377,6 +377,34 @@
           "phase": "builddeploy"
         },
         {
+          "script": "build-btxt:expanded-pilot:dry",
+          "label": "Xem truoc BTXT expanded pilot",
+          "summary": "Validate va tinh size delta cho 5-10 text pilot, khong ghi file output.",
+          "coverage": "Runtime UI language expanded rebuild",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "build-btxt:expanded-pilot",
+          "label": "Build BTXT expanded pilot",
+          "summary": "Rebuild BTXT co tinh lai vung string data cho scope pilot 5-10 text.",
+          "coverage": "Runtime UI language expanded rebuild",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "build-btxt:expanded-pilot:workflow",
+          "label": "Workflow BTXT pilot an toan",
+          "summary": "Chay dry-run truoc, sau do build expanded BTXT; khong copy vao game.",
+          "coverage": "Runtime UI language expanded rebuild",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "deploy-btxt:expanded-pilot",
+          "label": "Build + copy BTXT pilot",
+          "summary": "Chay dry-run, build, roi backup/copy rieng english.win.btxt va englishau.win.btxt vao game.",
+          "coverage": "Deployment local BTXT expanded da khoanh vung",
+          "phase": "builddeploy"
+        },
+        {
           "script": "build-bmd",
           "label": "Build cac file .win.bmd",
           "summary": "Patch subtitle, mission, item va RTS XML vao cac file .win.bmd runtime.",
@@ -409,6 +437,13 @@
           "label": "Copy PAK vao game",
           "summary": "Backup PAK goc, vo hieu loose mod folder va copy output/paks vao thu muc Game.",
           "coverage": "Deployment local de test trong game",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "sync-btxt-languages",
+          "label": "Copy chi BTXT language",
+          "summary": "Backup va copy rieng english.win.btxt/englishau.win.btxt de test scope runtime text.",
+          "coverage": "Deployment local BTXT khoanh vung",
           "phase": "builddeploy"
         },
         {

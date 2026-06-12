@@ -4,6 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Việt hóa Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
@@ -11,7 +14,10 @@
 
     <!-- Zone 1: Tiến độ tổng thể -->
     <header class="zone zone-header">
-      <div class="big-pct" id="big-pct">…%</div>
+      <div class="header-left">
+        <div class="big-pct" id="big-pct">…%</div>
+        <div class="header-label">hoàn thành</div>
+      </div>
       <div class="header-right">
         <div class="strings-count" id="strings-count">Đang tải...</div>
         <div class="progress-wrap">
@@ -21,31 +27,137 @@
       </div>
     </header>
 
-    <!-- Zone 2: Điều khiển và log -->
-    <div class="zone zone-action">
+    <!-- Zone 2: Pipeline — 4 bước -->
+    <div class="pipeline">
 
-      <!-- Hàng trên: tên task + nút điều khiển -->
-      <div class="action-top">
-        <div class="run-name-row">
-          <span class="run-name" id="run-name"></span>
-          <span class="run-since" id="run-since"></span>
+      <!-- Step 1: Dịch -->
+      <div class="step-card" id="step-1">
+        <div class="step-header">
+          <span class="step-num">1</span>
+          <span class="step-title">Dịch</span>
         </div>
-        <div class="control-btns">
-          <button id="btn-start" class="btn-start" disabled title="Dùng khi muốn chạy lại từ đầu">▶ Bắt đầu Việt hóa</button>
-          <button id="btn-resume" class="btn-resume hidden" title="Chạy các job đang có trong queue hiện tại">▶ Chạy queue hiện tại</button>
-          <button id="btn-stop" class="btn-stop" disabled>■ Stop</button>
+        <p class="step-desc">Tạo queue → gọi Gemini API → cache bản dịch</p>
+        <div class="step-actions">
+          <button class="btn-pipeline btn-primary" data-script="build-jobs:all" id="btn-build-queue" title="Quét input và tạo danh sách job dịch">Tạo queue</button>
+          <button class="btn-pipeline btn-accent" data-script="translate:all" id="btn-translate" title="Chạy pipeline dịch toàn bộ, có resume">▶ Bắt đầu dịch</button>
+          <button class="btn-pipeline btn-outline hidden" data-script="translate:resume" id="btn-resume" title="Chạy tiếp queue hiện tại, không tạo lại">↺ Tiếp tục</button>
+          <button class="btn-pipeline btn-danger hidden" id="btn-stop" title="Dừng tác vụ đang chạy">■ Stop</button>
+        </div>
+        <div id="step1-msg" class="step-msg hidden"></div>
+      </div>
+
+      <div class="step-arrow">→</div>
+
+      <!-- Step 2: Build runtime -->
+      <div class="step-card" id="step-2">
+        <div class="step-header">
+          <span class="step-num">2</span>
+          <span class="step-title">Build</span>
+        </div>
+        <p class="step-desc">Chuyển XML dịch → file nhị phân game đọc được</p>
+        <div class="step-actions">
+          <button class="btn-pipeline btn-primary" data-script="build-btxt:expanded-pilot" title="Rebuild BTXT expanded cho menu/UI">Build BTXT</button>
+          <button class="btn-pipeline btn-primary" data-script="build-bmd" title="Build .win.bmd cho subtitle, item, mission">Build BMD</button>
+          <button class="btn-pipeline btn-secondary" data-script="patch-cluster-a" title="Patch font menu sang Arial tiếng Việt">Patch font</button>
         </div>
       </div>
 
-      <!-- Thông báo phụ: retry job lỗi / queue trống -->
-      <div id="action-msg" class="action-msg hidden"></div>
+      <div class="step-arrow">→</div>
 
-      <!-- Log output: luôn hiển thị -->
+      <!-- Step 3: Đóng gói -->
+      <div class="step-card" id="step-3">
+        <div class="step-header">
+          <span class="step-num">3</span>
+          <span class="step-title">Đóng gói</span>
+        </div>
+        <p class="step-desc">Gộp runtime files → gamedata.pak</p>
+        <div class="step-actions">
+          <button class="btn-pipeline btn-primary" data-script="build-pak" title="Đóng gói output/paks/gamedata.pak">Đóng gói PAK</button>
+          <button class="btn-pipeline btn-secondary" data-script="build-game" title="Build BTXT + BMD + PAK trong một lệnh">Build tất cả</button>
+        </div>
+      </div>
+
+      <div class="step-arrow">→</div>
+
+      <!-- Step 4: Copy vào game -->
+      <div class="step-card" id="step-4">
+        <div class="step-header">
+          <span class="step-num">4</span>
+          <span class="step-title">Copy vào game</span>
+        </div>
+        <p class="step-desc">Backup gốc → copy PAK/BTXT vào thư mục game</p>
+        <div class="step-actions">
+          <button class="btn-pipeline btn-accent" data-script="sync-game" title="Backup PAK gốc và copy PAK mới vào Game">Copy PAK vào game</button>
+          <button class="btn-pipeline btn-secondary" data-script="sync-btxt-languages" title="Copy riêng BTXT language để test nhanh">Copy BTXT riêng</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BTXT Safety Workflow -->
+    <div class="zone zone-btxt-workflow">
+      <div class="wf-header">
+        <div class="wf-title-row">
+          <span class="wf-icon">🛡️</span>
+          <span class="wf-title">Kiểm tra kích thước & Đưa vào game (an toàn)</span>
+          <span class="wf-subtitle">Chạy lần lượt 3 bước — không crash</span>
+        </div>
+        <button class="btn-wf-run" id="btn-wf-run" title="Chạy tuần tự: dry-run → build BTXT → copy vào game">▶ Chạy cả 3 bước</button>
+      </div>
+
+      <!-- Step A: Dry-run -->
+      <div class="wf-step" id="wfs-a">
+        <div class="wf-step-top">
+          <span class="wf-badge" id="badge-a" data-state="idle">1</span>
+          <div class="wf-step-info">
+            <div class="wf-step-name">Kiểm tra kích thước (Dry-run)</div>
+            <div class="wf-step-hint">Phân tích chuỗi Việt — báo cái nào dài hơn gốc, <strong>không ghi file</strong></div>
+          </div>
+          <button class="btn-wf-step" id="btn-step-a" data-script="build-btxt:expanded-pilot:dry">Chạy</button>
+        </div>
+        <pre class="wf-log hidden" id="log-a"></pre>
+      </div>
+
+      <div class="wf-connector"><span class="wf-conn-line"></span></div>
+
+      <!-- Step B: Build BTXT -->
+      <div class="wf-step" id="wfs-b">
+        <div class="wf-step-top">
+          <span class="wf-badge" id="badge-b" data-state="idle">2</span>
+          <div class="wf-step-info">
+            <div class="wf-step-name">Build BTXT Expanded</div>
+            <div class="wf-step-hint">Rebuild file nhị phân menu/UI — cho phép chuỗi Việt dài hơn gốc</div>
+          </div>
+          <button class="btn-wf-step" id="btn-step-b" data-script="build-btxt:expanded-pilot">Build</button>
+        </div>
+        <pre class="wf-log hidden" id="log-b"></pre>
+      </div>
+
+      <div class="wf-connector"><span class="wf-conn-line"></span></div>
+
+      <!-- Step C: Copy BTXT -->
+      <div class="wf-step" id="wfs-c">
+        <div class="wf-step-top">
+          <span class="wf-badge" id="badge-c" data-state="idle">3</span>
+          <div class="wf-step-info">
+            <div class="wf-step-name">Copy BTXT vào game</div>
+            <div class="wf-step-hint">Backup file gốc → copy <code>english.win.btxt</code> & <code>englishau.win.btxt</code> vào thư mục Game</div>
+          </div>
+          <button class="btn-wf-step" id="btn-step-c" data-script="sync-btxt-languages">Copy</button>
+        </div>
+        <pre class="wf-log hidden" id="log-c"></pre>
+      </div>
+
+      <div id="wf-result" class="wf-result hidden"></div>
+    </div>
+
+    <!-- Log output -->
+    <div class="zone zone-log">
+      <div class="log-header">
+        <span class="log-title" id="log-title">Log tác vụ gần nhất</span>
+        <span class="log-since" id="log-since"></span>
+      </div>
       <pre id="log-box" class="log-box">Đang chờ dữ liệu...</pre>
-
-      <!-- Danh sách script khác (ẩn khi đang chạy) -->
-      <div id="scripts-panel" class="scripts-panel"></div>
-
     </div>
 
     <!-- Zone 3: Bảng độ phủ theo file -->

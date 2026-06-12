@@ -185,7 +185,7 @@ async function startScript(script) {
     pid: null,
     stopRequestedAt: null,
     stoppedByUser: false,
-    logPath: `output/reports/command-logs/${script.name.replace(/[^a-z0-9:_-]/gi, "_")}-${Date.now()}.log`,
+    logPath: `output/reports/command-logs/${script.name.replace(/[^a-z0-9_-]/gi, "_")}-${Date.now()}.log`,
   };
 
   fs.mkdirSync(path.dirname(run.logPath), { recursive: true });
@@ -729,6 +729,20 @@ function createProgressPlan(action) {
         { key: "finish", label: "Hoàn tất thao tác file", percent: 100 },
       ],
       detail: coverage || "Thao tác file đầu ra để test hoặc phục hồi.",
+    };
+  }
+
+  if (name.includes("btxt:expanded") || name === "deploy-btxt:expanded-pilot" || name === "sync-btxt-languages") {
+    const isDeploy = name === "deploy-btxt:expanded-pilot" || name === "sync-btxt-languages";
+    return {
+      totalSteps: isDeploy ? 4 : 3,
+      steps: [
+        { key: "preview", label: "Kiem tra manifest va preview BTXT expanded", percent: 20 },
+        { key: "build", label: "Rebuild BTXT va validate string count", percent: 65 },
+        ...(isDeploy ? [{ key: "sync", label: "Backup va copy rieng 2 file language vao game", percent: 90 }] : []),
+        { key: "finish", label: "Hoan tat workflow BTXT expanded", percent: 100 },
+      ],
+      detail: coverage || "Luon giu scope he: chi english.win.btxt va englishau.win.btxt.",
     };
   }
 
