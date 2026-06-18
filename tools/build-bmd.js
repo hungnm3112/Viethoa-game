@@ -150,6 +150,16 @@ function extractXmlStringOccurrences(xml) {
   return results;
 }
 
+function isBmdIdentifier(text) {
+  // Scene response/state tags: <GenericResponse_Confused>
+  if (/^<[A-Za-z][A-Za-z0-9_]*>$/.test(text)) return true;
+  // Audio clip IDs starting with digits + uppercase keyword: "148 GENERIC Gurubani Kaur"
+  if (/^\d+\s+[A-Z]{2,}/.test(text)) return true;
+  // No-space single tokens (file paths, enum values, identifiers)
+  if (!/\s/.test(text) && /^[\w./\\<>:-]+$/.test(text)) return true;
+  return false;
+}
+
 function patchBmdStringTable(buffer, translations) {
   if (buffer.readUInt32LE(0) !== BMD_SIGNATURE) {
     throw new Error("Invalid BMD signature.");
@@ -172,7 +182,7 @@ function patchBmdStringTable(buffer, translations) {
 
     const sourceBytes = buffer.subarray(start, offset);
     const sourceText = sourceBytes.toString("utf8");
-    const translatedText = translations.get(sourceText);
+    const translatedText = isBmdIdentifier(sourceText) ? undefined : translations.get(sourceText);
     seen.add(sourceText);
 
     if (translatedText) {

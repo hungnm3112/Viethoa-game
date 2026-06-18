@@ -321,9 +321,9 @@
       "description": "Dung khi muon tao queue/running pipeline tren toan bo input hien co.",
       "actions": [
         {
-          "script": "build-jobs:all",
-          "label": "Tao queue toan bo",
-          "summary": "Tao queue cho tat ca XML trong input, bo qua text da duoc dich.",
+          "script": "build-jobs:all:fresh",
+          "label": "Tao queue fresh",
+          "summary": "Tao queue cho tat ca XML trong input, ke ca text da duoc dich.",
           "coverage": "Tat ca input hien co",
           "phase": "fullrun"
         },
@@ -335,10 +335,24 @@
           "phase": "fullrun"
         },
         {
+          "script": "translate:all:fresh",
+          "label": "Chay viet hoa fresh",
+          "summary": "Dich lai toan bo qua Gemini, refresh cache cu va ep gioi han byte UTF-8.",
+          "coverage": "Tat ca input hien co",
+          "phase": "fullrun"
+        },
+        {
           "script": "translate:all",
           "label": "Chay viet hoa toan bo",
           "summary": "Full translation pipeline co resume, fallback, rollback va dashboard progress.",
           "coverage": "Tat ca phase con lai trong queue",
+          "phase": "fullrun"
+        },
+        {
+          "script": "translate:resume:fresh",
+          "label": "Chay queue fresh hien tai",
+          "summary": "Chay tiep queue hien tai va refresh cache cu qua Gemini.",
+          "coverage": "Cac job con lai trong queue fresh",
           "phase": "fullrun"
         },
         {
@@ -412,6 +426,27 @@
           "phase": "builddeploy"
         },
         {
+          "script": "build-bmd:samelength:dry",
+          "label": "Kiem tra BMD same-length",
+          "summary": "Tinh thu BMD runtime-safe, khong ghi de output; dung de xem truncate/pad truoc khi deploy.",
+          "coverage": "Runtime-safe BMD check",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "build-bmd:samelength",
+          "label": "Build BMD same-length",
+          "summary": "Giu nguyen byte length tung string slot de tranh crash do lech offset.",
+          "coverage": "Runtime-safe BMD",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "bmd:untranslated",
+          "label": "Bao cao BMD chua dich",
+          "summary": "Loc cac string BMD con giong ban goc sau khi bo qua identifier/flag/script command.",
+          "coverage": "BMD untranslated audit",
+          "phase": "builddeploy"
+        },
+        {
           "script": "build-runtime",
           "label": "Build BTXT + BMD",
           "summary": "Chay build-btxt va build-bmd lien tiep.",
@@ -423,6 +458,41 @@
           "label": "Dong goi gamedata.pak",
           "summary": "Dong goi output runtime vao output/paks/gamedata.pak.",
           "coverage": "PAK viet hoa san sang test",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "pak:bmd",
+          "label": "Build PAK BMD an toan",
+          "summary": "Dong goi gamedata-all-bmd.pak tu cac BMD same-length; khong copy vao game.",
+          "coverage": "PAK BMD runtime-safe",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "pak:bmd:apply",
+          "label": "Copy PAK BMD vao game",
+          "summary": "Backup va copy gamedata-all-bmd.pak vao Game; tu choi neu game dang chay.",
+          "coverage": "Deployment PAK BMD runtime-safe",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "pak:bmd:apply-clean-loose",
+          "label": "Copy PAK BMD + xoa loose BMD",
+          "summary": "Backup, xoa loose .bmd override co chu y, roi copy PAK BMD vao game.",
+          "coverage": "Deployment PAK BMD with loose cleanup",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "pak:bmd-fonts",
+          "label": "Build PAK BMD + font",
+          "summary": "Build gamedata-all-bmd-vn-fonts.pak voi BMD same-length va patch font GFX; khong copy vao game.",
+          "coverage": "PAK BMD + GFX font",
+          "phase": "builddeploy"
+        },
+        {
+          "script": "pak:bmd-fonts:apply",
+          "label": "Copy PAK BMD + font vao game",
+          "summary": "Backup va copy PAK co BMD same-length + font patch vao Game; tu choi neu game dang chay.",
+          "coverage": "Deployment PAK BMD + font",
           "phase": "builddeploy"
         },
         {
@@ -478,6 +548,13 @@
           "script": "patch-cluster-a",
           "label": "Patch font Cluster A",
           "summary": "Patch frontend/menu confirmation cluster sang font viet hoa.",
+          "coverage": "Main menu va confirmation popup",
+          "phase": "fontui"
+        },
+        {
+          "script": "sync-font-cluster-a",
+          "label": "Copy font Cluster A",
+          "summary": "Backup va copy rieng 8 file font/UI Cluster A vao game de fix o vuong tieng Viet.",
           "coverage": "Main menu va confirmation popup",
           "phase": "fontui"
         },

@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { readJson, writeJson } from "./json-store.js";
+import { readJson } from "./json-store.js";
 import { extractXmlStrings, normalizeText } from "./strings.js";
 import { appendCollectionLog, readRecentCollectionLogs, readStateJson, writeStateJson } from "./state-repository.js";
 
@@ -89,7 +89,6 @@ export async function updateDashboard(options = {}) {
     notes,
   };
 
-  writeJson(DASHBOARD_FILE, dashboard);
   await writeStateJson("translation.dashboard", DASHBOARD_FILE, dashboard);
   return dashboard;
 }

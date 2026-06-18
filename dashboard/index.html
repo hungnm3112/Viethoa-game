@@ -38,9 +38,9 @@
         </div>
         <p class="step-desc">Tạo queue → gọi Gemini API → cache bản dịch</p>
         <div class="step-actions">
-          <button class="btn-pipeline btn-primary" data-script="build-jobs:all" id="btn-build-queue" title="Quét input và tạo danh sách job dịch">Tạo queue</button>
-          <button class="btn-pipeline btn-accent" data-script="translate:all" id="btn-translate" title="Chạy pipeline dịch toàn bộ, có resume">▶ Bắt đầu dịch</button>
-          <button class="btn-pipeline btn-outline hidden" data-script="translate:resume" id="btn-resume" title="Chạy tiếp queue hiện tại, không tạo lại">↺ Tiếp tục</button>
+          <button class="btn-pipeline btn-primary" data-script="build-jobs:all:fresh" id="btn-build-queue" title="Quét input và tạo lại danh sách job dịch fresh">Tạo queue fresh</button>
+          <button class="btn-pipeline btn-accent" data-script="translate:all:fresh" id="btn-translate" title="Dịch lại toàn bộ và refresh cache theo giới hạn byte">▶ Bắt đầu dịch fresh</button>
+          <button class="btn-pipeline btn-outline hidden" data-script="translate:resume:fresh" id="btn-resume" title="Chạy tiếp queue hiện tại và refresh cache qua Gemini">↺ Tiếp tục fresh</button>
           <button class="btn-pipeline btn-danger hidden" id="btn-stop" title="Dừng tác vụ đang chạy">■ Stop</button>
         </div>
         <div id="step1-msg" class="step-msg hidden"></div>
@@ -58,6 +58,8 @@
         <div class="step-actions">
           <button class="btn-pipeline btn-primary" data-script="build-btxt:expanded-pilot" title="Rebuild BTXT expanded cho menu/UI">Build BTXT</button>
           <button class="btn-pipeline btn-primary" data-script="build-bmd" title="Build .win.bmd cho subtitle, item, mission">Build BMD</button>
+          <button class="btn-pipeline btn-secondary" data-script="build-bmd:samelength:dry" title="Kiểm tra BMD same-length, không ghi file">Check BMD safe</button>
+          <button class="btn-pipeline btn-secondary" data-script="build-bmd:samelength" title="Ghi lại BMD same-length để tránh crash do lệch offset">Build BMD safe</button>
           <button class="btn-pipeline btn-secondary" data-script="patch-cluster-a" title="Patch font menu sang Arial tiếng Việt">Patch font</button>
         </div>
       </div>
@@ -73,6 +75,8 @@
         <p class="step-desc">Gộp runtime files → gamedata.pak</p>
         <div class="step-actions">
           <button class="btn-pipeline btn-primary" data-script="build-pak" title="Đóng gói output/paks/gamedata.pak">Đóng gói PAK</button>
+          <button class="btn-pipeline btn-primary" data-script="pak:bmd" title="Build PAK từ BMD same-length, không copy vào game">PAK BMD safe</button>
+          <button class="btn-pipeline btn-secondary" data-script="pak:bmd-fonts" title="Build PAK BMD same-length kèm patch font GFX, không copy vào game">PAK BMD + font</button>
           <button class="btn-pipeline btn-secondary" data-script="build-game" title="Build BTXT + BMD + PAK trong một lệnh">Build tất cả</button>
         </div>
       </div>
@@ -85,10 +89,13 @@
           <span class="step-num">4</span>
           <span class="step-title">Copy vào game</span>
         </div>
-        <p class="step-desc">Backup gốc → copy PAK/BTXT vào thư mục game</p>
+        <p class="step-desc">Backup gốc → copy PAK/BTXT/font vào thư mục game</p>
         <div class="step-actions">
           <button class="btn-pipeline btn-accent" data-script="sync-game" title="Backup PAK gốc và copy PAK mới vào Game">Copy PAK vào game</button>
+          <button class="btn-pipeline btn-accent" data-script="pak:bmd:apply" title="Backup và copy PAK BMD same-length vào game">Copy PAK BMD</button>
+          <button class="btn-pipeline btn-accent" data-script="pak:bmd-fonts:apply" title="Backup và copy PAK BMD same-length kèm patch font vào game">Copy PAK BMD + font</button>
           <button class="btn-pipeline btn-secondary" data-script="sync-btxt-languages" title="Copy riêng BTXT language để test nhanh">Copy BTXT riêng</button>
+          <button class="btn-pipeline btn-secondary" data-script="sync-font-cluster-a" title="Copy riêng 8 file font/UI Cluster A để sửa ô vuông tiếng Việt">Copy font Cluster A</button>
         </div>
       </div>
 
@@ -151,16 +158,29 @@
       <div id="wf-result" class="wf-result hidden"></div>
     </div>
 
-    <!-- Log output -->
-    <div class="zone zone-log">
-      <div class="log-header">
-        <span class="log-title" id="log-title">Log tác vụ gần nhất</span>
-        <span class="log-since" id="log-since"></span>
+  </div><!-- end .shell -->
+
+  <!-- Terminal block — full chiều ngang -->
+  <div class="terminal-section">
+    <div class="terminal-zone">
+      <div class="terminal-bar">
+        <div class="term-dots">
+          <span class="term-dot term-dot-r"></span>
+          <span class="term-dot term-dot-y"></span>
+          <span class="term-dot term-dot-g"></span>
+        </div>
+        <span class="term-title" id="log-title">Terminal</span>
+        <div class="term-meta">
+          <span class="term-indicator hidden" id="term-indicator">●</span>
+          <span class="term-since" id="log-since"></span>
+        </div>
       </div>
       <pre id="log-box" class="log-box">Đang chờ dữ liệu...</pre>
     </div>
+  </div>
 
-    <!-- Zone 3: Bảng độ phủ theo file -->
+  <!-- Bảng độ phủ theo file -->
+  <div class="shell shell-b">
     <div class="zone zone-table">
       <div class="zone-title">Độ phủ theo file</div>
       <table>
@@ -177,8 +197,8 @@
         </tbody>
       </table>
     </div>
-
   </div>
+
   <script type="module" src="./main.js"></script>
 </body>
 </html>

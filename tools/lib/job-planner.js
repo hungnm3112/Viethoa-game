@@ -6,6 +6,7 @@ export function buildJobs({
   inputRoot = "input",
   maxStrings = 40,
   matchers = [],
+  force = false,
 } = {}) {
   const files = findFiles(inputRoot, ".xml").filter((file) => matches(file, matchers));
   const jobs = [];
@@ -16,7 +17,7 @@ export function buildJobs({
     if (sourceStrings.length === 0) continue;
 
     const translatedStrings = readTranslatedStrings(file);
-    const remaining = sourceStrings.filter((value, index) => {
+    const remaining = force ? sourceStrings : sourceStrings.filter((value, index) => {
       const translated = translatedStrings[index];
       return !translated || normalizeText(translated) === normalizeText(value);
     });

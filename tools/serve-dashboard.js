@@ -3,7 +3,7 @@ import http from "node:http";
 import path from "node:path";
 import url from "node:url";
 import { execFileSync, spawn } from "node:child_process";
-import { loadSession, updateDashboard } from "./lib/translation-monitor.js";
+import { loadSession, saveSession, updateDashboard } from "./lib/translation-monitor.js";
 import { loadDashboardActions } from "./lib/dashboard-actions.js";
 import { appendCollectionLog, readRecentCollectionLogs, readStateJson, writeStateJson } from "./lib/state-repository.js";
 
@@ -13,24 +13,24 @@ const autoKillPortBlocker = String(process.env.DASHBOARD_KILL_PORT_BLOCKER ?? "t
 const commandReportFile = "output/reports/command-center.json";
 const phaseActivityFile = "output/reports/phase-activity.ndjson";
 const progressStateFile = "output/reports/progress-current.json";
-const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
-const scriptEntries = Object.entries(packageJson.scripts ?? {}).map(([name, command]) => ({ name, command }));
-const scriptSections = loadDashboardActions(scriptEntries);
-const scriptMeta = new Map(
-  scriptSections.flatMap((section) => section.actions.map((action) => [action.name, { ...action, sectionId: section.id, sectionTitle: section.title }])),
-);
+let scriptEntries = [];
+let scriptSections = [];
+let scriptMeta = new Map();
+let progressPlans = new Map();
 const runs = new Map();
 const childProcesses = new Map();
-const progressPlans = buildProgressPlans(scriptSections);
 const progressFlushTimers = new Map();
 const bootTimestamp = new Date();
 const bootLabel = formatBootStamp(bootTimestamp);
 const bootPid = process.pid;
 
+refreshScriptRegistry();
+
 console.log(`[dashboard] boot=${bootLabel} pid=${bootPid} cwd=${root}`);
 console.log(`[dashboard] source=tools/serve-dashboard.js mode=${process.env.NODE_ENV ?? "development"} basePort=${basePort}`);
 
 let hasOrphanedRuns = false;
+let hasOrphanedTranslateRuns = false;
 for (const run of await loadRuns()) {
   // Runs still marked "running" from a previous server session are orphaned — no child process exists.
   if (run.status === "running") {
@@ -38,16 +38,18 @@ for (const run of await loadRuns()) {
     run.stoppedByUser = false;
     run.finishedAt = run.finishedAt ?? new Date().toISOString();
     hasOrphanedRuns = true;
+    if (run.script.startsWith("translate")) hasOrphanedTranslateRuns = true;
   }
   runs.set(run.id, run);
 }
 if (hasOrphanedRuns) await persistRuns();
+if (hasOrphanedTranslateRuns) await pauseOrphanedTranslationSession("Recovered after dashboard restart");
 
 const server = http.createServer(async (req, res) => {
   const parsed = url.parse(req.url || "/", true);
   const pathname = decodeURIComponent(parsed.pathname || "/");
 
-  if (pathname.startsWith("/api/")) {
+  if (pathname.startsWith("/api/") || pathname === "/output/reports/translation-dashboard.json") {
     await handleApi(req, res, pathname);
     return;
   }
@@ -57,10 +59,23 @@ const server = http.createServer(async (req, res) => {
 
 listenWithFallback(basePort);
 
+function refreshScriptRegistry() {
+  const packageJson = JSON.parse(fs.readFileSync(path.join(root, "package.json"), "utf8"));
+  scriptEntries = Object.entries(packageJson.scripts ?? {}).map(([name, command]) => ({ name, command }));
+  scriptSections = loadDashboardActions(scriptEntries);
+  scriptMeta = new Map(
+    scriptSections.flatMap((section) =>
+      section.actions.map((action) => [action.name, { ...action, sectionId: section.id, sectionTitle: section.title }]),
+    ),
+  );
+  progressPlans = buildProgressPlans(scriptSections);
+}
+
 async function handleApi(req, res, pathname) {
   await reconcileRunStates();
 
   if (req.method === "GET" && pathname === "/api/scripts") {
+    refreshScriptRegistry();
     return sendJson(res, {
       sections: scriptSections,
       runs: await summarizeRuns(),
@@ -78,6 +93,7 @@ async function handleApi(req, res, pathname) {
   }
 
   if (req.method === "POST" && pathname === "/api/run-script") {
+    refreshScriptRegistry();
     const body = await readBody(req);
     const payload = body ? JSON.parse(body) : {};
     const name = String(payload.name ?? "").trim();
@@ -128,6 +144,16 @@ async function handleApi(req, res, pathname) {
     const scope = String(payload.scope ?? "all");
     const dashboard = await refreshDashboard(scope);
     return sendJson(res, dashboard);
+  }
+
+  if (req.method === "GET" && pathname === "/output/reports/translation-dashboard.json") {
+    try {
+      const dashboard = await readStateJson("translation.dashboard", "output/reports/translation-dashboard.json", {});
+      return sendJson(res, dashboard);
+    } catch (err) {
+      console.warn(`[dashboard] Error reading dashboard json: ${err.message}`);
+      return sendJson(res, {}, 500);
+    }
   }
 
   sendJson(res, { error: "Not found" }, 404);
@@ -215,7 +241,7 @@ async function startScript(script) {
     await persistRuns();
     await persistProgressSnapshot(run.id);
     await appendPhaseActivity("script-finish", run);
-    await refreshDashboard("all");
+    await refreshDashboardSafely("all");
   });
   child.on("error", async (error) => {
     childProcesses.delete(run.id);
@@ -257,12 +283,45 @@ async function stopRun(runId) {
 
   try {
     killProcess(targetPid);
+    if (run.script.startsWith("translate")) {
+      await pauseTranslationSessionAfterStop();
+    }
     await appendPhaseActivity("script-stop", run);
     return { ok: true, run: summarizeRun(run) };
   } catch (error) {
     appendRunLog(run, `\n[stop-error] ${error.message}\n`);
     await persistRuns();
     return { ok: false, error: `Không thể dừng tác vụ: ${error.message}` };
+  }
+}
+
+async function pauseTranslationSessionAfterStop() {
+  try {
+    const session = await loadSession();
+    if (session.status !== "running" && session.status !== "queued") return;
+    session.status = "paused";
+    session.updatedAt = new Date().toISOString();
+    session.lastError = "Stopped from dashboard";
+    session.notes = ["Da dung tac vu dich tu dashboard."];
+    await saveSession(session);
+    await updateDashboard({ session, scope: session.scope ?? "all", notes: session.notes });
+  } catch (error) {
+    console.warn(`[dashboard] Could not pause translation session after stop: ${error.message}`);
+  }
+}
+
+async function pauseOrphanedTranslationSession(reason) {
+  try {
+    const session = await loadSession();
+    if (session.status !== "running" && session.status !== "queued") return;
+    session.status = "paused";
+    session.updatedAt = new Date().toISOString();
+    session.lastError = reason;
+    session.notes = ["Tac vu dich bi gian doan; co the bam Tiep tuc fresh de chay tiep queue hien tai."];
+    await saveSession(session);
+    await updateDashboard({ session, scope: session.scope ?? "all", notes: session.notes });
+  } catch (error) {
+    console.warn(`[dashboard] Could not pause orphaned translation session: ${error.message}`);
   }
 }
 
@@ -290,6 +349,7 @@ async function summarizeRuns() {
 
 async function reconcileRunStates() {
   let changed = false;
+  let recoveredTranslateRun = false;
   const session = await loadSession().catch(() => null);
 
   for (const run of runs.values()) {
@@ -312,12 +372,16 @@ async function reconcileRunStates() {
       run.exitCode = nextState.exitCode;
       run.stoppedByUser = nextState.stoppedByUser;
       changed = true;
+      if (run.script.startsWith("translate")) recoveredTranslateRun = true;
     }
   }
 
   if (changed) {
     await persistRuns();
     await persistProgressSnapshot();
+  }
+  if (recoveredTranslateRun) {
+    await pauseOrphanedTranslationSession("Recovered after lost translate process");
   }
 }
 
@@ -409,6 +473,15 @@ async function refreshDashboard(scope) {
   });
 }
 
+async function refreshDashboardSafely(scope) {
+  try {
+    return await refreshDashboard(scope);
+  } catch (error) {
+    console.warn(`[dashboard] Could not refresh dashboard report: ${error.message}`);
+    return null;
+  }
+}
+
 function sendJson(res, payload, status = 200) {
   res.writeHead(status, {
     "Content-Type": "application/json; charset=utf-8",
@@ -468,7 +541,7 @@ function listenWithFallback(startPort) {
     });
 
     server.listen(port, async () => {
-      await refreshDashboard("all");
+      await refreshDashboardSafely("all");
       console.log(`[dashboard] ready=${formatBootStamp(new Date())} pid=${bootPid} url=http://localhost:${port}/`);
       console.log(`Dashboard: http://localhost:${port}/`);
     });
@@ -657,7 +730,7 @@ function createProgressPlan(action) {
   const coverage = String(action.coverage ?? "");
   const phaseTitle = String(action.sectionTitle ?? action.phase ?? "");
 
-  if (name === "translate:all") {
+  if (name === "translate:all" || name === "translate:all:fresh") {
     return {
       totalSteps: 5,
       steps: [
@@ -667,7 +740,10 @@ function createProgressPlan(action) {
         { key: "refresh", label: "Làm mới báo cáo tổng", percent: 95 },
         { key: "finish", label: "Hoàn tất pipeline", percent: 100 },
       ],
-      detail: "Pipeline full-run có resume, fallback model và rollback output an toàn.",
+      detail:
+        name === "translate:all:fresh"
+          ? "Pipeline fresh: tạo lại queue, refresh cache và ép giới hạn byte UTF-8."
+          : "Pipeline full-run có resume, fallback model và rollback output an toàn.",
     };
   }
 

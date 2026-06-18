@@ -561,6 +561,58 @@ The deploy workflow must:
 3. Back up current game BTXT files.
 4. Copy only `english.win.btxt` and `englishau.win.btxt`.
 
+### Loose Language Folder Rule
+
+The vanilla game folder may not contain:
+
+```text
+Game\languages
+```
+
+This is not a build failure. Loose language deployment must create that folder when the game root itself is valid.
+
+Rule:
+
+- Throw if `GameRoot` does not exist.
+- Throw if the computed `languages` target escapes `GameRoot`.
+- Create `Game\languages` if it is missing.
+- Then copy only the tested language files.
+
+### Font Regression Rule
+
+Symptom:
+
+```text
+Menu text is Vietnamese UTF-8 but accent glyphs show as square boxes.
+```
+
+Meaning:
+
+- BTXT text is being loaded.
+- Cluster A front-end font override is missing, stale, or was moved away by a broad deploy/cleanup.
+
+Fix only the known font cluster:
+
+```text
+npm run patch-cluster-a
+npm run build-font-swf
+npm run build-ui-aliases
+npm run sync-font-cluster-a
+```
+
+Do not rebuild or deploy PAK/XML just to fix this symptom.
+
+2026-06-13 confirmation:
+
+- The square-box regression returned after text/BTXT sync while Cluster A loose font files were not present/current in `Game\libs\ui`.
+- Rebuilt and synced only Cluster A font files.
+- Verified 8/8 game files match output hashes.
+- Backup before copy:
+
+```text
+D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game\_codex_cluster_a_font_backup\20260613-184252
+```
+
 ### Dashboard UX Note
 
 Observed after first dashboard deploy test:
@@ -576,3 +628,275 @@ Rule:
 - Broad deploy can crash.
 - ASCII Vietnamese menu currently works.
 - Diacritics are not fixed yet; treat as separate font/encoding task.
+
+### Dashboard Encoding Rule
+
+Observed:
+
+- Editing `dashboard/index.html` through a Windows shell path can corrupt UTF-8 text into mojibake, for example `Việt hóa` becoming `Viá»‡t hÃ³a`.
+- This breaks the dashboard UI text itself, even though game font patches are unrelated.
+
+Rule:
+
+- Keep dashboard HTML/JS/CSS as UTF-8.
+- Do not patch Vietnamese dashboard text with ad-hoc shell text replacement.
+- After editing dashboard text, verify with `rg`, `git diff`, or a browser refresh, not only `Get-Content` in Windows PowerShell because UTF-8 without BOM may display incorrectly there.
+
+## 2026-06-13 Update: Cluster B Font + Scenes BMD Deploy
+
+### Findings Before This Deploy
+
+Direct inspection of `D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game`:
+
+- Menu works: game loads `Game\languages\english.win.btxt`, `englishau.win.btxt` and 8 Cluster A font files in `Game\libs\ui`.
+- In-game menu font broken (square boxes): `class3_pause.gfx` was missing from `Game\libs\ui`. Game fell back to PAK version which has no Vietnamese glyphs.
+- Dialogue still English: `Game\libs\class3\contentmanager\scenes.win.bmd` was never copied. Output file confirmed to contain Vietnamese.
+
+### Step 1: Cluster B Font (in-game pause/menu fix)
+
+```text
+Source:      output/gamedata/libs/ui/class3_pause.gfx
+Destination: Game/libs/ui/class3_pause.gfx
+Size:        2,049.6 KB
+Built with:  npm run patch-cluster-b
+```
+
+New file — did not exist in game folder before.
+
+### Step 2: Scenes BMD (dialogue test)
+
+```text
+Source:      output/gamedata/libs/class3/contentmanager/scenes.win.bmd
+Destination: Game/libs/class3/contentmanager/scenes.win.bmd
+Size:        2,122.6 KB
+```
+
+Created new directory `Game\libs\class3\contentmanager\` (did not exist before).
+Loose BMD override — game should prefer loose file over PAK version.
+
+### Backup Reference
+
+```text
+D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game\_codex_cluster_b_bmd_deploy\20260613-190733
+```
+
+Both files were new additions. To rollback, delete:
+
+```text
+Game\libs\ui\class3_pause.gfx
+Game\libs\class3\contentmanager\scenes.win.bmd
+```
+
+### Test Expectations
+
+- Game boots + pause/HUD menus show Vietnamese diacritics → Cluster B font route confirmed.
+- Game boots + early dialogue shows Vietnamese → loose BMD override works.
+- Game crashes → rollback `scenes.win.bmd` first (new directory, higher crash risk), then `class3_pause.gfx` separately.
+
+### Rule
+
+Do not deploy PAK or `embeddedstrings.xml` alongside this test.
+Keep each system isolated until runtime behavior is confirmed.
+
+## 2026-06-13 Update: BMD Same-Length Runtime Rule
+
+Confirmed by follow-up testing:
+
+- The crash root cause for translated BMD runtime files is string position shifting.
+- Variable-length BMD rebuilds can boot to menu and then crash later because internal string references no longer point at the same byte positions.
+- A runtime-safe BMD patch must keep each original string slot at the exact same byte length.
+
+Operational rule:
+
+- `tools/build-bmd.js` may produce normal translated BMD files for analysis and matching reports.
+- Before a BMD is embedded into a PAK for game testing, run the same-length pass.
+- Same-length pass behavior:
+  - If translated UTF-8 bytes are shorter than the original slot, pad with spaces.
+  - If translated UTF-8 bytes are longer than the original slot, truncate at a valid UTF-8 boundary.
+  - The output BMD file size must remain exactly equal to the original extracted BMD size.
+
+Known tradeoff:
+
+- Same-length BMD is stable but may truncate Vietnamese text.
+- This is acceptable for the current runtime route because game stability has priority.
+- Later UX polish should improve source translation length, abbreviations, or per-field wording before the same-length pass.
+
+Current safe PAK route:
+
+```text
+npm run build-bmd
+npm run build-bmd:samelength
+npm run pak:bmd-fonts
+npm run pak:bmd-fonts:apply
+```
+
+Deployment rule:
+
+- PAK deploy scripts must default to dry-run/build-output behavior.
+- Copying into `Game\gamedata.pak` requires an explicit apply script or `--apply`.
+- Use `SOD_GAME_ROOT` when set; otherwise use the documented YOSE default game path.
+- Refuse to deploy while `StateOfDecay` is running.
+- Always backup `gamedata.pak` before replacement.
+- Do not remove loose `.bmd` files unless a command explicitly asks for that cleanup.
+
+Font route note:
+
+- Cluster A loose font files fix the external/front-end menu.
+- In-game menu and other HUD/GFX surfaces may need PAK-level GFX font-name patching or a matching Cluster B/C embedded-glyph patch.
+- Do not mix a new font route with a new text route unless the previous route has already booted successfully.
+
+## 2026-06-13 Update: In-Game Journal/Stats Font Rule
+
+Observed:
+
+- External menu renders Vietnamese accents correctly.
+- In-game character/journal screen still shows square boxes for Vietnamese accents.
+- Affected surfaces include the survivor page/help panel/name traits and some in-game menu text.
+
+Root cause:
+
+- The affected UI is not covered by Cluster A.
+- It uses embedded fonts inside:
+  - `libs/ui/class3_journal.gfx`
+  - `libs/ui/class3_stats.gfx`
+  - plus `class3_pause.gfx` for pause/in-game menu surfaces.
+- The PAK-level font-name replacement route (`ZomNotes -> Segoe UI`, `BrainsForSale -> Calibri Light`) is not enough for these surfaces because text fields still rely on embedded glyph tables.
+
+Rule:
+
+- For PAK deployment with fonts, build embedded-glyph clusters first:
+
+```text
+npm run patch-cluster-a
+npm run patch-cluster-b
+npm run patch-cluster-c
+npm run pak:bmd-fonts
+```
+
+- `pak:bmd-fonts` / `pak:bmd-fonts:apply` must prefer patched GFX files from `output/gamedata/libs/ui` for known UI font clusters.
+- Do not rely on font-name replacement alone for `class3_journal.gfx` or `class3_stats.gfx`.
+
+## 2026-06-13 Update: HUD/Survey Device Font Rule
+
+### Observed
+
+- Missions and some journal text can render Vietnamese correctly after BMD + Cluster C patches.
+- Other runtime HUD/survey surfaces still show square boxes, especially:
+  - tutorial/survivor help panel,
+  - small objective/status prompts near the bottom of the screen,
+  - some home/status HUD labels.
+- Font audit shows these surfaces often do not contain embedded font glyph tables, so the Cluster A/B/C embedded-glyph patch cannot fix every case.
+
+### Root Cause
+
+- Several non-embedded GFX files still reference device font names such as `Decaying Kuntry`.
+- Previous PAK font-name patch only changed:
+  - `ZomNotes -> Segoe UI`
+  - `BrainsForSale -> Calibri Light`
+- That left `Decaying Kuntry` active in HUD/survey files, and that font lacks Vietnamese glyph coverage.
+
+### Rule
+
+- For embedded GFX fonts, replace glyph tables with the known-good Arial glyph source.
+- For non-embedded/device-font GFX references, use same-length Vietnamese-capable Windows font names to avoid shifting binary offsets.
+- Do not replace `Decaying Kuntry` with `Arial` by raw byte patch because `Arial` is shorter and padding may become part of the font name.
+- Safe same-length replacement:
+  - `Decaying Kuntry` (15 chars) -> `Times New Roman` (15 chars)
+
+### Current Safe Command
+
+```powershell
+npm run pak:bmd-fonts
+npm run pak:bmd-fonts:apply
+```
+
+This rebuilds Cluster A/B/C embedded font patches and applies same-length device-font replacements before building/deploying the PAK.
+
+Expected fixed files inside the generated PAK:
+
+```text
+libs/ui/class3_frontend.gfx
+libs/ui/class3_journal.gfx
+libs/ui/class3_pause.gfx
+libs/ui/class3_stats.gfx
+libs/ui/entityflashtag.gfx
+libs/ui/menus_confirmation.gfx
+libs/ui/menus_startmenu.gfx
+```
+
+## 2026-06-14 Update: Length-Budgeted AI Translation Rule
+
+### Observed
+
+- Same-length BMD output is stable, but Vietnamese text longer than the original English slot is truncated by the final safe build.
+- Truncation is visible in journal/event/item text and loses meaning.
+
+### Rule
+
+- The AI translation step must receive a byte budget for every source string.
+- `maxUtf8Bytes` is the UTF-8 byte length of the original English string.
+- Gemini must return a Vietnamese translation whose UTF-8 byte length is less than or equal to that budget.
+- Shorter translations are allowed because the same-length BMD build can pad with spaces.
+- If a normal Vietnamese translation is too long, the prompt allows compact wording, abbreviations, removing filler words, and Vietnamese without diacritics only when needed.
+- The translator must not write a result to `cache/translations.json` unless it passes both:
+  - placeholder preservation,
+  - UTF-8 byte budget.
+
+### Current Safe Command
+
+```powershell
+npm run translate:all:fresh
+```
+
+This rebuilds the full job queue, ignores existing translated output for queue planning, and refreshes cached translations as each job runs through Gemini.
+
+After translation, keep the same runtime-safe build/deploy path:
+
+```powershell
+npm run build-bmd
+npm run build-bmd:samelength
+npm run pak:bmd-fonts
+npm run pak:bmd-fonts:apply
+```
+
+### 2026-06-14 Follow-up Diagnosis
+
+Observed after running build/deploy again:
+
+- `build-bmd:samelength` still reported `truncated: 9027`.
+- The latest translation session processed only 73 jobs and 581 strings total (`translatedStrings: 94`, `reusedCachedStrings: 487`).
+- A true fresh queue currently contains about 975 jobs / 30,594 strings.
+- `cache/translations.json` still contains many old translations longer than the English UTF-8 byte budget.
+
+Root cause:
+
+- The dashboard/manual flow used `build-jobs:all` + `translate:resume`, not `translate:all:fresh`.
+- That only translated strings still considered missing from `output/`; old long translations stayed in cache/output and were later truncated by the same-length BMD pass.
+
+Fix:
+
+- Dashboard primary queue/translate buttons now point to:
+  - `build-jobs:all:fresh`
+  - `translate:all:fresh`
+- `writeOutput()` now refuses to write cached translations unless they pass placeholder and UTF-8 byte-budget checks.
+
+### 2026-06-14 Follow-up: Translation API Logging
+
+Observed:
+
+- Fresh queue was created correctly: `975` jobs.
+- The dashboard then ran `translate:resume`, and the user stopped it twice while a batch was still inside Gemini/repair calls.
+- Command logs only showed `Cycle ...` and sometimes `Done job ...`, so long API calls looked like "nothing is happening".
+- `translation-session.json` stayed `running` after Stop because dashboard used force-kill and the child process could not write `translate-stop`.
+
+Fix:
+
+- Added `translate:resume:fresh` for continuing a fresh queue with `--refresh-cache=true`.
+- Dashboard resume button now uses `translate:resume:fresh`.
+- `tools/translate.js` now logs:
+  - job start,
+  - Gemini request start,
+  - Gemini HTTP response,
+  - parsed/matched key counts,
+  - length-repair request/response.
+- Dashboard Stop now marks translation session as `paused` when stopping a translate command.

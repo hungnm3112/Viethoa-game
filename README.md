@@ -78,6 +78,14 @@ Chay full pipeline va tu resume neu bi ngat:
 npm run translate:all
 ```
 
+Chay lai tu dau qua Gemini, ke ca nhung chuoi da co trong output/cache:
+
+```bash
+npm run translate:all:fresh
+```
+
+Che do dich hien tai gui kem `maxUtf8Bytes` cho tung chuoi va buoc Gemini tra ve ban dich khong vuot qua so byte UTF-8 cua chuoi tieng Anh goc. Neu ket qua van qua dai, pipeline se goi mot luot repair rieng de rut gon/abbrev/bo dau khi can truoc khi ghi vao `cache/translations.json`.
+
 Xem do phu ban dich:
 
 ```bash

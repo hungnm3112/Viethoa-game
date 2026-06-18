@@ -18,10 +18,12 @@ const maxStrings = Number(args["max-strings"] ?? 40);
 const batchLimit = Number(args.limit ?? 8);
 const maxCycles = Number(args["max-cycles"] ?? 999);
 const rebuild = String(args.rebuild ?? "true") === "true";
+const force = String(args.force ?? "false") === "true";
+const refreshCache = String(args["refresh-cache"] ?? "false") === "true";
 const scope = profile === "all" && matchers.length === 0 ? "all" : profile;
 
 if (rebuild || (await readStateJson("jobs.pending", "jobs/pending.json", [])).length === 0) {
-  const jobs = buildJobs({ maxStrings, matchers });
+  const jobs = buildJobs({ maxStrings, matchers, force });
   writeJson("jobs/pending.json", jobs);
   writeJson("jobs/done.json", []);
   writeJson("jobs/failed.json", []);
@@ -35,9 +37,11 @@ if (rebuild || (await readStateJson("jobs.pending", "jobs/pending.json", [])).le
     notes: [`Queued ${jobs.length} job(s) for ${scope}`],
   });
   await saveSession(session);
-  await appendEvent("pipeline-queued", { sessionId: session.id, scope, jobs: jobs.length });
+  await appendEvent("pipeline-queued", { sessionId: session.id, scope, jobs: jobs.length, force, refreshCache });
   await updateDashboard({ session, scope, notes: session.notes });
   console.log(`Queued ${jobs.length} job(s) for ${scope}`);
+  if (force) console.log("Force mode: queued all source strings, including strings already translated in output/.");
+  if (refreshCache) console.log("Refresh-cache mode: existing cached translations will be replaced as jobs run.");
 }
 
 let previousPending = -1;
@@ -55,6 +59,7 @@ for (let cycle = 1; cycle <= maxCycles; cycle += 1) {
   const translateArgs = ["--env-file=.env", "tools/translate.js", `--limit=${batchLimit}`];
   if (profile !== "all") translateArgs.push(`--profile=${profile}`);
   if (matchers.length > 0) translateArgs.push(`--match=${matchers.join(",")}`);
+  if (refreshCache) translateArgs.push("--refresh-cache=true");
   const result = spawnSync(process.execPath, translateArgs, {
     stdio: "inherit",
     cwd: process.cwd(),

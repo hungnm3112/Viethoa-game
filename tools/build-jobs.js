@@ -8,6 +8,7 @@ const INPUT_ROOT = "input";
 const JOB_FILE = "jobs/pending.json";
 const args = parsePlannerArgs(process.argv.slice(2));
 const maxStrings = Number(args["max-strings"] ?? 40);
+const force = String(args.force ?? "false") === "true";
 const profiles = readProfiles("config/translation-phases.json");
 const profileMatchers = resolveProfileMatchers(args.profile, profiles);
 const explicitMatchers = String(args.match ?? "")
@@ -15,7 +16,7 @@ const explicitMatchers = String(args.match ?? "")
   .map((value) => value.trim())
   .filter(Boolean);
 const matchers = [...profileMatchers, ...explicitMatchers];
-const jobs = buildJobs({ inputRoot: INPUT_ROOT, maxStrings, matchers });
+const jobs = buildJobs({ inputRoot: INPUT_ROOT, maxStrings, matchers, force });
 
 writeJson(JOB_FILE, jobs);
 writeJson("jobs/done.json", []);
@@ -27,6 +28,9 @@ await writeStateJson("jobs.failed", "jobs/failed.json", []);
 console.log(`Created ${jobs.length} jobs in ${JOB_FILE}`);
 if (matchers.length > 0) {
   console.log(`Applied matchers: ${matchers.join(", ")}`);
+}
+if (force) {
+  console.log("Force mode: queued all source strings, including strings already translated in output/.");
 }
 
 const session = createSession({

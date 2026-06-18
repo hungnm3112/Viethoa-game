@@ -1,0 +1,7 @@
+[ERROR] Job 00022: Translation too long by 1 bytes! Limit: 46, Actual: 47
+  Src: "Next time, use a headshot to kill the Bloater."
+  Trs: "Lần tới, bắn đầu để diệt Bloater."
+
+[ERROR] Job 00022: Translation too long by 1 bytes! Limit: 29, Actual: 30
+  Src: "Must be placed on a building."
+  Trs: "Phải đặt tại tòa nhà."

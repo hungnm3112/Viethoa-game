@@ -60,6 +60,7 @@ function renderHeader(progress, dashboard) {
   const translated = dashboard.coverage?.translatedStrings ?? 0;
   const total = dashboard.coverage?.totalStrings ?? 0;
   const pending = progress.queue?.pendingJobs ?? 0;
+  const remaining = getOutputRemaining(dashboard);
   const isRunning = progress.hasRunningRun;
   const run = progress.currentRun;
 
@@ -74,6 +75,7 @@ function renderHeader(progress, dashboard) {
   } else if (pending > 0) {
     statusEl.textContent = pending + " job đang chờ";
     statusEl.className = "status-line has-queue";
+    statusEl.textContent = `${pending} job queue fresh; thuc te con ${remaining.jobs} job / ${remaining.strings} chuoi`;
   } else {
     statusEl.textContent = "Sẵn sàng";
     statusEl.className = "status-line";
@@ -86,6 +88,7 @@ function renderPipeline(progress, dashboard) {
   const run = progress.currentRun;
   const pending = progress.queue?.pendingJobs ?? 0;
   const failed = progress.queue?.failedJobs ?? 0;
+  const remaining = getOutputRemaining(dashboard);
   const script = run?.script ?? "";
 
   // Xác định step nào đang active
@@ -114,10 +117,22 @@ function renderPipeline(progress, dashboard) {
   btnResume.classList.toggle("hidden", !(!isRunning && hasQueue));
   if (!isRunning && hasQueue) {
     btnResume.disabled = false;
-    btnResume.textContent = `↺ Tiếp tục (${pending + failed} job)`;
+    if (failed > 0) {
+      btnResume.textContent = `↺ Tiếp tục fresh (${pending} chờ, ${failed} lỗi)`;
+    } else {
+      btnResume.textContent = `↺ Tiếp tục fresh (${pending} job)`;
+    }
   }
 
   // Translate button: ẩn khi có queue pending (ưu tiên nút resume)
+  if (!isRunning && hasQueue) {
+    if (failed > 0) {
+      btnResume.textContent = `Tiếp tục fresh (${pending} chờ, ${failed} lỗi)`;
+    } else {
+      btnResume.textContent = `Tiếp tục fresh (${pending} queue job)`;
+    }
+  }
+
   const btnTranslate = el("btn-translate");
   btnTranslate.classList.toggle("hidden", !isRunning && hasQueue);
 
@@ -136,14 +151,35 @@ function renderPipeline(progress, dashboard) {
     msgEl.className = "step-msg hidden";
     msgEl.innerHTML = "";
   }
+  if (!isRunning && pending > 0 && failed === 0) {
+    msgEl.className = "step-msg";
+    msgEl.textContent = `${pending} job trong queue fresh. Theo output hien tai con ${remaining.jobs} job / ${remaining.strings} chuoi chua dich.`;
+  }
+}
+
+function getOutputRemaining(dashboard) {
+  const maxStringsPerJob = 40;
+  const files = Array.isArray(dashboard.files) ? dashboard.files : [];
+  const strings = files.reduce((total, file) => {
+    const fileTotal = Number(file.total ?? 0);
+    const translated = Number(file.translated ?? 0);
+    return total + Math.max(0, fileTotal - translated);
+  }, 0);
+  const jobs = files.reduce((total, file) => {
+    const fileTotal = Number(file.total ?? 0);
+    const translated = Number(file.translated ?? 0);
+    const missing = Math.max(0, fileTotal - translated);
+    return total + (missing > 0 ? Math.ceil(missing / maxStringsPerJob) : 0);
+  }, 0);
+  return { jobs, strings };
 }
 
 function getActiveStep(script, isRunning) {
   if (!isRunning) return 0;
   if (script.startsWith("translate") || script.startsWith("build-jobs")) return 1;
-  if (script.startsWith("build-btxt") || script === "build-bmd" || script.startsWith("patch-cluster") || script === "build-runtime") return 2;
-  if (script.startsWith("build-pak") || script === "build-game") return 3;
-  if (script.startsWith("sync-") || script.startsWith("deploy-")) return 4;
+  if (script.startsWith("build-btxt") || script.startsWith("build-bmd") || script === "bmd:untranslated" || script.startsWith("patch-cluster") || script === "build-runtime") return 2;
+  if (script.startsWith("build-pak") || script === "build-game" || script === "pak:bmd" || script === "pak:bmd-fonts") return 3;
+  if (script.startsWith("sync-") || script.startsWith("deploy-") || script.endsWith(":apply") || script.includes(":apply-")) return 4;
   return 0;
 }
 
@@ -154,6 +190,7 @@ function renderLogBox(progress) {
   const logBox = el("log-box");
   const titleEl = el("log-title");
   const sinceEl = el("log-since");
+  const indicatorEl = el("term-indicator");
 
   const atBottom = logBox.scrollHeight - logBox.scrollTop <= logBox.clientHeight + 60;
   const text = run?.logTail || (isRunning ? "Đang chờ log..." : "Chưa có log.");
@@ -161,10 +198,10 @@ function renderLogBox(progress) {
   logBox.className = isRunning ? "log-box" : "log-box log-idle";
   if (isRunning && atBottom) logBox.scrollTop = logBox.scrollHeight;
 
+  if (indicatorEl) indicatorEl.classList.toggle("hidden", !isRunning);
+
   if (run) {
-    titleEl.textContent = isRunning
-      ? `Log — ${run.label || run.script}`
-      : `Log — ${run.label || run.script}`;
+    titleEl.textContent = run.label || run.script || "Terminal";
     const stateLabels = { stopped: "Đã dừng", failed: "Lỗi", success: "Hoàn tất", running: "Đang chạy" };
     const stateLabel = stateLabels[run.status] ?? run.status;
     const timeStr = isRunning
@@ -172,7 +209,7 @@ function renderLogBox(progress) {
       : stateLabel + " — " + formatTime(run.finishedAt || run.startedAt);
     sinceEl.textContent = timeStr;
   } else {
-    titleEl.textContent = "Log";
+    titleEl.textContent = "Terminal";
     sinceEl.textContent = "";
   }
 }
@@ -199,7 +236,7 @@ function renderCoverage(dashboard) {
 async function runScript(name) {
   try {
     // Nếu resume → retry failed jobs trước
-    if (name === "translate:resume") {
+    if (name.startsWith("translate:resume")) {
       await fetch(RETRY_FAILED_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -487,7 +524,7 @@ function friendlyErrorMessage(logText) {
 async function fetchJson(url) {
   try {
     const res = await fetch(url, { cache: "no-store" });
-    return res.ok ? res.json() : null;
+    return res.ok ? await res.json() : null;
   } catch {
     return null;
   }
