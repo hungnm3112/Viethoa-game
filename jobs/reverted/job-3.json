@@ -1,0 +1,812 @@
+[
+  {
+    "orig": "Revolver: Anvil ",
+    "trans": "Súng lục ổ quay: Anvil ",
+    "origBytes": 16,
+    "overflow": 7
+  },
+  {
+    "orig": "The .500 S&W round, used for shock and awe.",
+    "trans": "Viên đạn .500 S&W, dùng để gây sốc và kinh hoàng.",
+    "origBytes": 43,
+    "overflow": 6
+  },
+  {
+    "orig": "Revolver: Blackbird",
+    "trans": "Súng lục ổ quay: Blackbird",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "Modern manufacture, wild west inspiration.",
+    "trans": "Sản xuất hiện đại, lấy cảm hứng từ miền Tây hoang dã.",
+    "origBytes": 42,
+    "overflow": 11
+  },
+  {
+    "orig": "Revolver: Diplomat",
+    "trans": "Súng lục ổ quay: Diplomat",
+    "origBytes": 18,
+    "overflow": 7
+  },
+  {
+    "orig": "Short, powerful and reliable.",
+    "trans": "Ngắn gọn, mạnh mẽ và đáng tin cậy.",
+    "origBytes": 29,
+    "overflow": 5
+  },
+  {
+    "orig": "Revolver: River Snake",
+    "trans": "Súng lục ổ quay: River Snake",
+    "origBytes": 21,
+    "overflow": 7
+  },
+  {
+    "orig": "Powerful. Scoped for precision.",
+    "trans": "Mạnh mẽ. Có ống ngắm để tăng độ chính xác.",
+    "origBytes": 31,
+    "overflow": 11
+  },
+  {
+    "orig": "Revolver: Safari",
+    "trans": "Súng lục ổ quay: Safari",
+    "origBytes": 16,
+    "overflow": 7
+  },
+  {
+    "orig": "SMG: MP 90",
+    "trans": "Tiểu liên: MP 90",
+    "origBytes": 10,
+    "overflow": 6
+  },
+  {
+    "orig": "Compact SMG, normally 5.7mm, adapted for 9mm.",
+    "trans": "SMG nhỏ gọn, thường dùng đạn 5.7mm, đã được điều chỉnh cho đạn 9mm.",
+    "origBytes": 45,
+    "overflow": 22
+  },
+  {
+    "orig": "SMG: MPS 90B",
+    "trans": "Tiểu liên: MPS 90B",
+    "origBytes": 12,
+    "overflow": 6
+  },
+  {
+    "orig": "SMG: MP5A3",
+    "trans": "Tiểu liên: MP5A3",
+    "origBytes": 10,
+    "overflow": 6
+  },
+  {
+    "orig": "Iconic SMG, popular worldwide.",
+    "trans": "SMG biểu tượng, phổ biến trên toàn thế giới.",
+    "origBytes": 30,
+    "overflow": 14
+  },
+  {
+    "orig": "SMG: M1A1",
+    "trans": "Tiểu liên: M1A1",
+    "origBytes": 9,
+    "overflow": 6
+  },
+  {
+    "orig": "Famous design, in the WWII configuration. (replica)",
+    "trans": "Thiết kế nổi tiếng, cấu hình Thế chiến II. (bản sao)",
+    "origBytes": 51,
+    "overflow": 1
+  },
+  {
+    "orig": "SMG: Super Z",
+    "trans": "Tiểu liên: Super Z",
+    "origBytes": 12,
+    "overflow": 6
+  },
+  {
+    "orig": "New steps in engineering, pistol configuration.",
+    "trans": "Bước tiến mới trong kỹ thuật, cấu hình súng lục.",
+    "origBytes": 47,
+    "overflow": 1
+  },
+  {
+    "orig": "SMG: M-10",
+    "trans": "Tiểu liên: M-10",
+    "origBytes": 9,
+    "overflow": 6
+  },
+  {
+    "orig": "A favorite of movie badguys.",
+    "trans": "Một khẩu súng yêu thích của các nhân vật phản diện trong phim.",
+    "origBytes": 28,
+    "overflow": 34
+  },
+  {
+    "orig": "SMG: Mini Uzi 22",
+    "trans": "Tiểu liên: Mini Uzi 22",
+    "origBytes": 16,
+    "overflow": 6
+  },
+  {
+    "orig": "SMG: MP7A1",
+    "trans": "Tiểu liên: MP7A1",
+    "origBytes": 10,
+    "overflow": 6
+  },
+  {
+    "orig": "A 4.6mm converted to 9mm. Optic included. ",
+    "trans": "Một khẩu 4.6mm đã chuyển đổi sang 9mm. Kèm theo ống ngắm. ",
+    "origBytes": 42,
+    "overflow": 16
+  },
+  {
+    "orig": "SMG: P9 Forge",
+    "trans": "Tiểu liên: P9 Forge",
+    "origBytes": 13,
+    "overflow": 6
+  },
+  {
+    "orig": "SMG: PDS",
+    "trans": "Tiểu liên: PDS",
+    "origBytes": 8,
+    "overflow": 6
+  },
+  {
+    "orig": "Full-size rifle round, SMG-size package.",
+    "trans": "Đạn súng trường cỡ lớn, trong một gói kích thước SMG.",
+    "origBytes": 40,
+    "overflow": 13
+  },
+  {
+    "orig": "SMG: Samurai PDW",
+    "trans": "Tiểu liên: Samurai PDW",
+    "origBytes": 16,
+    "overflow": 6
+  },
+  {
+    "orig": "9mm SMG for Federal police.",
+    "trans": "SMG 9mm dành cho cảnh sát liên bang.",
+    "origBytes": 27,
+    "overflow": 9
+  },
+  {
+    "orig": "SMG: UMP40",
+    "trans": "Tiểu liên: UMP40",
+    "origBytes": 10,
+    "overflow": 6
+  },
+  {
+    "orig": "Hard hitting SMG, meant to replace the MP5.",
+    "trans": "SMG uy lực mạnh, được thiết kế để thay thế MP5.",
+    "origBytes": 43,
+    "overflow": 4
+  },
+  {
+    "orig": "SMG: Uzi",
+    "trans": "Tiểu liên: Uzi",
+    "origBytes": 8,
+    "overflow": 6
+  },
+  {
+    "orig": "SMG: MP5K",
+    "trans": "Tiểu liên: MP5K",
+    "origBytes": 9,
+    "overflow": 6
+  },
+  {
+    "orig": "Compact MP5, great for tight spaces.",
+    "trans": "MP5 nhỏ gọn, rất phù hợp cho những nơi chật hẹp.",
+    "origBytes": 36,
+    "overflow": 12
+  },
+  {
+    "orig": "SMG: TMP9",
+    "trans": "Tiểu liên: TMP9",
+    "origBytes": 9,
+    "overflow": 6
+  },
+  {
+    "orig": "Assault Rifle: Mk.16 Mod.0",
+    "trans": "Súng trường tấn công: Mk.16 Mod.0",
+    "origBytes": 26,
+    "overflow": 7
+  },
+  {
+    "orig": "Special Forces combat rifle. Has a pairing of optics.",
+    "trans": "Súng trường chiến đấu của Lực lượng Đặc nhiệm. Trang bị một cặp ống ngắm.",
+    "origBytes": 53,
+    "overflow": 20
+  },
+  {
+    "orig": "Assault Rifle: AR 15",
+    "trans": "Súng trường tấn công: AR 15",
+    "origBytes": 20,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: AKMS",
+    "trans": "Súng trường tấn công: AKMS",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: AR 15 Custom",
+    "trans": "Súng trường tấn công: AR 15 Tùy chỉnh",
+    "origBytes": 27,
+    "overflow": 10
+  },
+  {
+    "orig": "An AR15 with some new furniture.",
+    "trans": "Một khẩu AR15 với một số phụ kiện mới.",
+    "origBytes": 32,
+    "overflow": 6
+  },
+  {
+    "orig": "Assault Rifle: AK47",
+    "trans": "Súng trường tấn công: AK47",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "Legendary battle rifle. ",
+    "trans": "Súng trường chiến đấu huyền thoại.",
+    "origBytes": 24,
+    "overflow": 10
+  },
+  {
+    "orig": "Assault Rifle: 416D",
+    "trans": "Súng trường tấn công: 416D",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "Short-stroke piston reliability. Scoped.",
+    "trans": "Độ tin cậy cao với piston hành trình ngắn. Có ống ngắm.",
+    "origBytes": 40,
+    "overflow": 15
+  },
+  {
+    "orig": "Assault Rifle: ACR",
+    "trans": "Súng trường tấn công: ACR",
+    "origBytes": 18,
+    "overflow": 7
+  },
+  {
+    "orig": "A versatile, multi-role rifle in the field.",
+    "trans": "Một khẩu súng trường đa năng, đa vai trò trên chiến trường.",
+    "origBytes": 43,
+    "overflow": 16
+  },
+  {
+    "orig": "Assault Rifle: AK47 Custom",
+    "trans": "Súng trường tấn công: AK47 Tùy chỉnh",
+    "origBytes": 26,
+    "overflow": 10
+  },
+  {
+    "orig": "Customized with aftermarket additions, scoped.",
+    "trans": "Được tùy chỉnh với các phụ kiện hậu mãi, có ống ngắm.",
+    "origBytes": 46,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: M14",
+    "trans": "Súng trường tấn công: M14",
+    "origBytes": 18,
+    "overflow": 7
+  },
+  {
+    "orig": "50+ years of combat ops and counting. ",
+    "trans": "Hơn 50 năm hoạt động chiến đấu và vẫn tiếp tục.",
+    "origBytes": 38,
+    "overflow": 9
+  },
+  {
+    "orig": "Assault Rifle: M16A4",
+    "trans": "Súng trường tấn công: M16A4",
+    "origBytes": 20,
+    "overflow": 7
+  },
+  {
+    "orig": "USMC issue rifle. Badass attitude included.",
+    "trans": "Súng trường tiêu chuẩn của Thủy quân lục chiến Hoa Kỳ. Phong thái ngầu lòi đi kèm.",
+    "origBytes": 43,
+    "overflow": 39
+  },
+  {
+    "orig": "Assault Rifle: M4A1",
+    "trans": "Súng trường tấn công: M4A1",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "The standard U.S. military rifle.",
+    "trans": "Súng trường tiêu chuẩn của quân đội Hoa Kỳ.",
+    "origBytes": 33,
+    "overflow": 10
+  },
+  {
+    "orig": "Assault Rifle: M6 SBR",
+    "trans": "Súng trường tấn công: M6 SBR",
+    "origBytes": 21,
+    "overflow": 7
+  },
+  {
+    "orig": "Short Barreled Rifle.",
+    "trans": "Súng trường nòng ngắn.",
+    "origBytes": 21,
+    "overflow": 1
+  },
+  {
+    "orig": "Assault Rifle: 416 CQB",
+    "trans": "Súng trường tấn công: 416 CQB",
+    "origBytes": 22,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: AUG A3",
+    "trans": "Súng trường tấn công: AUG A3",
+    "origBytes": 21,
+    "overflow": 7
+  },
+  {
+    "orig": "An iconic Austrian bullpup design.",
+    "trans": "Một thiết kế bullpup mang tính biểu tượng của Áo.",
+    "origBytes": 34,
+    "overflow": 15
+  },
+  {
+    "orig": "Rifle: 700 Huntsman",
+    "trans": "Súng trường: 700 Huntsman",
+    "origBytes": 19,
+    "overflow": 6
+  },
+  {
+    "orig": "A classic scoped hunting rifle.",
+    "trans": "Một khẩu súng trường săn cổ điển có ống ngắm.",
+    "origBytes": 31,
+    "overflow": 14
+  },
+  {
+    "orig": "Rifle: Sidekick",
+    "trans": "Súng trường: Sidekick",
+    "origBytes": 15,
+    "overflow": 6
+  },
+  {
+    "orig": "Has that classic cowboy flavor.",
+    "trans": "Mang phong cách cao bồi cổ điển.",
+    "origBytes": 31,
+    "overflow": 1
+  },
+  {
+    "orig": "Rifle: 10/22",
+    "trans": "Súng trường: 10/22",
+    "origBytes": 12,
+    "overflow": 6
+  },
+  {
+    "orig": "One of the most popular .22 cal. rifles.",
+    "trans": "Một trong những khẩu súng trường .22 ly phổ biến nhất.",
+    "origBytes": 40,
+    "overflow": 14
+  },
+  {
+    "orig": "Rifle: 700 Huntsman Camo",
+    "trans": "Súng trường: 700 Huntsman Camo",
+    "origBytes": 24,
+    "overflow": 6
+  },
+  {
+    "orig": "Composite stock and iron sights.",
+    "trans": "Báng súng tổng hợp và thước ngắm cơ khí.",
+    "origBytes": 32,
+    "overflow": 8
+  },
+  {
+    "orig": "Rifle: 597 Varmint",
+    "trans": "Súng trường: 597 Varmint",
+    "origBytes": 18,
+    "overflow": 6
+  },
+  {
+    "orig": "Small game scope included at no charge!",
+    "trans": "Kính ngắm săn thú nhỏ được tặng kèm miễn phí!",
+    "origBytes": 39,
+    "overflow": 6
+  },
+  {
+    "orig": "Rifle: 750 Forester",
+    "trans": "Súng trường: 750 Forester",
+    "origBytes": 19,
+    "overflow": 6
+  },
+  {
+    "orig": "When hunting big game, bring enough rifle.",
+    "trans": "Khi săn thú lớn, hãy mang theo khẩu súng trường đủ mạnh.",
+    "origBytes": 42,
+    "overflow": 14
+  },
+  {
+    "orig": "Rifle: 983 Squirrel",
+    "trans": "Súng trường: 983 Squirrel",
+    "origBytes": 19,
+    "overflow": 6
+  },
+  {
+    "orig": "Durable with reliable bolt action.",
+    "trans": "Bền bỉ với cơ chế khóa nòng đáng tin cậy.",
+    "origBytes": 34,
+    "overflow": 7
+  },
+  {
+    "orig": "Rifle: Bolt Scout",
+    "trans": "Súng trường: Bolt Scout",
+    "origBytes": 17,
+    "overflow": 6
+  },
+  {
+    "orig": "Rugged exterior, measured precision.",
+    "trans": "Ngoại hình chắc chắn, độ chính xác được đo lường.",
+    "origBytes": 36,
+    "overflow": 13
+  },
+  {
+    "orig": "Rifle: Dog Leg",
+    "trans": "Súng trường: Dog Leg",
+    "origBytes": 14,
+    "overflow": 6
+  },
+  {
+    "orig": "A favorite in north-central Florida. ",
+    "trans": "Một loại súng yêu thích ở bắc-trung Florida.",
+    "origBytes": 37,
+    "overflow": 7
+  },
+  {
+    "orig": "Rifle: M1 Garand",
+    "trans": "Súng trường: M1 Garand",
+    "origBytes": 16,
+    "overflow": 6
+  },
+  {
+    "orig": "Stood the test of a world war, highly collectible.",
+    "trans": "Đã vượt qua thử thách của một cuộc chiến tranh thế giới, có giá trị sưu tầm cao.",
+    "origBytes": 50,
+    "overflow": 30
+  },
+  {
+    "orig": "Rifle: M107 CQ",
+    "trans": "Súng trường: M107 CQ",
+    "origBytes": 14,
+    "overflow": 6
+  },
+  {
+    "orig": "Fires the .50 BMG. For anti-materiel missions.",
+    "trans": "Bắn đạn .50 BMG. Dùng cho các nhiệm vụ chống vật liệu.",
+    "origBytes": 46,
+    "overflow": 8
+  },
+  {
+    "orig": "Rifle: Mini 14",
+    "trans": "Súng trường: Mini 14",
+    "origBytes": 14,
+    "overflow": 6
+  },
+  {
+    "orig": "1980's TV made this very recognizable.",
+    "trans": "Truyền hình thập niên 1980 đã khiến khẩu súng này rất dễ nhận biết.",
+    "origBytes": 38,
+    "overflow": 29
+  },
+  {
+    "orig": "Rifle: SOCOM II ETR",
+    "trans": "Súng trường: SOCOM II ETR",
+    "origBytes": 19,
+    "overflow": 6
+  },
+  {
+    "orig": "One version of the ever-evolving M14.",
+    "trans": "Một phiên bản của khẩu M14 không ngừng phát triển.",
+    "origBytes": 37,
+    "overflow": 13
+  },
+  {
+    "orig": "Rifle: Model 70",
+    "trans": "Súng trường: Model 70",
+    "origBytes": 15,
+    "overflow": 6
+  },
+  {
+    "orig": "Pre-1964 models are very valuable. Scoped.",
+    "trans": "Các mẫu trước năm 1964 rất có giá trị. Có kính ngắm.",
+    "origBytes": 42,
+    "overflow": 10
+  },
+  {
+    "orig": "Rifle: Ranch King",
+    "trans": "Súng trường: Ranch King",
+    "origBytes": 17,
+    "overflow": 6
+  },
+  {
+    "orig": "A classic western rifle. (replica)",
+    "trans": "Một khẩu súng trường miền Tây cổ điển. (bản sao)",
+    "origBytes": 34,
+    "overflow": 14
+  },
+  {
+    "orig": "Rifle: SKS",
+    "trans": "Súng trường: SKS",
+    "origBytes": 10,
+    "overflow": 6
+  },
+  {
+    "orig": "Rifle: Mk. 15",
+    "trans": "Súng trường: Mk. 15",
+    "origBytes": 13,
+    "overflow": 6
+  },
+  {
+    "orig": "Rifle: Monag 90/31",
+    "trans": "Súng trường: Monag 90/31",
+    "origBytes": 18,
+    "overflow": 6
+  },
+  {
+    "orig": "Produced in the millions from 1891 to 1965.",
+    "trans": "Được sản xuất hàng triệu khẩu từ năm 1891 đến 1965.",
+    "origBytes": 43,
+    "overflow": 8
+  },
+  {
+    "orig": "Short pump, not legal. Don't try this at home.",
+    "trans": "Bơm ngắn, không hợp pháp. Đừng thử điều này ở nhà.",
+    "origBytes": 46,
+    "overflow": 4
+  },
+  {
+    "orig": "Standard police shotgun in Trumbull County.",
+    "trans": "Súng shotgun tiêu chuẩn của cảnh sát ở Hạt Trumbull.",
+    "origBytes": 43,
+    "overflow": 4
+  },
+  {
+    "orig": "The best selling shotgun in history.",
+    "trans": "Khẩu súng shotgun bán chạy nhất trong lịch sử.",
+    "origBytes": 36,
+    "overflow": 5
+  },
+  {
+    "orig": "Popular autoloader. Loved by shooting enthusiasts.",
+    "trans": "Súng tự nạp đạn phổ biến. Được những người đam mê bắn súng yêu thích.",
+    "origBytes": 50,
+    "overflow": 19
+  },
+  {
+    "orig": "Shotgun: Model 1100 Tactical",
+    "trans": "Súng săn: Model 1100 Tactical",
+    "origBytes": 28,
+    "overflow": 1
+  },
+  {
+    "orig": "Model 1100 for police and military use.",
+    "trans": "Model 1100 dùng cho cảnh sát và quân đội.",
+    "origBytes": 39,
+    "overflow": 2
+  },
+  {
+    "orig": "Shotgun: 1300 Hunter",
+    "trans": "Súng săn: 1300 Hunter",
+    "origBytes": 20,
+    "overflow": 1
+  },
+  {
+    "orig": "Shotgun: 1300 Defender",
+    "trans": "Súng săn: 1300 Defender",
+    "origBytes": 22,
+    "overflow": 1
+  },
+  {
+    "orig": "A pump shotgun says \"Private Property\".",
+    "trans": "Một khẩu súng săn bơm đạn như muốn nói \"Tài sản riêng\".",
+    "origBytes": 39,
+    "overflow": 16
+  },
+  {
+    "orig": "Shotgun: 1300 Hunter SP",
+    "trans": "Súng săn: 1300 Hunter SP",
+    "origBytes": 23,
+    "overflow": 1
+  },
+  {
+    "orig": "Shotgun: A-Series Mod. 1 ",
+    "trans": "Súng săn: A-Series Mod. 1 ",
+    "origBytes": 25,
+    "overflow": 1
+  },
+  {
+    "orig": "Shotgun: M1014",
+    "trans": "Súng săn: M1014",
+    "origBytes": 14,
+    "overflow": 1
+  },
+  {
+    "orig": "A reliable military shotgun.",
+    "trans": "Một khẩu súng săn quân dụng đáng tin cậy.",
+    "origBytes": 28,
+    "overflow": 13
+  },
+  {
+    "orig": "Shotgun: Model 870 T",
+    "trans": "Súng săn: Model 870 T",
+    "origBytes": 20,
+    "overflow": 1
+  },
+  {
+    "orig": "Tactical version of the 870.",
+    "trans": "Phiên bản chiến thuật của 870.",
+    "origBytes": 28,
+    "overflow": 2
+  },
+  {
+    "orig": "Shotgun: Warrior",
+    "trans": "Súng săn: Warrior",
+    "origBytes": 16,
+    "overflow": 1
+  },
+  {
+    "orig": "Upgraded police shotgun.",
+    "trans": "Súng săn cảnh sát được nâng cấp.",
+    "origBytes": 24,
+    "overflow": 8
+  },
+  {
+    "orig": "Shotgun: Russian 12K",
+    "trans": "Súng săn: Russian 12K",
+    "origBytes": 20,
+    "overflow": 1
+  },
+  {
+    "orig": "An AK 47 and a shotgun had a baby.",
+    "trans": "Sản phẩm kết hợp giữa AK 47 và súng săn.",
+    "origBytes": 34,
+    "overflow": 6
+  },
+  {
+    "orig": "Shotgun: A12",
+    "trans": "Súng săn: A12",
+    "origBytes": 12,
+    "overflow": 1
+  },
+  {
+    "orig": "Civilian version. Popular in video games.",
+    "trans": "Phiên bản dân sự. Phổ biến trong các trò chơi điện tử.",
+    "origBytes": 41,
+    "overflow": 13
+  },
+  {
+    "orig": "Shotgun: Warden",
+    "trans": "Súng săn: Warden",
+    "origBytes": 15,
+    "overflow": 1
+  },
+  {
+    "orig": "Low profile, slim but brutal.",
+    "trans": "Thiết kế gọn gàng, mỏng nhưng tàn bạo.",
+    "origBytes": 29,
+    "overflow": 9
+  },
+  {
+    "orig": "LMG: M249 SAW",
+    "trans": "Súng máy hạng nhẹ: M249 SAW",
+    "origBytes": 13,
+    "overflow": 14
+  },
+  {
+    "orig": "A workhorse for 20 years. Close to retirement.",
+    "trans": "Một cỗ máy làm việc bền bỉ suốt 20 năm. Sắp đến lúc nghỉ hưu.",
+    "origBytes": 46,
+    "overflow": 15
+  },
+  {
+    "orig": "LMG: M27 IAR",
+    "trans": "Súng máy hạng nhẹ: M27 IAR",
+    "origBytes": 12,
+    "overflow": 14
+  },
+  {
+    "orig": "LMG: M60E4",
+    "trans": "Súng máy hạng nhẹ: M60E4",
+    "origBytes": 10,
+    "overflow": 14
+  },
+  {
+    "orig": "A lighter variant of the venerable heavy hitter.",
+    "trans": "Một biến thể nhẹ hơn của khẩu súng hạng nặng đáng kính.",
+    "origBytes": 48,
+    "overflow": 7
+  },
+  {
+    "orig": "Essentially a 40mm revolver.",
+    "trans": "Về cơ bản là một khẩu súng lục ổ quay 40mm.",
+    "origBytes": 28,
+    "overflow": 15
+  },
+  {
+    "orig": "Assault Rifle: Mk. 17 Mod. 0",
+    "trans": "Súng trường tấn công: Mk. 17 Mod. 0",
+    "origBytes": 28,
+    "overflow": 7
+  },
+  {
+    "orig": "A battle rifle for the next generation, using the 7.62mm round.",
+    "trans": "Một khẩu súng trường chiến đấu cho thế hệ tiếp theo, sử dụng đạn 7.62mm.",
+    "origBytes": 63,
+    "overflow": 9
+  },
+  {
+    "orig": "Assault Rifle: FAL",
+    "trans": "Súng trường tấn công: FAL",
+    "origBytes": 18,
+    "overflow": 7
+  },
+  {
+    "orig": "Nicknamed \"The right arm of the Free World\".",
+    "trans": "Được mệnh danh là \"Cánh tay phải của Thế giới Tự do\".",
+    "origBytes": 44,
+    "overflow": 9
+  },
+  {
+    "orig": "Assault Rifle: L85A1",
+    "trans": "Súng trường tấn công: L85A1",
+    "origBytes": 20,
+    "overflow": 7
+  },
+  {
+    "orig": "British Armed Forces' standard issue since 1987.",
+    "trans": "Vũ khí tiêu chuẩn của Lực lượng Vũ trang Anh từ năm 1987.",
+    "origBytes": 48,
+    "overflow": 9
+  },
+  {
+    "orig": "Assault Rifle: RFB",
+    "trans": "Súng trường tấn công: RFB",
+    "origBytes": 18,
+    "overflow": 7
+  },
+  {
+    "orig": "An aggressive bullpup carbine, perfect for CQB.",
+    "trans": "Một khẩu carbine bullpup mạnh mẽ, hoàn hảo cho cận chiến (CQB).",
+    "origBytes": 47,
+    "overflow": 16
+  },
+  {
+    "orig": "Assault Rifle: G36",
+    "trans": "Súng trường tấn công: G36",
+    "origBytes": 18,
+    "overflow": 7
+  },
+  {
+    "orig": "Modular and versatile, this rifle enjoys worldwide popularity.",
+    "trans": "Thiết kế mô-đun và đa năng, khẩu súng trường này được ưa chuộng trên toàn thế giới.",
+    "origBytes": 62,
+    "overflow": 21
+  },
+  {
+    "orig": "Pistol: PP 22",
+    "trans": "Súng lục: PP 22",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "Small-caliber version of the famous spy's gun.",
+    "trans": "Phiên bản cỡ nòng nhỏ của khẩu súng nổi tiếng của điệp viên.",
+    "origBytes": 46,
+    "overflow": 14
+  },
+  {
+    "orig": "Pistol: 84 Wildcat",
+    "trans": "Súng lục: 84 Wildcat",
+    "origBytes": 18,
+    "overflow": 2
+  }
+]

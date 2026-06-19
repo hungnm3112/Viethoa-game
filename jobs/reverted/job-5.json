@@ -1,0 +1,806 @@
+[
+  {
+    "orig": "Unique, cylinder-fed police shotgun. INCENDIARY.",
+    "trans": "Shotgun cảnh sát độc đáo, nạp đạn bằng ổ quay. GÂY CHÁY.",
+    "origBytes": 48,
+    "overflow": 3
+  },
+  {
+    "orig": "Experimental SMG from CLEO.",
+    "trans": "Súng tiểu liên thử nghiệm từ CLEO.",
+    "origBytes": 27,
+    "overflow": 7
+  },
+  {
+    "orig": "American variant of the famous Swedish C. Gustav m/45.",
+    "trans": "Biến thể Mỹ của khẩu C. Gustav m/45 nổi tiếng của Thụy Điển.",
+    "origBytes": 54,
+    "overflow": 6
+  },
+  {
+    "orig": "Experimental magazine-fed grenade launcher form CLEO.",
+    "trans": "Súng phóng lựu nạp đạn bằng băng đạn thử nghiệm từ CLEO.",
+    "origBytes": 53,
+    "overflow": 3
+  },
+  {
+    "orig": "Rifle: CLEO DMR",
+    "trans": "Súng trường: CLEO DMR",
+    "origBytes": 15,
+    "overflow": 6
+  },
+  {
+    "orig": "Pistol: DMG 40",
+    "trans": "Súng lục: DMG 40",
+    "origBytes": 14,
+    "overflow": 2
+  },
+  {
+    "orig": "Rifle: SKS Survivor",
+    "trans": "Súng trường: SKS Survivor",
+    "origBytes": 19,
+    "overflow": 6
+  },
+  {
+    "orig": "Rifle: Wingate Commando",
+    "trans": "Súng trường: Wingate Commando",
+    "origBytes": 23,
+    "overflow": 6
+  },
+  {
+    "orig": "A very rare, iconic suppressed rifle from WWII. this working model was embellished as a gift.",
+    "trans": "Một khẩu súng trường giảm thanh biểu tượng, rất hiếm từ Thế chiến II. Mẫu hoạt động này đã được trang trí như một món quà.",
+    "origBytes": 93,
+    "overflow": 29
+  },
+  {
+    "orig": "FOOD RESOURCE. It looks edible enough.",
+    "trans": "TÀI NGUYÊN THỨC ĂN. Trông có vẻ ăn được.",
+    "origBytes": 38,
+    "overflow": 2
+  },
+  {
+    "orig": "Gallons of Fuel",
+    "trans": "Gallon nhiên liệu",
+    "origBytes": 15,
+    "overflow": 2
+  },
+  {
+    "orig": "FUEL RESOURCE. Great for making petrol bombs.",
+    "trans": "TÀI NGUYÊN NHIÊN LIỆU. Tuyệt vời để chế tạo bom xăng.",
+    "origBytes": 45,
+    "overflow": 8
+  },
+  {
+    "orig": "MATERIALS RESOURCE. Just what we'd need to do a little construction.",
+    "trans": "TÀI NGUYÊN VẬT LIỆU. Chính xác là thứ chúng ta cần để xây dựng một chút.",
+    "origBytes": 68,
+    "overflow": 4
+  },
+  {
+    "orig": "Build Materials",
+    "trans": "Vật liệu Xây dựng",
+    "origBytes": 15,
+    "overflow": 2
+  },
+  {
+    "orig": "Speak softly and carry a big...",
+    "trans": "Nói nhỏ nhẹ và mang theo một thứ to lớn...",
+    "origBytes": 31,
+    "overflow": 11
+  },
+  {
+    "orig": "A handy, short notice weapon.",
+    "trans": "Một vũ khí tiện dụng, dùng trong tình huống khẩn cấp.",
+    "origBytes": 29,
+    "overflow": 24
+  },
+  {
+    "orig": "Fitted with a metal bracket.",
+    "trans": "Được gắn một giá đỡ kim loại.",
+    "origBytes": 28,
+    "overflow": 1
+  },
+  {
+    "orig": "Rusty nails are an added bonus.",
+    "trans": "Đinh rỉ sét là một phần thưởng thêm.",
+    "origBytes": 31,
+    "overflow": 5
+  },
+  {
+    "orig": "Cheap, chain-store blade.",
+    "trans": "Lưỡi dao rẻ tiền, mua ở cửa hàng chuỗi.",
+    "origBytes": 25,
+    "overflow": 14
+  },
+  {
+    "orig": "Cheap replica of a brutal weapon.",
+    "trans": "Bản sao rẻ tiền của một vũ khí tàn bạo.",
+    "origBytes": 33,
+    "overflow": 6
+  },
+  {
+    "orig": "A standard of wood sheds everywhere.",
+    "trans": "Một vật dụng tiêu chuẩn ở mọi nhà kho gỗ.",
+    "origBytes": 36,
+    "overflow": 5
+  },
+  {
+    "orig": "Grandpa's favorite!",
+    "trans": "Món đồ yêu thích của ông!",
+    "origBytes": 19,
+    "overflow": 6
+  },
+  {
+    "orig": "A pipe with flow valve. Valves are cool.",
+    "trans": "Một ống nước có van điều chỉnh. Van thì tuyệt vời.",
+    "origBytes": 40,
+    "overflow": 10
+  },
+  {
+    "orig": "Pipe Valve",
+    "trans": "Van ống nước",
+    "origBytes": 10,
+    "overflow": 2
+  },
+  {
+    "orig": "Rusty Kukri",
+    "trans": "Dao Kukri rỉ sét",
+    "origBytes": 11,
+    "overflow": 5
+  },
+  {
+    "orig": "Stamped metal, abused.",
+    "trans": "Kim loại dập, đã bị hư hại.",
+    "origBytes": 22,
+    "overflow": 5
+  },
+  {
+    "orig": "Fancy Machete",
+    "trans": "Mã tấu sang trọng",
+    "origBytes": 13,
+    "overflow": 4
+  },
+  {
+    "orig": "A typical garden store blade.",
+    "trans": "Một lưỡi dao điển hình của cửa hàng làm vườn.",
+    "origBytes": 29,
+    "overflow": 16
+  },
+  {
+    "orig": "Machete Fancy",
+    "trans": "Mã tấu sang trọng",
+    "origBytes": 13,
+    "overflow": 4
+  },
+  {
+    "orig": "Antique show piece.",
+    "trans": "Món đồ trưng bày cổ.",
+    "origBytes": 19,
+    "overflow": 1
+  },
+  {
+    "orig": "Antique American Civil War replica.",
+    "trans": "Bản sao cổ của Chiến tranh Nội chiến Hoa Kỳ.",
+    "origBytes": 35,
+    "overflow": 9
+  },
+  {
+    "orig": "Rusty Pipe",
+    "trans": "Ống nước rỉ sét",
+    "origBytes": 10,
+    "overflow": 5
+  },
+  {
+    "orig": "Pipe straight",
+    "trans": "Ống nước thẳng",
+    "origBytes": 13,
+    "overflow": 1
+  },
+  {
+    "orig": "Wooden Bat",
+    "trans": "Gậy bóng chày gỗ",
+    "origBytes": 10,
+    "overflow": 6
+  },
+  {
+    "orig": "Bat Metal",
+    "trans": "Gậy Kim Loại",
+    "origBytes": 9,
+    "overflow": 3
+  },
+  {
+    "orig": "A quality blade, lightly used.",
+    "trans": "Một lưỡi dao chất lượng, ít được sử dụng.",
+    "origBytes": 30,
+    "overflow": 11
+  },
+  {
+    "orig": "Good quality, well maintained blade.",
+    "trans": "Lưỡi dao chất lượng tốt, được bảo dưỡng kỹ.",
+    "origBytes": 36,
+    "overflow": 7
+  },
+  {
+    "orig": "Fire hot! use a poker.",
+    "trans": "Lửa nóng! Dùng cây chọc lò.",
+    "origBytes": 22,
+    "overflow": 5
+  },
+  {
+    "orig": "A riot baton with some bolts added.",
+    "trans": "Một dùi cui chống bạo động được gắn thêm vài bu lông.",
+    "origBytes": 35,
+    "overflow": 18
+  },
+  {
+    "orig": "Pipe straight",
+    "trans": "Ống nước thẳng",
+    "origBytes": 13,
+    "overflow": 1
+  },
+  {
+    "orig": "A late-night commercial treasure!",
+    "trans": "Một báu vật từ quảng cáo đêm khuya!",
+    "origBytes": 33,
+    "overflow": 2
+  },
+  {
+    "orig": "A great tool in a pinch.",
+    "trans": "Một công cụ tuyệt vời trong lúc cấp bách.",
+    "origBytes": 24,
+    "overflow": 17
+  },
+  {
+    "orig": "You can't make an omelette...",
+    "trans": "Bạn không thể làm món trứng tráng...",
+    "origBytes": 29,
+    "overflow": 7
+  },
+  {
+    "orig": "Lead Pipe",
+    "trans": "Ống Nước Chì",
+    "origBytes": 9,
+    "overflow": 3
+  },
+  {
+    "orig": "Universal water-transporting tech.",
+    "trans": "Công nghệ vận chuyển nước phổ quát.",
+    "origBytes": 34,
+    "overflow": 1
+  },
+  {
+    "orig": "A martial arts fighting stick.",
+    "trans": "Một cây gậy chiến đấu võ thuật.",
+    "origBytes": 30,
+    "overflow": 1
+  },
+  {
+    "orig": "Swinging for the fences, metal style.",
+    "trans": "Vung gậy hết cỡ, theo phong cách kim loại.",
+    "origBytes": 37,
+    "overflow": 5
+  },
+  {
+    "orig": "Bat Metal",
+    "trans": "Gậy Kim Loại",
+    "origBytes": 9,
+    "overflow": 3
+  },
+  {
+    "orig": "Found next to action figures. Replica.",
+    "trans": "Tìm thấy cạnh các mô hình hành động. Hàng nhái.",
+    "origBytes": 38,
+    "overflow": 9
+  },
+  {
+    "orig": "Standard issue police baton.",
+    "trans": "Dùi cui tiêu chuẩn của cảnh sát.",
+    "origBytes": 28,
+    "overflow": 4
+  },
+  {
+    "orig": "Baton Cop",
+    "trans": "Dùi Cui Cảnh Sát",
+    "origBytes": 9,
+    "overflow": 7
+  },
+  {
+    "orig": "Sturdy root chopper, good on zombies too.",
+    "trans": "Dụng cụ chặt rễ cây chắc chắn, cũng tốt khi dùng với zombie.",
+    "origBytes": 41,
+    "overflow": 19
+  },
+  {
+    "orig": "Keep your apolcalypse garden trim!",
+    "trans": "Giữ cho khu vườn hậu tận thế của bạn gọn gàng!",
+    "origBytes": 34,
+    "overflow": 12
+  },
+  {
+    "orig": "A great tool for apocalypse gardening.",
+    "trans": "Một công cụ tuyệt vời cho việc làm vườn hậu tận thế.",
+    "origBytes": 38,
+    "overflow": 14
+  },
+  {
+    "orig": "Flimsy sword from a late-night commercial show.",
+    "trans": "Thanh kiếm mỏng manh từ một chương trình quảng cáo đêm khuya.",
+    "origBytes": 47,
+    "overflow": 14
+  },
+  {
+    "orig": "Sweet movie prop replica.",
+    "trans": "Bản sao đạo cụ phim tuyệt vời.",
+    "origBytes": 25,
+    "overflow": 5
+  },
+  {
+    "orig": "An entry level collector's sword.",
+    "trans": "Một thanh kiếm dành cho người mới bắt đầu sưu tập.",
+    "origBytes": 33,
+    "overflow": 17
+  },
+  {
+    "orig": "Quality movie prop replica.",
+    "trans": "Bản sao đạo cụ phim chất lượng.",
+    "origBytes": 27,
+    "overflow": 4
+  },
+  {
+    "orig": "Heavy, sturdy and all business.",
+    "trans": "Nặng, chắc chắn và rất hiệu quả.",
+    "origBytes": 31,
+    "overflow": 1
+  },
+  {
+    "orig": "Time to channel your inner woodsman.",
+    "trans": "Đã đến lúc phát huy bản năng người rừng của bạn.",
+    "origBytes": 36,
+    "overflow": 12
+  },
+  {
+    "orig": "Nail Puller",
+    "trans": "Kìm Nhổ Đinh",
+    "origBytes": 11,
+    "overflow": 1
+  },
+  {
+    "orig": "A must-have when gardening near zombies.",
+    "trans": "Một vật dụng không thể thiếu khi làm vườn gần zombie.",
+    "origBytes": 40,
+    "overflow": 13
+  },
+  {
+    "orig": "No apocalypse is complete without one.",
+    "trans": "Không có ngày tận thế nào trọn vẹn nếu thiếu nó.",
+    "origBytes": 38,
+    "overflow": 10
+  },
+  {
+    "orig": "Pipe Wrench",
+    "trans": "Mỏ lết ống nước",
+    "origBytes": 11,
+    "overflow": 4
+  },
+  {
+    "orig": "The apocalyptic handyman's best friend.",
+    "trans": "Người bạn tốt nhất của thợ sửa chữa trong ngày tận thế.",
+    "origBytes": 39,
+    "overflow": 16
+  },
+  {
+    "orig": "Heavy, reliable, durable.",
+    "trans": "Nặng, đáng tin cậy, bền bỉ.",
+    "origBytes": 25,
+    "overflow": 2
+  },
+  {
+    "orig": "Pipe Threader",
+    "trans": "Dụng cụ ren ống",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "A ruthless zombie killing tool.",
+    "trans": "Một công cụ giết zombie tàn nhẫn.",
+    "origBytes": 31,
+    "overflow": 2
+  },
+  {
+    "orig": "Pipe Threader",
+    "trans": "Dụng cụ ren ống",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "Pipe Threader",
+    "trans": "Dụng cụ ren ống",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "um, duh!",
+    "trans": "ừm, hiển nhiên!",
+    "origBytes": 8,
+    "overflow": 7
+  },
+  {
+    "orig": "Also known as a headhunting axe.",
+    "trans": "Còn được gọi là rìu săn đầu người.",
+    "origBytes": 32,
+    "overflow": 2
+  },
+  {
+    "orig": "Pirate Cutlass",
+    "trans": "Kiếm cong cướp biển",
+    "origBytes": 14,
+    "overflow": 5
+  },
+  {
+    "orig": "Industrial Wrench",
+    "trans": "Mỏ lết công nghiệp",
+    "origBytes": 17,
+    "overflow": 1
+  },
+  {
+    "orig": "Giant wrench, made by the Big Ass Wrench Company, McMillanville. USA.",
+    "trans": "Mỏ lết khổng lồ, được sản xuất bởi Công ty Mỏ lết Khổng Lồ, McMillanville. Hoa Kỳ.",
+    "origBytes": 69,
+    "overflow": 13
+  },
+  {
+    "orig": "\"One Axe to rule them all\" - Dwarf Lordz",
+    "trans": "\"Một cây rìu để thống trị tất cả\" - Chúa tể Người lùn",
+    "origBytes": 40,
+    "overflow": 13
+  },
+  {
+    "orig": "A wood and iron club weapon from feudal Japan. (replica)",
+    "trans": "Một vũ khí gậy bằng gỗ và sắt từ Nhật Bản phong kiến. (bản sao)",
+    "origBytes": 56,
+    "overflow": 7
+  },
+  {
+    "orig": "Useful for both healing and dealing damage.",
+    "trans": "Hữu ích cho cả việc hồi máu và gây sát thương.",
+    "origBytes": 43,
+    "overflow": 3
+  },
+  {
+    "orig": "\"...upon the sign the challengers, with shrieks and cries rush forth\" - JP",
+    "trans": "\"…khi hiệu lệnh vang lên, những kẻ thách đấu, với tiếng thét và tiếng kêu lao tới\" - JP",
+    "origBytes": 74,
+    "overflow": 15
+  },
+  {
+    "orig": "Brush Axe",
+    "trans": "Rìu phát quang",
+    "origBytes": 9,
+    "overflow": 5
+  },
+  {
+    "orig": "Keeps weeds at bay, named \"Barbra\".",
+    "trans": "Giúp loại bỏ cỏ dại, tên là \"Barbra\".",
+    "origBytes": 35,
+    "overflow": 2
+  },
+  {
+    "orig": "Metal Oar",
+    "trans": "Mái chèo kim loại",
+    "origBytes": 9,
+    "overflow": 8
+  },
+  {
+    "orig": "An inexpensive canoe oar.",
+    "trans": "Một mái chèo ca nô giá rẻ.",
+    "origBytes": 25,
+    "overflow": 1
+  },
+  {
+    "orig": "Solid Wood Oar",
+    "trans": "Mái chèo gỗ nguyên khối",
+    "origBytes": 14,
+    "overflow": 9
+  },
+  {
+    "orig": "High quality hardwood oar.",
+    "trans": "Mái chèo gỗ cứng chất lượng cao.",
+    "origBytes": 26,
+    "overflow": 6
+  },
+  {
+    "orig": "Hedge Shears",
+    "trans": "Kéo cắt tỉa hàng rào",
+    "origBytes": 12,
+    "overflow": 8
+  },
+  {
+    "orig": "Broken hedge shears made a strong improvised blade.",
+    "trans": "Kéo cắt tỉa hàng rào bị hỏng đã tạo thành một lưỡi dao tự chế mạnh mẽ.",
+    "origBytes": 51,
+    "overflow": 19
+  },
+  {
+    "orig": "Garden Limb Saw ",
+    "trans": "Cưa cành cây làm vườn ",
+    "origBytes": 16,
+    "overflow": 6
+  },
+  {
+    "orig": "Still effective at taking off limbs, zombie limbs.",
+    "trans": "Vẫn hiệu quả trong việc cắt lìa chi, chi của zombie.",
+    "origBytes": 50,
+    "overflow": 2
+  },
+  {
+    "orig": "Created from an industrial cutting tool. Very sturdy.",
+    "trans": "Được tạo ra từ một công cụ cắt công nghiệp. Rất chắc chắn.",
+    "origBytes": 53,
+    "overflow": 5
+  },
+  {
+    "orig": "Paper Cutter Arm",
+    "trans": "Cần gạt máy cắt giấy",
+    "origBytes": 16,
+    "overflow": 4
+  },
+  {
+    "orig": "Tactical Tomahawk",
+    "trans": "Rìu chiến thuật Tomahawk",
+    "origBytes": 17,
+    "overflow": 7
+  },
+  {
+    "orig": "A scrap of rusty rebar.",
+    "trans": "Một thanh cốt thép gỉ sét.",
+    "origBytes": 23,
+    "overflow": 3
+  },
+  {
+    "orig": "A sturdy police baton.",
+    "trans": "Một cây gậy baton cảnh sát chắc chắn.",
+    "origBytes": 22,
+    "overflow": 15
+  },
+  {
+    "orig": "High quality antique, they don't make them like this anymore.",
+    "trans": "Đồ cổ chất lượng cao, giờ họ không còn làm ra những thứ như thế này nữa.",
+    "origBytes": 61,
+    "overflow": 11
+  },
+  {
+    "orig": "Good for more than rolling a pie crust.",
+    "trans": "Dùng được cho nhiều việc hơn là chỉ cán vỏ bánh.",
+    "origBytes": 39,
+    "overflow": 9
+  },
+  {
+    "orig": "Tire Iron",
+    "trans": "Xà Beng Lốp Xe",
+    "origBytes": 9,
+    "overflow": 5
+  },
+  {
+    "orig": "These leave an impression.",
+    "trans": "Những thứ này để lại dấu vết.",
+    "origBytes": 26,
+    "overflow": 3
+  },
+  {
+    "orig": "Fish Stunner",
+    "trans": "Dụng Cụ Gây Choáng Cá",
+    "origBytes": 12,
+    "overflow": 9
+  },
+  {
+    "orig": "Works equally well on zombies and cod.",
+    "trans": "Hiệu quả như nhau đối với zombie và cá tuyết.",
+    "origBytes": 38,
+    "overflow": 7
+  },
+  {
+    "orig": "Royal Igorot Axe",
+    "trans": "Rìu Hoàng Gia Igorot",
+    "origBytes": 16,
+    "overflow": 4
+  },
+  {
+    "orig": "A high quality antique headhunting axe.",
+    "trans": "Một cây rìu săn đầu người cổ chất lượng cao.",
+    "origBytes": 39,
+    "overflow": 5
+  },
+  {
+    "orig": "Heavy Kanabo",
+    "trans": "Kanabo Hạng Nặng",
+    "origBytes": 12,
+    "overflow": 4
+  },
+  {
+    "orig": "Heavy, sturdy and all business.",
+    "trans": "Nặng, chắc chắn và rất hiệu quả.",
+    "origBytes": 31,
+    "overflow": 1
+  },
+  {
+    "orig": "Bike Polo Mallet",
+    "trans": "Vồ Đánh Polo Xe Đạp",
+    "origBytes": 16,
+    "overflow": 3
+  },
+  {
+    "orig": "Extreme sports, indeed!",
+    "trans": "Thể thao mạo hiểm, quả thật!",
+    "origBytes": 23,
+    "overflow": 5
+  },
+  {
+    "orig": "Well, you use what you can...",
+    "trans": "Chà, bạn dùng những gì có thể...",
+    "origBytes": 29,
+    "overflow": 3
+  },
+  {
+    "orig": "Swinging for the fences, metal style.",
+    "trans": "Vung gậy hết cỡ, theo phong cách kim loại.",
+    "origBytes": 37,
+    "overflow": 5
+  },
+  {
+    "orig": "Bench Barbell",
+    "trans": "Tạ Đòn Tập Ngực",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "Beefcake!",
+    "trans": "Lực lưỡng!",
+    "origBytes": 9,
+    "overflow": 1
+  },
+  {
+    "orig": "Curl Bar",
+    "trans": "Tạ Đòn Cong",
+    "origBytes": 8,
+    "overflow": 3
+  },
+  {
+    "orig": "Pump you up!",
+    "trans": "Giúp bạn lên cơ!",
+    "origBytes": 12,
+    "overflow": 4
+  },
+  {
+    "orig": "Firefighter's Universal Tool",
+    "trans": "Dụng Cụ Đa Năng Của Lính Cứu Hỏa",
+    "origBytes": 28,
+    "overflow": 4
+  },
+  {
+    "orig": "Think of it as a big heavy key.",
+    "trans": "Hãy nghĩ nó như một chiếc chìa khóa lớn nặng.",
+    "origBytes": 31,
+    "overflow": 14
+  },
+  {
+    "orig": "Trusty Fire Axe",
+    "trans": "Rìu Cứu Hỏa Đáng Tin Cậy",
+    "origBytes": 15,
+    "overflow": 9
+  },
+  {
+    "orig": "Access Axe",
+    "trans": "Rìu Tiếp Cận",
+    "origBytes": 10,
+    "overflow": 2
+  },
+  {
+    "orig": "A handy demolition tool.",
+    "trans": "Một dụng cụ phá dỡ tiện dụng.",
+    "origBytes": 24,
+    "overflow": 5
+  },
+  {
+    "orig": "Firefighter's Brush Hook",
+    "trans": "Lưỡi Hái Của Lính Cứu Hỏa",
+    "origBytes": 24,
+    "overflow": 1
+  },
+  {
+    "orig": "Knock down burning stuff.",
+    "trans": "Đánh đổ những thứ đang cháy.",
+    "origBytes": 25,
+    "overflow": 3
+  },
+  {
+    "orig": "Fire Access Tool",
+    "trans": "Dụng Cụ Tiếp Cận Lửa",
+    "origBytes": 16,
+    "overflow": 4
+  },
+  {
+    "orig": "A heavy access tool.",
+    "trans": "Một dụng cụ tiếp cận hạng nặng.",
+    "origBytes": 20,
+    "overflow": 11
+  },
+  {
+    "orig": "CLEO Wrecker",
+    "trans": "Kẻ Phá Hoại CLEO",
+    "origBytes": 12,
+    "overflow": 4
+  },
+  {
+    "orig": "CLEO Trench Tool",
+    "trans": "Dụng cụ đào hào CLEO",
+    "origBytes": 16,
+    "overflow": 4
+  },
+  {
+    "orig": "A simple blade with a single purpose.",
+    "trans": "Một lưỡi dao đơn giản với một mục đích duy nhất.",
+    "origBytes": 37,
+    "overflow": 11
+  },
+  {
+    "orig": "Next generation axe technology by CLEO.",
+    "trans": "Công nghệ rìu thế hệ tiếp theo của CLEO.",
+    "origBytes": 39,
+    "overflow": 1
+  },
+  {
+    "orig": "Fixes leaks, or creates them!",
+    "trans": "Sửa chữa rò rỉ, hoặc tạo ra chúng!",
+    "origBytes": 29,
+    "overflow": 5
+  },
+  {
+    "orig": "Ice Axe",
+    "trans": "Rìu băng",
+    "origBytes": 7,
+    "overflow": 1
+  },
+  {
+    "orig": "A chilling weapon.",
+    "trans": "Một vũ khí lạnh lẽo.",
+    "origBytes": 18,
+    "overflow": 2
+  },
+  {
+    "orig": "A popular sword from the Indian subcontinent.",
+    "trans": "Một thanh kiếm phổ biến từ tiểu lục địa Ấn Độ.",
+    "origBytes": 45,
+    "overflow": 1
+  },
+  {
+    "orig": "A replica of the famous Ulfberht swords.",
+    "trans": "Một bản sao của những thanh kiếm Ulfberht nổi tiếng.",
+    "origBytes": 40,
+    "overflow": 12
+  },
+  {
+    "orig": "Vampyr Slayer",
+    "trans": "Kẻ diệt ma cà rồng",
+    "origBytes": 13,
+    "overflow": 5
+  },
+  {
+    "orig": "A requirement for any Day-Walker.",
+    "trans": "Một vật phẩm cần thiết cho bất kỳ Day-Walker nào.",
+    "origBytes": 33,
+    "overflow": 16
+  },
+  {
+    "orig": "Replica of a popular TV show.",
+    "trans": "Bản sao từ một chương trình TV nổi tiếng.",
+    "origBytes": 29,
+    "overflow": 12
+  },
+  {
+    "orig": "This is ... a Spartan Sword!",
+    "trans": "Đây là... một thanh Kiếm Spartan!",
+    "origBytes": 28,
+    "overflow": 5
+  }
+]

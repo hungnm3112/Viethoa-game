@@ -28,14 +28,14 @@ const GFX_OVERRIDES = new Set([
   "libs/ui/entityflashtag.gfx",
   "libs/ui/menus_confirmation.gfx",
   "libs/ui/menus_startmenu.gfx",
+  "libs/ui/class3hud.gfx",
+  "libs/ui/class3_notifications.gfx",
+  "libs/ui/class3_radar.gfx",
+  "libs/ui/class3_banners.gfx",
+  "libs/ui/class3_centerprompts.gfx",
+  "libs/ui/class3_survey.gfx",
 ]);
-
-const FONT_REPLACEMENTS = [
-  { from: Buffer.from("ZomNotes", "latin1"), to: Buffer.from("Segoe UI", "latin1") },
-  { from: Buffer.from("BrainsForSale", "latin1"), to: Buffer.from("Calibri Light", "latin1") },
-  { from: Buffer.from("Decaying Kuntry", "latin1"), to: Buffer.from("Times New Roman", "latin1") },
-];
-
+const FONT_REPLACEMENTS = [];
 const args = parseArgs(process.argv.slice(2));
 const apply = Boolean(args.apply);
 const replaceVera = args.replaceVera !== false;

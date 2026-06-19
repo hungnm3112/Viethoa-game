@@ -1,0 +1,812 @@
+[
+  {
+    "orig": "This .380 ACP firearm has been modified for 9mm.",
+    "trans": "Khẩu súng .380 ACP này đã được sửa đổi để dùng đạn 9mm.",
+    "origBytes": 48,
+    "overflow": 7
+  },
+  {
+    "orig": "Pistol: Fifty-Seven",
+    "trans": "Súng lục: Fifty-Seven",
+    "origBytes": 19,
+    "overflow": 2
+  },
+  {
+    "orig": "A 5.7mm conversion to .22 caliber. Still very lethal to zombies.",
+    "trans": "Chuyển đổi từ 5.7mm sang cỡ nòng .22. Vẫn cực kỳ nguy hiểm với zombie.",
+    "origBytes": 64,
+    "overflow": 6
+  },
+  {
+    "orig": "Pistol: Hi-Power",
+    "trans": "Súng lục: Hi-Power",
+    "origBytes": 16,
+    "overflow": 2
+  },
+  {
+    "orig": "Always a favorite in the 9mm class.",
+    "trans": "Luôn là lựa chọn yêu thích trong dòng súng 9mm.",
+    "origBytes": 35,
+    "overflow": 12
+  },
+  {
+    "orig": "Pistol: G 31",
+    "trans": "Súng lục: G 31",
+    "origBytes": 12,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: G 32",
+    "trans": "Súng lục: G 32",
+    "origBytes": 12,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: G 33",
+    "trans": "Súng lục: G 33",
+    "origBytes": 12,
+    "overflow": 2
+  },
+  {
+    "orig": "Sub-compact using .357 Sig caliber.",
+    "trans": "Siêu nhỏ gọn, sử dụng cỡ nòng .357 Sig.",
+    "origBytes": 35,
+    "overflow": 4
+  },
+  {
+    "orig": "Pistol: P 226 Sg",
+    "trans": "Súng lục: P 226 Sg",
+    "origBytes": 16,
+    "overflow": 2
+  },
+  {
+    "orig": "Special edition P226 with custom finish, uses  the .357 Sig round.",
+    "trans": "Phiên bản đặc biệt P226 với lớp hoàn thiện tùy chỉnh, sử dụng đạn .357 Sig.",
+    "origBytes": 66,
+    "overflow": 9
+  },
+  {
+    "orig": "Pistol: Automag",
+    "trans": "Súng lục: Automag",
+    "origBytes": 15,
+    "overflow": 2
+  },
+  {
+    "orig": "A commercial failure made famous in the movies.",
+    "trans": "Một thất bại thương mại nhưng lại nổi tiếng nhờ phim ảnh.",
+    "origBytes": 47,
+    "overflow": 10
+  },
+  {
+    "orig": "Pistol: P229-40",
+    "trans": "Súng lục: P229-40",
+    "origBytes": 15,
+    "overflow": 2
+  },
+  {
+    "orig": "P229 beavertail in .40 cal.",
+    "trans": "P229 beavertail cỡ nòng .40.",
+    "origBytes": 27,
+    "overflow": 1
+  },
+  {
+    "orig": "Pistol: Mi.Le .45",
+    "trans": "Súng lục: Mi.Le .45",
+    "origBytes": 17,
+    "overflow": 2
+  },
+  {
+    "orig": "Now in minty fresh .45 caliber! Thumb safety included!",
+    "trans": "Nay có cỡ nòng .45 mới toanh! Kèm khóa an toàn ngón cái!",
+    "origBytes": 54,
+    "overflow": 2
+  },
+  {
+    "orig": "LMG: RPK",
+    "trans": "Súng máy hạng nhẹ: RPK",
+    "origBytes": 8,
+    "overflow": 14
+  },
+  {
+    "orig": "LMG: M1918A2",
+    "trans": "Súng máy hạng nhẹ: M1918A2",
+    "origBytes": 12,
+    "overflow": 14
+  },
+  {
+    "orig": "Light support weapon with serious combat history. ",
+    "trans": "Vũ khí hỗ trợ hạng nhẹ với lịch sử chiến đấu lẫy lừng.",
+    "origBytes": 50,
+    "overflow": 4
+  },
+  {
+    "orig": "Revolver: SP 101",
+    "trans": "Súng ổ quay: SP 101",
+    "origBytes": 16,
+    "overflow": 3
+  },
+  {
+    "orig": "A very popular modern small frame .357 revolver.",
+    "trans": "Một khẩu súng ổ quay .357 khung nhỏ hiện đại rất phổ biến.",
+    "origBytes": 48,
+    "overflow": 10
+  },
+  {
+    "orig": "Revolver: Anvil Hammer",
+    "trans": "Súng ổ quay: Anvil Hammer",
+    "origBytes": 22,
+    "overflow": 3
+  },
+  {
+    "orig": "Revolver: Mark VI",
+    "trans": "Súng ổ quay: Mark VI",
+    "origBytes": 17,
+    "overflow": 3
+  },
+  {
+    "orig": "Historic Commonwealth sevice revolver, inscribed \"Lt. Pears\".",
+    "trans": "Súng ổ quay phục vụ lịch sử của Khối Thịnh vượng chung, khắc chữ \"Lt. Pears\".",
+    "origBytes": 61,
+    "overflow": 16
+  },
+  {
+    "orig": "Rifle: Eli",
+    "trans": "Súng trường: Eli",
+    "origBytes": 10,
+    "overflow": 6
+  },
+  {
+    "orig": "A custom M107 created to avenge Eli Wilkerson.",
+    "trans": "Một khẩu M107 tùy chỉnh được tạo ra để trả thù Eli Wilkerson.",
+    "origBytes": 46,
+    "overflow": 15
+  },
+  {
+    "orig": "Rifle: .45 Justice",
+    "trans": "Súng trường: .45 Justice",
+    "origBytes": 18,
+    "overflow": 6
+  },
+  {
+    "orig": "A scoped revolver-rifle hybrid in .45 caliber.",
+    "trans": "Một khẩu súng lai giữa súng lục ổ quay và súng trường, có ống ngắm, cỡ nòng .45.",
+    "origBytes": 46,
+    "overflow": 34
+  },
+  {
+    "orig": "Rifle: RC 40",
+    "trans": "Súng trường: RC 40",
+    "origBytes": 12,
+    "overflow": 6
+  },
+  {
+    "orig": "Made for Police to use the same .40 cal round as a sidearm.",
+    "trans": "Được chế tạo cho cảnh sát để sử dụng cùng loại đạn .40 ly như súng phụ.",
+    "origBytes": 59,
+    "overflow": 12
+  },
+  {
+    "orig": "Rifle: L41A1",
+    "trans": "Súng trường: L41A1",
+    "origBytes": 12,
+    "overflow": 6
+  },
+  {
+    "orig": ".22 caliber \"cadet\" training version of the L85 rifles.",
+    "trans": "Phiên bản huấn luyện \"học viên\" cỡ nòng .22 ly của súng trường L85.",
+    "origBytes": 55,
+    "overflow": 12
+  },
+  {
+    "orig": "Rifle: Lenfield No.4 MkI",
+    "trans": "Súng trường: Lenfield No.4 MkI",
+    "origBytes": 24,
+    "overflow": 6
+  },
+  {
+    "orig": "A British Army mainstay for most of the last century.",
+    "trans": "Vũ khí chủ lực của Quân đội Anh trong hầu hết thế kỷ trước.",
+    "origBytes": 53,
+    "overflow": 6
+  },
+  {
+    "orig": "Rifle: 464 Brushgun",
+    "trans": "Súng trường: 464 Brushgun",
+    "origBytes": 19,
+    "overflow": 6
+  },
+  {
+    "orig": "Turkish competitor to the Mod SG.",
+    "trans": "Đối thủ cạnh tranh của Mod SG từ Thổ Nhĩ Kỳ.",
+    "origBytes": 33,
+    "overflow": 11
+  },
+  {
+    "orig": "Modern replica of a western double barrel shotgun.",
+    "trans": "Bản sao hiện đại của súng shotgun hai nòng kiểu miền Tây.",
+    "origBytes": 50,
+    "overflow": 2
+  },
+  {
+    "orig": "Severely shortened double barrel shotgun. Illegal everywhere.",
+    "trans": "Súng shotgun hai nòng bị cắt ngắn nghiêm trọng. Bất hợp pháp ở mọi nơi.",
+    "origBytes": 61,
+    "overflow": 5
+  },
+  {
+    "orig": "Heavily customized, drum fed, nicknamed \"Bonesaw\".",
+    "trans": "Được tùy chỉnh mạnh mẽ, nạp đạn bằng hộp tiếp đạn tròn, biệt danh \"Bonesaw\".",
+    "origBytes": 50,
+    "overflow": 26
+  },
+  {
+    "orig": "The \"Trench Gun\" or M97. Still fires, but showing some wear.",
+    "trans": "Khẩu \"Súng chiến hào\" hay M97. Vẫn bắn được, nhưng đã có dấu hiệu hao mòn.",
+    "origBytes": 60,
+    "overflow": 14
+  },
+  {
+    "orig": "Pimp my UMP! Camo paint, front post and an optic added.",
+    "trans": "Độ UMP của tôi! Sơn rằn ri, có thêm thước ngắm trước và ống ngắm.",
+    "origBytes": 55,
+    "overflow": 10
+  },
+  {
+    "orig": "Inexpensive, full auto only WWII SMG. ",
+    "trans": "SMG Thế chiến II giá rẻ, chỉ bắn tự động hoàn toàn.",
+    "origBytes": 38,
+    "overflow": 13
+  },
+  {
+    "orig": "Civilian legal carbine in .357 (Sig) caliber.",
+    "trans": "Súng carbine hợp pháp cho dân thường, cỡ nòng .357 (Sig).",
+    "origBytes": 45,
+    "overflow": 12
+  },
+  {
+    "orig": "Assault Rifle: 556S",
+    "trans": "Súng trường tấn công: 556S",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "Very reliable with RDSS sight system.",
+    "trans": "Rất đáng tin cậy với hệ thống ngắm RDSS.",
+    "origBytes": 37,
+    "overflow": 3
+  },
+  {
+    "orig": "Assault Rifle: 556S SWAT",
+    "trans": "Súng trường tấn công: 556S SWAT",
+    "origBytes": 24,
+    "overflow": 7
+  },
+  {
+    "orig": "Tactical police rifle made in Switzerland.",
+    "trans": "Súng trường chiến thuật của cảnh sát, sản xuất tại Thụy Sĩ.",
+    "origBytes": 42,
+    "overflow": 17
+  },
+  {
+    "orig": "Assault Rifle: AK 74",
+    "trans": "Súng trường tấn công: AK 74",
+    "origBytes": 20,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: G3",
+    "trans": "Súng trường tấn công: G3",
+    "origBytes": 17,
+    "overflow": 7
+  },
+  {
+    "orig": "A popular battle rifle worldwide for over 50 years. ",
+    "trans": "Một khẩu súng trường chiến đấu phổ biến trên toàn thế giới trong hơn 50 năm.",
+    "origBytes": 52,
+    "overflow": 24
+  },
+  {
+    "orig": "Assault Rifle: G36C",
+    "trans": "Súng trường tấn công: G36C",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "The \"C\" stands for \"Compact\", the shorter brother to the G36.",
+    "trans": "Chữ \"C\" là viết tắt của \"Compact\" (Gọn), phiên bản ngắn hơn của G36.",
+    "origBytes": 61,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: Gal SAR",
+    "trans": "Súng trường tấn công: Gal SAR",
+    "origBytes": 22,
+    "overflow": 7
+  },
+  {
+    "orig": "Based on the AK design, this is a battle tested and reliable weapon.",
+    "trans": "Dựa trên thiết kế AK, đây là một vũ khí đã được thử nghiệm trong chiến đấu và đáng tin cậy.",
+    "origBytes": 68,
+    "overflow": 23
+  },
+  {
+    "orig": "Assault Rifle: 552 Commando",
+    "trans": "Súng trường tấn công: 552 Commando",
+    "origBytes": 27,
+    "overflow": 7
+  },
+  {
+    "orig": "Very short rifle, good for indoors but can be hard to tame.",
+    "trans": "Súng trường rất ngắn, tốt cho không gian trong nhà nhưng khó kiểm soát.",
+    "origBytes": 59,
+    "overflow": 12
+  },
+  {
+    "orig": "Assault Rifle: 552 CS",
+    "trans": "Súng trường tấn công: 552 CS",
+    "origBytes": 21,
+    "overflow": 7
+  },
+  {
+    "orig": "The CS has a longer barrel for stability and scope.",
+    "trans": "CS có nòng dài hơn để tăng độ ổn định và gắn ống ngắm.",
+    "origBytes": 51,
+    "overflow": 3
+  },
+  {
+    "orig": "Assault Rifle: Tar 21 Overwatch",
+    "trans": "Súng trường tấn công: Tar 21 Overwatch",
+    "origBytes": 31,
+    "overflow": 7
+  },
+  {
+    "orig": "A new bullpup battle rifle, fitted with an optic for high visibility at range.",
+    "trans": "Một khẩu súng trường chiến đấu bullpup mới, được trang bị ống ngắm để có tầm nhìn rõ ràng ở khoảng cách xa.",
+    "origBytes": 78,
+    "overflow": 29
+  },
+  {
+    "orig": "Assault Rifle: Tar 21",
+    "trans": "Súng trường tấn công: Tar 21",
+    "origBytes": 21,
+    "overflow": 7
+  },
+  {
+    "orig": "New bullpup from Israel. Compact, accurate and reliable.",
+    "trans": "Súng bullpup mới từ Israel. Nhỏ gọn, chính xác và đáng tin cậy.",
+    "origBytes": 56,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: Vz. 58 P",
+    "trans": "Súng trường tấn công: Vz. 58 P",
+    "origBytes": 23,
+    "overflow": 7
+  },
+  {
+    "orig": "Designed and built in Czechoslovakia until the mid 1980s.",
+    "trans": "Được thiết kế và chế tạo tại Tiệp Khắc cho đến giữa những năm 1980.",
+    "origBytes": 57,
+    "overflow": 10
+  },
+  {
+    "orig": "Assault Rifle: XM8",
+    "trans": "Súng trường tấn công: XM8",
+    "origBytes": 18,
+    "overflow": 7
+  },
+  {
+    "orig": "This next-generation rifle has an integrated optics package.",
+    "trans": "Khẩu súng trường thế hệ tiếp theo này có gói quang học tích hợp.",
+    "origBytes": 60,
+    "overflow": 4
+  },
+  {
+    "orig": "Pistol: F45",
+    "trans": "Súng lục: F45",
+    "origBytes": 11,
+    "overflow": 2
+  },
+  {
+    "orig": "A lightweight, polymer .45 caliber pistol made for the civilian market.",
+    "trans": "Một khẩu súng lục cỡ nòng .45 bằng polymer nhẹ, được sản xuất cho thị trường dân sự.",
+    "origBytes": 71,
+    "overflow": 13
+  },
+  {
+    "orig": "Pistol: F45 Tactical",
+    "trans": "Súng lục: F45 Tactical",
+    "origBytes": 20,
+    "overflow": 2
+  },
+  {
+    "orig": "A military and police oriented version of the F45, match barrel and optic.",
+    "trans": "Phiên bản F45 định hướng quân sự và cảnh sát, với nòng súng và ống ngắm chuyên dụng.",
+    "origBytes": 74,
+    "overflow": 10
+  },
+  {
+    "orig": "Pistol: P 07 Duty",
+    "trans": "Súng lục: P 07 Duty",
+    "origBytes": 17,
+    "overflow": 2
+  },
+  {
+    "orig": "Light weight polymer, accurate and reliable. Enough said.",
+    "trans": "Polymer nhẹ, chính xác và đáng tin cậy. Không cần nói thêm.",
+    "origBytes": 57,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: P 07 Tactical Duty",
+    "trans": "Súng lục: P 07 Tactical Duty",
+    "origBytes": 26,
+    "overflow": 2
+  },
+  {
+    "orig": "Groomed for combat and comes with a threaded barrel.",
+    "trans": "Được thiết kế cho chiến đấu và đi kèm với nòng súng có ren.",
+    "origBytes": 52,
+    "overflow": 7
+  },
+  {
+    "orig": "Pistol: P.08",
+    "trans": "Súng lục: P.08",
+    "origBytes": 12,
+    "overflow": 2
+  },
+  {
+    "orig": "An accurate and iconic collector's firearm. Be sure to keep it clean!",
+    "trans": "Một khẩu súng của nhà sưu tầm chính xác và mang tính biểu tượng. Hãy nhớ giữ nó sạch sẽ!",
+    "origBytes": 69,
+    "overflow": 19
+  },
+  {
+    "orig": "Pistol: P 38 Stobaugh",
+    "trans": "Súng lục: P 38 Stobaugh",
+    "origBytes": 21,
+    "overflow": 2
+  },
+  {
+    "orig": "A special collector's item. Captured in WW II by a special G.I.",
+    "trans": "Một vật phẩm sưu tầm đặc biệt. Được một lính Mỹ đặc nhiệm thu giữ trong Thế chiến II.",
+    "origBytes": 63,
+    "overflow": 22
+  },
+  {
+    "orig": "Revolver: Model 986",
+    "trans": "Súng ổ quay: Model 986",
+    "origBytes": 19,
+    "overflow": 3
+  },
+  {
+    "orig": "9mm revolvers made in the US are rare, now you have one!",
+    "trans": "Súng ổ quay 9mm sản xuất tại Mỹ rất hiếm, giờ bạn đã có một khẩu!",
+    "origBytes": 56,
+    "overflow": 9
+  },
+  {
+    "orig": "Rifle: 464 Custom 22",
+    "trans": "Súng trường: 464 Custom 22",
+    "origBytes": 20,
+    "overflow": 6
+  },
+  {
+    "orig": "Factory tacti-cool .22 varmint gun, with optic. In case the squirrels attack!",
+    "trans": "Súng săn thú nhỏ .22 được thiết kế hầm hố, có ống ngắm. Phòng khi sóc tấn công!",
+    "origBytes": 77,
+    "overflow": 2
+  },
+  {
+    "orig": "Rifle: Model 1903",
+    "trans": "Súng trường: Model 1903",
+    "origBytes": 17,
+    "overflow": 6
+  },
+  {
+    "orig": "A venerable combat rifle used by the US military over a period of 70 years.",
+    "trans": "Một khẩu súng trường chiến đấu đáng kính được quân đội Mỹ sử dụng trong hơn 70 năm.",
+    "origBytes": 75,
+    "overflow": 8
+  },
+  {
+    "orig": "Rifle: Arctic Warrior",
+    "trans": "Súng trường: Arctic Warrior",
+    "origBytes": 21,
+    "overflow": 6
+  },
+  {
+    "orig": "Pinpoint accuracy at long range, this rifle is a huge success in military units.",
+    "trans": "Độ chính xác tuyệt đối ở tầm xa, khẩu súng trường này là một thành công lớn trong các đơn vị quân đội.",
+    "origBytes": 80,
+    "overflow": 22
+  },
+  {
+    "orig": "Rifle: M1 Carbine",
+    "trans": "Súng trường: M1 Carbine",
+    "origBytes": 17,
+    "overflow": 6
+  },
+  {
+    "orig": "A veteran of many wars, this rifle can be found all over the world.",
+    "trans": "Là một cựu binh của nhiều cuộc chiến, khẩu súng trường này có thể được tìm thấy trên khắp thế giới.",
+    "origBytes": 67,
+    "overflow": 32
+  },
+  {
+    "orig": "Rifle: M14 Talon DMR",
+    "trans": "Súng trường: M14 Talon DMR",
+    "origBytes": 20,
+    "overflow": 6
+  },
+  {
+    "orig": "The pinnacle of precision M14 evolution to date. this version is custom to the Red Talon group.",
+    "trans": "Đỉnh cao của sự phát triển M14 chính xác cho đến nay. Phiên bản này được tùy chỉnh cho nhóm Red Talon.",
+    "origBytes": 95,
+    "overflow": 7
+  },
+  {
+    "orig": "Rifle: M110 SASS",
+    "trans": "Súng trường: M110 SASS",
+    "origBytes": 16,
+    "overflow": 6
+  },
+  {
+    "orig": "The M110 Semi-Automatic Sniper System, due to replace the M24 system.",
+    "trans": "Hệ thống súng bắn tỉa bán tự động M110, dự kiến sẽ thay thế hệ thống M24.",
+    "origBytes": 69,
+    "overflow": 4
+  },
+  {
+    "orig": "Rifle: Micro Dynamic Rifle",
+    "trans": "Súng trường: Micro Dynamic Rifle",
+    "origBytes": 26,
+    "overflow": 6
+  },
+  {
+    "orig": "A brand new bullpup rifle with a unique forward ejection system. Stock sights.",
+    "trans": "Một khẩu súng trường bullpup hoàn toàn mới với hệ thống đẩy vỏ đạn về phía trước độc đáo. Có sẵn thước ngắm.",
+    "origBytes": 78,
+    "overflow": 30
+  },
+  {
+    "orig": "Rifle: Micro Dynamic Rifle Scoped",
+    "trans": "Súng trường: Micro Dynamic Rifle Scoped",
+    "origBytes": 33,
+    "overflow": 6
+  },
+  {
+    "orig": "A new, innovative bullpup. This one includes a suite of optics.",
+    "trans": "Một khẩu bullpup mới, đầy sáng tạo. Khẩu này đi kèm với một bộ ống ngắm.",
+    "origBytes": 63,
+    "overflow": 9
+  },
+  {
+    "orig": "Rifle: Survivor 2K",
+    "trans": "Súng trường: Survivor 2K",
+    "origBytes": 18,
+    "overflow": 6
+  },
+  {
+    "orig": "A folding, semi-auto survival rifle. Accurate but not meant for heavy use.",
+    "trans": "Một khẩu súng trường sinh tồn bán tự động, có thể gập lại. Chính xác nhưng không dành cho việc sử dụng cường độ cao.",
+    "origBytes": 74,
+    "overflow": 42
+  },
+  {
+    "orig": "Rifle: SVT-40",
+    "trans": "Súng trường: SVT-40",
+    "origBytes": 13,
+    "overflow": 6
+  },
+  {
+    "orig": "A long-time Cold Warrior, this rifle was often used in a sniper role. Sadly, this one has no scope.",
+    "trans": "Một chiến binh Lạnh lâu năm, khẩu súng trường này thường được dùng trong vai trò bắn tỉa. Đáng tiếc, khẩu này không có ống ngắm.",
+    "origBytes": 99,
+    "overflow": 29
+  },
+  {
+    "orig": "Rifle: T21 Carbine 9mm",
+    "trans": "Súng trường: T21 Carbine 9mm",
+    "origBytes": 22,
+    "overflow": 6
+  },
+  {
+    "orig": "All T21 rifles are made to easily convert between 9mm and 5.56mm.",
+    "trans": "Tất cả súng trường T21 đều được chế tạo để dễ dàng chuyển đổi giữa cỡ nòng 9mm và 5.56mm.",
+    "origBytes": 65,
+    "overflow": 24
+  },
+  {
+    "orig": "Shotgun: 870 Aggressor AD",
+    "trans": "Súng săn: 870 Aggressor AD",
+    "origBytes": 25,
+    "overflow": 1
+  },
+  {
+    "orig": "Shotgun: 870 Combat",
+    "trans": "Súng săn: 870 Combat",
+    "origBytes": 19,
+    "overflow": 1
+  },
+  {
+    "orig": "The long barrel on this 870 and custom parts make this a very accurate shotgun. Inscribed, \"Gungnir\".",
+    "trans": "Nòng dài và các bộ phận tùy chỉnh trên khẩu 870 này biến nó thành một khẩu súng săn rất chính xác. Khắc chữ \"Gungnir\".",
+    "origBytes": 101,
+    "overflow": 17
+  },
+  {
+    "orig": "Shotgun: Model 1887",
+    "trans": "Súng săn: Model 1887",
+    "origBytes": 19,
+    "overflow": 1
+  },
+  {
+    "orig": "Designed by the incredible J. Browning, this innovative lever action shotgun is a work of art.",
+    "trans": "Được thiết kế bởi J. Browning tài ba, khẩu súng săn nạp đạn kiểu đòn bẩy đầy sáng tạo này là một tác phẩm nghệ thuật.",
+    "origBytes": 94,
+    "overflow": 23
+  },
+  {
+    "orig": "Shotgun: 1887 T-800",
+    "trans": "Súng săn: 1887 T-800",
+    "origBytes": 19,
+    "overflow": 1
+  },
+  {
+    "orig": "Modern manufacture of the classic 1887, made popular by movies and video games.",
+    "trans": "Phiên bản hiện đại của khẩu 1887 cổ điển, được làm cho nổi tiếng bởi phim ảnh và trò chơi điện tử.",
+    "origBytes": 79,
+    "overflow": 19
+  },
+  {
+    "orig": "This modern firearm is the spiritual successor to the great Czech gun engineers.",
+    "trans": "Khẩu súng hiện đại này là người kế nhiệm tinh thần của các kỹ sư súng vĩ đại người Séc.",
+    "origBytes": 80,
+    "overflow": 7
+  },
+  {
+    "orig": "A full-auto version of the G17 with a high capacity magazine, classified as an SMG.",
+    "trans": "Phiên bản tự động hoàn toàn của G17 với băng đạn dung lượng cao, được phân loại là SMG.",
+    "origBytes": 83,
+    "overflow": 4
+  },
+  {
+    "orig": "Familiar pistol silhouette of the 92 series produced as a full-auto SMG.",
+    "trans": "Hình dáng quen thuộc của dòng súng lục 92 được sản xuất dưới dạng SMG tự động hoàn toàn.",
+    "origBytes": 72,
+    "overflow": 16
+  },
+  {
+    "orig": "Full-auto paired with the usual Bz 75 excellence. Spare mag is fitted as a foregrip.",
+    "trans": "Tự động hoàn toàn kết hợp với sự xuất sắc thường thấy của Bz 75. Băng đạn dự phòng được gắn làm tay cầm phía trước.",
+    "origBytes": 84,
+    "overflow": 31
+  },
+  {
+    "orig": "Technically a pistol, firing a rifle round, classified as an SMG. Did you get all that? Optic added.",
+    "trans": "Về mặt kỹ thuật là một khẩu súng lục, bắn đạn súng trường, được phân loại là SMG. Bạn có hiểu hết không? Đã thêm ống ngắm.",
+    "origBytes": 100,
+    "overflow": 22
+  },
+  {
+    "orig": "SMG: Tactical Police (Version C)",
+    "trans": "SMG: Tactical Police (Phiên bản C)",
+    "origBytes": 32,
+    "overflow": 2
+  },
+  {
+    "orig": "The Swiss are still finding a niche for new SMGs with their latest offering. Optic included.",
+    "trans": "Người Thụy Sĩ vẫn đang tìm kiếm một thị trường ngách cho các khẩu SMG mới với sản phẩm mới nhất của họ. Đã bao gồm ống ngắm.",
+    "origBytes": 92,
+    "overflow": 32
+  },
+  {
+    "orig": "Assault Rifle: CLEO HCQB",
+    "trans": "Súng trường tấn công: CLEO HCQB",
+    "origBytes": 24,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: 556 Grenade Launcher",
+    "trans": "Súng trường tấn công: 556 Kèm Súng phóng lựu",
+    "origBytes": 35,
+    "overflow": 9
+  },
+  {
+    "orig": "Very reliable with RDSS sight system.",
+    "trans": "Rất đáng tin cậy với hệ thống ngắm RDSS.",
+    "origBytes": 37,
+    "overflow": 3
+  },
+  {
+    "orig": "Assault Rifle: AK47 Grenade Launcher",
+    "trans": "Súng trường tấn công: AK47 Kèm Súng phóng lựu",
+    "origBytes": 36,
+    "overflow": 9
+  },
+  {
+    "orig": "Customized with aftermarket additions, scoped.",
+    "trans": "Được tùy chỉnh với các phụ kiện hậu mãi, có ống ngắm.",
+    "origBytes": 46,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: AKs 74u",
+    "trans": "Súng trường tấn công: AKs 74u",
+    "origBytes": 22,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: AKs 74u Valentine",
+    "trans": "Súng trường tấn công: AKs 74u Valentine",
+    "origBytes": 32,
+    "overflow": 7
+  },
+  {
+    "orig": "Assault Rifle: M4 Grenade Launcher",
+    "trans": "Súng trường tấn công: M4 Kèm Súng phóng lựu",
+    "origBytes": 34,
+    "overflow": 9
+  },
+  {
+    "orig": "The standard U.S. military rifle.",
+    "trans": "Súng trường tiêu chuẩn của quân đội Hoa Kỳ.",
+    "origBytes": 33,
+    "overflow": 10
+  },
+  {
+    "orig": "Pistol: CLEO Striker 40",
+    "trans": "Súng lục: CLEO Striker 40",
+    "origBytes": 23,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: PX4 Storm",
+    "trans": "Súng lục: PX4 Storm",
+    "origBytes": 17,
+    "overflow": 2
+  },
+  {
+    "orig": "Modern materials made with classic Italian charm.",
+    "trans": "Vật liệu hiện đại kết hợp với nét quyến rũ cổ điển của Ý.",
+    "origBytes": 49,
+    "overflow": 8
+  },
+  {
+    "orig": "Revolver: CLEO Revo C",
+    "trans": "Súng ổ quay: CLEO Revo C",
+    "origBytes": 21,
+    "overflow": 3
+  },
+  {
+    "orig": "Experiental, compensated revolver from CLEO.",
+    "trans": "Súng lục ổ quay thử nghiệm, có bù giật từ CLEO.",
+    "origBytes": 44,
+    "overflow": 3
+  },
+  {
+    "orig": "Revolver: Viper PPC",
+    "trans": "Súng lục ổ quay: Viper PPC",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "A revolver with a long history of police use.",
+    "trans": "Một khẩu súng lục ổ quay với lịch sử sử dụng lâu dài trong lực lượng cảnh sát.",
+    "origBytes": 45,
+    "overflow": 33
+  },
+  {
+    "orig": "A reliable military shotgun. INCENDIARY.",
+    "trans": "Một khẩu shotgun quân sự đáng tin cậy. GÂY CHÁY.",
+    "origBytes": 40,
+    "overflow": 3
+  },
+  {
+    "orig": "Low profile, slim but brutal. INCENDIARY.",
+    "trans": "Thiết kế gọn gàng, mỏng nhưng tàn bạo. GÂY CHÁY.",
+    "origBytes": 41,
+    "overflow": 7
+  }
+]

@@ -32,7 +32,7 @@ const report = {
     pakBmdEntries: bmdEntries.length,
     filesProcessed: 0,
     applied: 0,
-    truncated: 0,
+    reverted: 0,
     padded: 0,
     skipped: 0,
   },
@@ -60,7 +60,7 @@ for (const entry of bmdEntries) {
   const patchStrs = readStrings(patchBmd, patchTableOff);
   const out = Buffer.from(origBmd);
   let applied = 0;
-  let truncated = 0;
+  let reverted = 0;
   let padded = 0;
   let skipped = 0;
 
@@ -84,11 +84,9 @@ for (const entry of bmdEntries) {
       applied += 1;
       padded += 1;
     } else {
-      const cutLen = validUtf8CutLength(transBytes, origLen);
-      transBytes.subarray(0, cutLen).copy(out, orig.start);
-      if (cutLen < origLen) out.fill(0x20, orig.start + cutLen, orig.end);
-      applied += 1;
-      truncated += 1;
+      // NEW RULE: Do not truncate. Keep original English string.
+      // Since `out` is initialized from `origBmd`, the English string is already there.
+      reverted += 1;
     }
   }
 
@@ -99,13 +97,13 @@ for (const entry of bmdEntries) {
   }
 
   const sizeLabel = sameSize ? "SAME SIZE OK" : `SIZE CHANGED ${origBmd.length} -> ${out.length}`;
-  console.log(`${entry.name}: applied=${applied} truncated=${truncated} padded=${padded} skipped=${skipped} ${sizeLabel}`);
+  console.log(`${entry.name}: applied=${applied} reverted=${reverted} padded=${padded} skipped=${skipped} ${sizeLabel}`);
 
   report.files.push({
     entry: entry.name,
     outputBmd: patchedPath.replaceAll("\\", "/"),
     applied,
-    truncated,
+    reverted,
     padded,
     skipped,
     originalSize: origBmd.length,
@@ -114,7 +112,7 @@ for (const entry of bmdEntries) {
   });
   report.totals.filesProcessed += 1;
   report.totals.applied += applied;
-  report.totals.truncated += truncated;
+  report.totals.reverted += reverted;
   report.totals.padded += padded;
   report.totals.skipped += skipped;
 }
@@ -125,7 +123,7 @@ fs.writeFileSync(REPORT_FILE, JSON.stringify(report, null, 2) + "\n", "utf8");
 console.log("");
 console.log(`=== Done: ${report.totals.filesProcessed} BMD files processed ===`);
 console.log(
-  `Total applied: ${report.totals.applied} truncated: ${report.totals.truncated} padded: ${report.totals.padded} skipped: ${report.totals.skipped}`,
+  `Total applied: ${report.totals.applied} reverted: ${report.totals.reverted} padded: ${report.totals.padded} skipped: ${report.totals.skipped}`,
 );
 console.log(`Wrote ${REPORT_FILE}`);
 console.log(dryRun ? "Dry-run complete." : "Same-length BMD output updated.");

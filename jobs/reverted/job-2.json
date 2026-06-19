@@ -1,0 +1,812 @@
+[
+  {
+    "orig": "Powerful round primarily for revolvers and some rifles.",
+    "trans": "Đạn mạnh chủ yếu dùng cho súng ổ quay và một số súng trường.",
+    "origBytes": 55,
+    "overflow": 5
+  },
+  {
+    "orig": "Powerful mid-range workhorse for pistols, some revolvers and rifles.",
+    "trans": "Đạn tầm trung mạnh mẽ, đa dụng cho súng lục, một số súng ổ quay và súng trường.",
+    "origBytes": 68,
+    "overflow": 11
+  },
+  {
+    "orig": "Low Backpack",
+    "trans": "Ba Lô Đeo Thấp",
+    "origBytes": 12,
+    "overflow": 2
+  },
+  {
+    "orig": "A low-slung bag for the efficient packer.",
+    "trans": "Một chiếc túi đeo thấp dành cho người biết cách sắp xếp hiệu quả.",
+    "origBytes": 41,
+    "overflow": 24
+  },
+  {
+    "orig": "You can't start off a new school year without a sweet-ass new backpack!",
+    "trans": "Bạn không thể bắt đầu năm học mới mà không có một chiếc ba lô mới toanh cực chất!",
+    "origBytes": 71,
+    "overflow": 10
+  },
+  {
+    "orig": "School Pack",
+    "trans": "Túi Học Sinh",
+    "origBytes": 11,
+    "overflow": 1
+  },
+  {
+    "orig": "Numbs the pain, but won't help serious wounds.",
+    "trans": "Giảm đau, nhưng không giúp ích cho vết thương nghiêm trọng.",
+    "origBytes": 46,
+    "overflow": 13
+  },
+  {
+    "orig": "Numbs the pain, but won't help serious wounds. Typical over-the-counter stuff.",
+    "trans": "Giảm đau, nhưng không giúp ích cho vết thương nghiêm trọng. Thuốc không kê đơn thông thường.",
+    "origBytes": 78,
+    "overflow": 14
+  },
+  {
+    "orig": "Numbs the pain, but won't help serious wounds. Typical over-the-counter stuff. Come on, everybody knows what aspirin is.",
+    "trans": "Giảm đau, nhưng không giúp ích cho vết thương nghiêm trọng. Thuốc không kê đơn thông thường. Thôi nào, ai mà chẳng biết aspirin là gì.",
+    "origBytes": 120,
+    "overflow": 14
+  },
+  {
+    "orig": "Numbs the pain, but won't help serious wounds. Typical over-the-counter stuff. I like the ones with the sugary coating.",
+    "trans": "Giảm đau, nhưng không giúp ích cho vết thương nghiêm trọng. Thuốc không kê đơn thông thường. Tôi thích loại có lớp đường bọc ngoài.",
+    "origBytes": 119,
+    "overflow": 12
+  },
+  {
+    "orig": "Numbs the pain, but won't help serious wounds. Serious stuff. Feels pretty damn good, though.",
+    "trans": "Giảm đau, nhưng không giúp ích cho vết thương nghiêm trọng. Thuốc mạnh đấy. Mặc dù cảm thấy khá tốt.",
+    "origBytes": 93,
+    "overflow": 7
+  },
+  {
+    "orig": "Numbs the pain, but won't help serious wounds. Typical over-the-counter stuff. Tastes like ass, but knocks out just about anything.",
+    "trans": "Giảm đau, nhưng không giúp ích cho vết thương nghiêm trọng. Thuốc không kê đơn thông thường. Vị như shit, nhưng có thể đánh gục mọi thứ.",
+    "origBytes": 131,
+    "overflow": 5
+  },
+  {
+    "orig": "Numbs the pain, but won't help serious wounds. Serious stuff. Also good for getting off the junk.",
+    "trans": "Giảm đau, nhưng không giúp ích cho vết thương nghiêm trọng. Thuốc mạnh đấy. Cũng tốt cho việc cai nghiện.",
+    "origBytes": 97,
+    "overflow": 8
+  },
+  {
+    "orig": "Serious stuff. Numbs the pain, but won't help serious wounds. It'll just make you not care about them.",
+    "trans": "Thứ này nghiêm trọng đấy. Làm dịu cơn đau, nhưng không giúp ích gì cho vết thương nghiêm trọng. Nó chỉ khiến bạn không còn quan tâm đến chúng nữa.",
+    "origBytes": 102,
+    "overflow": 44
+  },
+  {
+    "orig": "Good stuff. Numbs the pain, but won't help serious wounds.",
+    "trans": "Thứ tốt. Làm dịu cơn đau, nhưng không giúp ích gì cho vết thương nghiêm trọng.",
+    "origBytes": 58,
+    "overflow": 20
+  },
+  {
+    "orig": "So good...",
+    "trans": "Ngon quá...",
+    "origBytes": 10,
+    "overflow": 1
+  },
+  {
+    "orig": "Restores max stamina a little. It's cold, it's stale, and I think it was filtered with zombie guts, but dammit, it's coffee.",
+    "trans": "Phục hồi một ít sức bền tối đa. Nó lạnh, nó ôi thiu, và tôi nghĩ nó được lọc bằng ruột zombie, nhưng chết tiệt, đó là cà phê.",
+    "origBytes": 124,
+    "overflow": 1
+  },
+  {
+    "orig": "Energy Drink",
+    "trans": "Nước Tăng Lực",
+    "origBytes": 12,
+    "overflow": 1
+  },
+  {
+    "orig": "Mmmm, guarana.  (Removes penalties to your maximum stamina)",
+    "trans": "Mmmm, guarana. (Loại bỏ các hình phạt đối với sức bền tối đa của bạn)",
+    "origBytes": 59,
+    "overflow": 10
+  },
+  {
+    "orig": "Mild Stims",
+    "trans": "Chất Kích Thích Nhẹ",
+    "origBytes": 10,
+    "overflow": 9
+  },
+  {
+    "orig": "Restores max Stamina a little. Fresh from our med lab. Heisenberg would be proud.",
+    "trans": "Phục hồi một ít sức bền tối đa. Mới ra lò từ phòng thí nghiệm y tế của chúng tôi. Heisenberg sẽ tự hào.",
+    "origBytes": 81,
+    "overflow": 22
+  },
+  {
+    "orig": "Potent Stims",
+    "trans": "Chất Kích Thích Mạnh",
+    "origBytes": 12,
+    "overflow": 8
+  },
+  {
+    "orig": "Restores max Stamina a lot. Fresh from our lab, cooked up extra potent. (Addictive?) ",
+    "trans": "Phục hồi nhiều sức bền tối đa. Mới ra lò từ phòng thí nghiệm của chúng tôi, được điều chế cực mạnh. (Gây nghiện?)",
+    "origBytes": 85,
+    "overflow": 28
+  },
+  {
+    "orig": "Restores max stamina a fair bit. (Addictive?) Pure glass--the good stuff. Accept no substitute.",
+    "trans": "Phục hồi khá nhiều sức bền tối đa. (Gây nghiện?) Thứ tinh khiết--hàng xịn. Không chấp nhận bất kỳ thứ thay thế nào.",
+    "origBytes": 95,
+    "overflow": 20
+  },
+  {
+    "orig": "Trucker Pills",
+    "trans": "Thuốc Viên Tài Xế",
+    "origBytes": 13,
+    "overflow": 4
+  },
+  {
+    "orig": "Restores max stamina a fair bit. (Addictive?) King of the Road Trucking Pills. Truck as hard as you want. The label says fenethyl-something, only approved in Europe.",
+    "trans": "Phục hồi khá nhiều sức bền tối đa. (Gây nghiện?) Thuốc Viên Vận Tải Vua Đường Trường. Lái xe cật lực tùy thích. Nhãn ghi fenethyl-gì đó, chỉ được phê duyệt ở Châu Âu.",
+    "origBytes": 165,
+    "overflow": 1
+  },
+  {
+    "orig": "Restores max stamina a fair bit. (Addictive?) Active ingredient: modafinil. Whatever that is.",
+    "trans": "Phục hồi khá nhiều sức bền tối đa. (Gây nghiện?) Thành phần hoạt tính: modafinil. Dù đó là gì đi nữa.",
+    "origBytes": 93,
+    "overflow": 8
+  },
+  {
+    "orig": "Wilkerson Private Reserve",
+    "trans": "Dự Trữ Riêng Của Wilkerson",
+    "origBytes": 25,
+    "overflow": 1
+  },
+  {
+    "orig": "Zeds dislike fire. This one comes fresh out of our workshop, so go us!",
+    "trans": "Zombie không thích lửa. Cái này vừa ra lò từ xưởng của chúng tôi, nên chúng ta cứ thế mà chiến!",
+    "origBytes": 70,
+    "overflow": 25
+  },
+  {
+    "orig": "Chemical Incendiary",
+    "trans": "Chất Gây Cháy Hóa Học",
+    "origBytes": 19,
+    "overflow": 2
+  },
+  {
+    "orig": "Sets zeds on fire. They don't seem to like it much. Watch it with this one--it's got a kick.",
+    "trans": "Đốt cháy lũ zombie. Chúng có vẻ không thích lắm. Cẩn thận với cái này--nó có sức công phá đấy.",
+    "origBytes": 92,
+    "overflow": 2
+  },
+  {
+    "orig": "You throw it. It goes boom. If you're lucky, not right in your face.",
+    "trans": "Bạn ném nó. Nó nổ bùm. Nếu may mắn, nó sẽ không nổ ngay trước mặt bạn.",
+    "origBytes": 68,
+    "overflow": 2
+  },
+  {
+    "orig": "Standard military hand grenade. This one fell off a truck, a big green truck.",
+    "trans": "Lựu đạn cầm tay tiêu chuẩn quân sự. Cái này rơi ra từ một chiếc xe tải, một chiếc xe tải lớn màu xanh lá cây.",
+    "origBytes": 77,
+    "overflow": 32
+  },
+  {
+    "orig": "Lights an area up. Good for night-time zombie spotting, or night-time zombie luring.",
+    "trans": "Thắp sáng một khu vực. Tốt để phát hiện zombie vào ban đêm, hoặc dụ zombie vào ban đêm.",
+    "origBytes": 84,
+    "overflow": 3
+  },
+  {
+    "orig": "Flame Fougasse",
+    "trans": "Lựu đạn cháy Fougasse",
+    "origBytes": 14,
+    "overflow": 7
+  },
+  {
+    "orig": "Like a Molotov, but this one's pressure sensitive.",
+    "trans": "Giống như Molotov, nhưng cái này nhạy cảm với áp lực.",
+    "origBytes": 50,
+    "overflow": 3
+  },
+  {
+    "orig": "Cram a noisemaker into an improvised mine, and it lures the zombies in before it explodes. Nice.",
+    "trans": "Nhét một thiết bị gây tiếng ồn vào một quả mìn tự chế, nó sẽ dụ zombie đến trước khi phát nổ. Tuyệt.",
+    "origBytes": 96,
+    "overflow": 4
+  },
+  {
+    "orig": "Pops up to head height for optimal zombie killing.",
+    "trans": "Bật lên ngang đầu để tiêu diệt zombie hiệu quả nhất.",
+    "origBytes": 50,
+    "overflow": 2
+  },
+  {
+    "orig": "Artillery Marker",
+    "trans": "Thiết bị đánh dấu pháo kích",
+    "origBytes": 16,
+    "overflow": 11
+  },
+  {
+    "orig": "Wind-Up Alarm Clock",
+    "trans": "Đồng hồ báo thức lên dây cót",
+    "origBytes": 19,
+    "overflow": 9
+  },
+  {
+    "orig": "Even dead, people still hate this sound. Brings the zombies running.",
+    "trans": "Ngay cả khi đã chết, người ta vẫn ghét âm thanh này. Khiến zombie chạy đến.",
+    "origBytes": 68,
+    "overflow": 7
+  },
+  {
+    "orig": "Kitchen Timer",
+    "trans": "Đồng hồ hẹn giờ nhà bếp",
+    "origBytes": 13,
+    "overflow": 10
+  },
+  {
+    "orig": "Set the timer and run like hell. Zombies'll come running like it's Sunday dinner.",
+    "trans": "Đặt hẹn giờ rồi chạy thục mạng. Zombie sẽ chạy đến như thể đó là bữa tối Chủ Nhật vậy.",
+    "origBytes": 81,
+    "overflow": 5
+  },
+  {
+    "orig": "Talking Doll",
+    "trans": "Búp bê biết nói",
+    "origBytes": 12,
+    "overflow": 3
+  },
+  {
+    "orig": "This one's just plain creepy. Seems to attract the zombies, though.",
+    "trans": "Cái này chỉ đơn giản là đáng sợ. Dù sao thì nó cũng có vẻ thu hút zombie.",
+    "origBytes": 67,
+    "overflow": 6
+  },
+  {
+    "orig": "Handcrafted Suppressor",
+    "trans": "Ống giảm thanh thủ công",
+    "origBytes": 22,
+    "overflow": 1
+  },
+  {
+    "orig": "Machined Suppressor",
+    "trans": "Ống giảm thanh gia công",
+    "origBytes": 19,
+    "overflow": 4
+  },
+  {
+    "orig": "Cuts down gunshot noise. Not quite professional quality, but might last for a good 50 shots.",
+    "trans": "Giảm tiếng súng. Chất lượng chưa đạt chuẩn chuyên nghiệp, nhưng có thể dùng được khoảng 50 phát.",
+    "origBytes": 92,
+    "overflow": 4
+  },
+  {
+    "orig": "I never meant to... hell, I never thought I was even capable of something like that. I guess you never really know what you're capable of until you're three days out from your last meal and some kid grabs the last can of tuna fish out from under you, huh? Learned a lot of things that day. Like how it feels to crush the life out of somebody's throat. I don't even know who I'm writing this note to. God? Myself? That kid? Hell, whoever you are, I'm sorry.",
+    "trans": "Tôi chưa bao giờ có ý định... chết tiệt, tôi chưa bao giờ nghĩ mình có thể làm được điều như vậy. Tôi đoán bạn sẽ không bao giờ thực sự biết mình có khả năng gì cho đến khi bạn đã ba ngày không có bữa ăn nào và một đứa trẻ giật lấy lon cá ngừ cuối cùng từ tay bạn, phải không? Tôi đã học được rất nhiều điều vào ngày hôm đó. Chẳng hạn như cảm giác bóp nát cổ họng của ai đó. Tôi thậm chí không biết mình đang viết bức thư này cho ai. Chúa? Bản thân tôi? Đứa trẻ đó? Chết tiệt, dù bạn là ai, tôi xin lỗi.",
+    "origBytes": 456,
+    "overflow": 47
+  },
+  {
+    "orig": "Hasty scribblings in pencil on the back of an office envelope.",
+    "trans": "Những dòng chữ viết vội bằng bút chì ở mặt sau một phong bì công sở.",
+    "origBytes": 62,
+    "overflow": 6
+  },
+  {
+    "orig": "Day 9. The attacks are getting more frequent now. They know we're here. Ammo's running low, but it's the stress that's really getting to us. Can't sleep with all those screamers out there. Vasquez is taking it the worst--if you find this note, and you find us dead from gunshot wounds, look at Vasquez.",
+    "trans": "Ngày 9. Các cuộc tấn công đang diễn ra thường xuyên hơn. Chúng biết chúng ta ở đây. Đạn dược đang cạn kiệt, nhưng chính sự căng thẳng mới là thứ thực sự ảnh hưởng đến chúng ta. Không thể ngủ được với tất cả những kẻ la hét ngoài kia. Vasquez là người chịu đựng tệ nhất – nếu bạn tìm thấy bức thư này, và bạn thấy chúng tôi chết vì vết thương do súng bắn, hãy xem xét Vasquez.",
+    "origBytes": 302,
+    "overflow": 75
+  },
+  {
+    "orig": "Diary Page",
+    "trans": "Trang nhật ký",
+    "origBytes": 10,
+    "overflow": 3
+  },
+  {
+    "orig": "Black pen on a yellow legal notepad, there is a bloody thumbprint in the corner.",
+    "trans": "Bút mực đen trên một tập giấy ghi chú pháp lý màu vàng, có một dấu vân tay dính máu ở góc.",
+    "origBytes": 80,
+    "overflow": 10
+  },
+  {
+    "orig": "Never realized how much food three people can go through in a week. When we found that Tartan Mart nobody had hit yet, we thought we'd taken enough for a month, but now it's a week later and the food's all gone and that Tartan Mart has been totally picked over... and now I don't know what to do.",
+    "trans": "Chưa bao giờ nhận ra ba người có thể ăn hết bao nhiêu thức ăn trong một tuần. Khi chúng tôi tìm thấy cái Tartan Mart mà chưa ai đụng đến, chúng tôi nghĩ mình đã lấy đủ cho một tháng, nhưng giờ thì một tuần sau thức ăn đã hết sạch và cái Tartan Mart đó đã bị lục tung... và giờ tôi không biết phải làm gì.",
+    "origBytes": 296,
+    "overflow": 8
+  },
+  {
+    "orig": "Diary Page",
+    "trans": "Trang nhật ký",
+    "origBytes": 10,
+    "overflow": 3
+  },
+  {
+    "orig": "Blue ballpoint pen on the back of a Tartan Mart inventory order form.",
+    "trans": "Bút bi xanh trên mặt sau của một phiếu đặt hàng kiểm kê của Tartan Mart.",
+    "origBytes": 69,
+    "overflow": 3
+  },
+  {
+    "orig": "I'm leaving this note for my family and friends. If that's not you, put this note down before the poison in the ink seeps into your skin and kills you. If it is you, don't worry, the poison thing was a bluff. I'm going across the river to find out what those Army pigs know. If I'm not back by Thursday, assume I've been compromised by government mind-lasers and you should shoot me on sight.",
+    "trans": "Tôi để lại bức thư này cho gia đình và bạn bè của tôi. Nếu không phải bạn, hãy đặt bức thư này xuống trước khi chất độc trong mực ngấm vào da bạn và giết chết bạn. Nếu là bạn, đừng lo lắng, chuyện chất độc chỉ là lừa bịp. Tôi sẽ đi qua sông để tìm hiểu xem lũ lính khốn kiếp đó biết gì. Nếu tôi không trở lại trước thứ Năm, hãy cho rằng tôi đã bị ảnh hưởng bởi tia laser điều khiển tâm trí của chính phủ và bạn nên bắn tôi ngay lập tức.",
+    "origBytes": 392,
+    "overflow": 44
+  },
+  {
+    "orig": "This note is for John. And for Sara. It's for Lisa and Geraldo and Mahz and all of them. I'm the only one left. Guys, I'm sorry this is the best memorial I can give you. I'm gonna leave this note someplace I hope people will find it. I'm gonna leave it with some pictures from that Vegas weekend last year. Hopefully it finds its way to your people. Love all you guys.",
+    "trans": "Bức thư này dành cho John. Và cho Sara. Nó dành cho Lisa và Geraldo và Mahz và tất cả bọn họ. Tôi là người duy nhất còn lại. Các bạn, tôi xin lỗi đây là tất cả những gì tốt nhất tôi có thể làm để tưởng nhớ các bạn. Tôi sẽ để bức thư này ở một nơi mà tôi hy vọng mọi người sẽ tìm thấy. Tôi sẽ để nó cùng với một vài bức ảnh từ chuyến đi Vegas cuối tuần năm ngoái. Hy vọng nó sẽ đến được tay những người thân của các bạn. Yêu tất cả các bạn.",
+    "origBytes": 368,
+    "overflow": 71
+  },
+  {
+    "orig": "Blue ballpoint pen on pink flowery stationery, sealed in a plastic sandwich bag.",
+    "trans": "Bút bi xanh trên giấy viết thư màu hồng có hoa văn, được niêm phong trong một túi nhựa đựng bánh sandwich.",
+    "origBytes": 80,
+    "overflow": 26
+  },
+  {
+    "orig": "Dear Anthony, We waited as long as we could. Your father isn't willing to stay any longer. I suppose he's right. We can't risk everyone else. I hope you find this note and that you come find us. We didn't want to leave without you. We love you. Be safe.",
+    "trans": "Anthony thân mến, Chúng ta đã đợi lâu nhất có thể. Cha con không muốn ở lại nữa. Mẹ nghĩ ông ấy đúng. Chúng ta không thể mạo hiểm với những người khác. Mẹ hy vọng con tìm thấy bức thư này và con sẽ đến tìm chúng ta. Chúng ta không muốn rời đi mà không có con. Chúng ta yêu con. Hãy an toàn nhé.",
+    "origBytes": 253,
+    "overflow": 41
+  },
+  {
+    "orig": "Carly, if you get this note, STAY HERE. I heard a rumor you were in Danforth, so I went to check it out, but just in case it's wrong, I want you to wait for me here. Lock the doors, there's food and ammo in the house, and don't let anyone in who isn't me. Okay? I'll see you soon.",
+    "trans": "Carly, nếu em nhận được bức thư này, HÃY Ở LẠI ĐÂY. Anh nghe tin đồn em ở Danforth, nên anh đã đến đó kiểm tra, nhưng phòng trường hợp tin đó sai, anh muốn em đợi anh ở đây. Khóa cửa lại, có thức ăn và đạn dược trong nhà, và đừng cho bất kỳ ai vào trừ anh. Được chứ? Anh sẽ gặp em sớm.",
+    "origBytes": 280,
+    "overflow": 5
+  },
+  {
+    "orig": "Black pen on a yellow sticky-note.",
+    "trans": "Bút mực đen trên một tờ giấy ghi chú dán (sticky-note) màu vàng.",
+    "origBytes": 34,
+    "overflow": 30
+  },
+  {
+    "orig": "Dear Colin, I'm leaving you. I can't take the lies, or the paranoia, or the constant harping about government conspiracy. I'm going to stay with my mother up north. Don't try to find me. - Elsa. P.S. I took all your guns, your ammo, and your ridiculous MREs and I threw them in the river. Serves you right, you pig.",
+    "trans": "Colin thân mến, Em rời bỏ anh. Em không thể chịu đựng những lời dối trá, hay sự hoang tưởng, hay việc anh liên tục nói về âm mưu của chính phủ. Em sẽ ở với mẹ em ở phía bắc. Đừng cố tìm em. - Elsa. Tái bút: Em đã lấy tất cả súng, đạn dược và những khẩu phần ăn MRE lố bịch của anh và ném chúng xuống sông. Đáng đời anh, đồ lợn.",
+    "origBytes": 315,
+    "overflow": 12
+  },
+  {
+    "orig": "Blue pen on crumpled notepaper.",
+    "trans": "Bút mực xanh trên giấy ghi chú nhàu nát.",
+    "origBytes": 31,
+    "overflow": 9
+  },
+  {
+    "orig": "Dear Diary, HOLY SHIT IT WORKED! When Skyler said he found a ritual that could bend the dead to our black wills and finally take revenge on assholes like Ricky Valdez I kinda thought he was full of shit, but IT WORKED! It's all over the news, the dead are rising from the grave to eat the flesh of the living! BRB, I'm going to try out my sweet zombie-controlling powers!",
+    "trans": "Nhật ký thân mến, CHẾT TIỆT NÓ ĐÃ THÀNH CÔNG! Khi Skyler nói rằng anh ấy tìm thấy một nghi lễ có thể khiến người chết phục tùng ý chí đen tối của chúng ta và cuối cùng trả thù những kẻ khốn nạn như Ricky Valdez, tôi đã nghĩ anh ấy nói nhảm, nhưng NÓ ĐÃ THÀNH CÔNG! Tin tức tràn lan khắp nơi, người chết đang trỗi dậy từ mộ để ăn thịt người sống! BRB, tôi sẽ thử sức mạnh điều khiển zombie ngọt ngào của mình!",
+    "origBytes": 371,
+    "overflow": 37
+  },
+  {
+    "orig": "Diary Page",
+    "trans": "Trang nhật ký",
+    "origBytes": 10,
+    "overflow": 3
+  },
+  {
+    "orig": "If you think this thing \"just happened,\" you're fooling yourself. Someone knows what caused this, someone is BEHIND this. Don't believe me? Then riddle me this: why did the Army start ferrying people in two days BEFORE the first confirmed attacks?",
+    "trans": "Nếu mày nghĩ chuyện này \"tự nhiên xảy ra,\" thì mày đang tự lừa dối mình đấy. Ai đó biết nguyên nhân của chuyện này, ai đó ĐỨNG SAU chuyện này. Không tin tao à? Vậy thì giải thích cho tao cái này: tại sao Quân đội lại bắt đầu vận chuyển người vào hai ngày TRƯỚC khi các cuộc tấn công đầu tiên được xác nhận?",
+    "origBytes": 247,
+    "overflow": 59
+  },
+  {
+    "orig": "Typewriter (yes, an actual typewriter) on typing paper.",
+    "trans": "Máy đánh chữ (đúng vậy, một chiếc máy đánh chữ thật) trên giấy đánh máy.",
+    "origBytes": 55,
+    "overflow": 17
+  },
+  {
+    "orig": "Weird stuff on the news, and today Job Wilkerson pays me a call and says I can pay him off in bullets and food instead of cash. What the hell's going on?",
+    "trans": "Tin tức kỳ lạ trên TV, và hôm nay Job Wilkerson gọi cho tôi và nói tôi có thể trả nợ hắn bằng đạn và thức ăn thay vì tiền mặt. Chuyện quái quỷ gì đang xảy ra vậy?",
+    "origBytes": 153,
+    "overflow": 9
+  },
+  {
+    "orig": "Diary Page",
+    "trans": "Trang nhật ký",
+    "origBytes": 10,
+    "overflow": 3
+  },
+  {
+    "orig": "Aunt Helen: Took me ten years, but I finally found it. Proof that the sheriff buried evidence in my cousin's case so he and that damned judge could keep their conviction rate intact. I was supposed to show it to Councilman Santos' friend at the Marshall Gazette today, but he had to reschedule. Something about a major story breaking at the hospital.",
+    "trans": "Dì Helen: Mất mười năm, nhưng cuối cùng tôi cũng tìm thấy nó. Bằng chứng cho thấy cảnh sát trưởng đã chôn giấu bằng chứng trong vụ án của anh họ tôi để ông ta và tên thẩm phán đáng nguyền rủa đó có thể giữ vững tỷ lệ kết án của mình. Tôi định cho bạn của Nghị viên Santos ở Marshall Gazette xem hôm nay, nhưng anh ấy phải dời lịch. Chuyện gì đó về một tin tức lớn đang xảy ra ở bệnh viện.",
+    "origBytes": 350,
+    "overflow": 38
+  },
+  {
+    "orig": "Computer printout on personal letterhead, mailed two weeks ago.",
+    "trans": "Bản in máy tính trên giấy tiêu đề cá nhân, gửi đi hai tuần trước.",
+    "origBytes": 63,
+    "overflow": 2
+  },
+  {
+    "orig": "Strain 854b shows a remarkable resistance to traditional antibiotic countermeasures. Estimated probability of successful containment: 13.48%",
+    "trans": "Chủng 854b cho thấy khả năng kháng cự đáng kể đối với các biện pháp đối phó kháng sinh truyền thống. Xác suất ước tính kiểm soát thành công: 13.48%",
+    "origBytes": 140,
+    "overflow": 7
+  },
+  {
+    "orig": "Black pen on a heavily redacted CDC NORS (WDT) form.",
+    "trans": "Bút đen trên một mẫu CDC NORS (WDT) đã bị kiểm duyệt nặng nề.",
+    "origBytes": 52,
+    "overflow": 9
+  },
+  {
+    "orig": "I've waited my whole life for this moment. My katana is sharp, my .50 caliber is fully loaded, and my trench coat is freshly dry-cleaned. Time to kill some zombies.",
+    "trans": "Tôi đã chờ đợi khoảnh khắc này cả đời. Thanh katana của tôi sắc bén, khẩu .50 caliber của tôi đã nạp đầy đạn, và chiếc áo khoác trench của tôi vừa được giặt khô. Đến lúc đi giết vài con zombie rồi.",
+    "origBytes": 164,
+    "overflow": 33
+  },
+  {
+    "orig": "Diary Page",
+    "trans": "Trang nhật ký",
+    "origBytes": 10,
+    "overflow": 3
+  },
+  {
+    "orig": "MISSING GIRL: Have you seen me? Alex Collins, 5'6\" 113 lbs., brown eyes, purple-dyed hair. REWARD OFFERED, NO QUESTIONS ASKED. We just want our little girl home.",
+    "trans": "CÔ GÁI MẤT TÍCH: Bạn có thấy tôi không? Alex Collins, cao 1m68, nặng 51kg, mắt nâu, tóc nhuộm tím. CÓ THƯỞNG, KHÔNG HỎI GÌ CẢ. Chúng tôi chỉ muốn con gái bé bỏng của mình về nhà.",
+    "origBytes": 161,
+    "overflow": 17
+  },
+  {
+    "orig": "Blue pen on a sticky note that reads, \"To do list\".",
+    "trans": "Bút xanh trên một tờ ghi chú dán có ghi, \"Danh sách việc cần làm\".",
+    "origBytes": 51,
+    "overflow": 15
+  },
+  {
+    "orig": "Hi Ma. Dunno why I keep writing these notes to you--I'm a little too old to believe you're reading them up in Heaven. Habit, I guess. Well, anyways, Joanie had the baby, but it was a pretty tough labor. She's staying with her folks out west for a little while, but I've got to stay here and keep working. It's hard, knowing she and little Max are so far away, but that's what men do for their families, right? That's what you and dad taught me, anyway. Okay, Ma, I gotta go--something's on the TV about an emergency evacuation order or something. I better go see what it is. Love to Grandma and Grandpa. - Eugene",
+    "trans": "Chào Má. Con không biết tại sao con cứ viết những ghi chú này cho Má – con đã hơi lớn để tin rằng Má đang đọc chúng trên Thiên Đàng. Chắc là thói quen thôi. Dù sao thì, Joanie đã sinh em bé, nhưng ca sinh khá khó khăn. Cô ấy đang ở với gia đình bên ngoại ở miền tây một thời gian, nhưng con phải ở lại đây và tiếp tục làm việc. Thật khó khăn khi biết cô ấy và bé Max ở xa như vậy, nhưng đó là điều đàn ông làm cho gia đình mình, phải không Má? Dù sao thì đó là điều Má và Ba đã dạy con. Thôi được rồi, Má, con phải đi đây – có gì đó trên TV về lệnh sơ tán khẩn cấp hay gì đó. Con nên đi xem đó là gì. Gửi lời yêu thương đến Bà và Ông. – Eugene",
+    "origBytes": 612,
+    "overflow": 37
+  },
+  {
+    "orig": "Kate - Your dad's still not back from the commissary at the ranger station. I'm going to go see what's keeping him. If I'm not back before you wake up, stay in the cabin and have a granola bar for breakfast. No using the camp stove unsupervised. - Mom",
+    "trans": "Kate – Bố con vẫn chưa về từ cửa hàng quân nhu ở trạm kiểm lâm. Mẹ sẽ đi xem có chuyện gì giữ chân bố. Nếu mẹ không về trước khi con thức dậy, hãy ở trong cabin và ăn một thanh granola cho bữa sáng. Không được dùng bếp cắm trại khi không có người lớn giám sát. – Mẹ",
+    "origBytes": 251,
+    "overflow": 18
+  },
+  {
+    "orig": "This cell phone has a cracked screen and almost no battery life left, but the camera function shows a series of images of shambling figures lurking into the light of a campfire while some college kids look on. The last image shows one of the figures grabbing a young man by the shoulders. The call log shows seven dropped calls to 911.",
+    "trans": "Chiếc điện thoại di động này có màn hình nứt và gần như hết pin, nhưng chức năng camera hiển thị một loạt hình ảnh những bóng người lảo đảo ẩn mình trong ánh lửa trại trong khi một số sinh viên đại học đang theo dõi. Hình ảnh cuối cùng cho thấy một trong những bóng người đang túm lấy vai một thanh niên. Nhật ký cuộc gọi hiển thị bảy cuộc gọi nhỡ đến 911.",
+    "origBytes": 335,
+    "overflow": 21
+  },
+  {
+    "orig": "Damaged cellphone, stuck on the \"My Photos\" folder.",
+    "trans": "Điện thoại di động bị hỏng, kẹt ở thư mục \"Ảnh của tôi\".",
+    "origBytes": 51,
+    "overflow": 5
+  },
+  {
+    "orig": "Saw some creepy dude hanging out by the public restrooms. He looked drunk. Maybe stoned. Stank too. Gross. I decided to hold it.",
+    "trans": "Thấy một gã đáng sợ lảng vảng gần nhà vệ sinh công cộng. Hắn trông say xỉn. Có lẽ là phê thuốc. Hôi nữa. Ghê tởm. Tôi quyết định nhịn.",
+    "origBytes": 128,
+    "overflow": 6
+  },
+  {
+    "orig": "Ranger Gunderson - We apologize, but despite your repeated requests we cannot authorize the purchase of any .50 caliber hunting rifles for the ranger station. We would like to remind you that bears have not been seen on Mt. Tanner in over forty years, and moreover large-caliber rifles are not a recommended means of dealing with rogue bears.",
+    "trans": "Kiểm lâm Gunderson – Chúng tôi xin lỗi, nhưng mặc dù ông đã nhiều lần yêu cầu, chúng tôi không thể phê duyệt việc mua bất kỳ khẩu súng trường săn cỡ nòng .50 nào cho trạm kiểm lâm. Chúng tôi muốn nhắc nhở ông rằng gấu đã không được nhìn thấy trên Núi Tanner trong hơn bốn mươi năm, và hơn nữa, súng trường cỡ nòng lớn không phải là phương tiện được khuyến nghị để đối phó với những con gấu hung dữ.",
+    "origBytes": 342,
+    "overflow": 58
+  },
+  {
+    "orig": "Compter printout on official County Parks Administration letterhead.",
+    "trans": "Bản in máy tính trên giấy tiêu đề chính thức của Cục Quản lý Công viên Hạt.",
+    "origBytes": 68,
+    "overflow": 7
+  },
+  {
+    "orig": "Artillery Marker",
+    "trans": "Thiết bị đánh dấu pháo kích",
+    "origBytes": 16,
+    "overflow": 11
+  },
+  {
+    "orig": "Mortar Marker",
+    "trans": "Đánh Dấu Pháo Cối",
+    "origBytes": 13,
+    "overflow": 4
+  },
+  {
+    "orig": "Toss this to target an area for mortar.",
+    "trans": "Ném cái này để đánh dấu khu vực cho pháo cối.",
+    "origBytes": 39,
+    "overflow": 6
+  },
+  {
+    "orig": "Drone Strike Marker",
+    "trans": "Đánh Dấu Tấn Công Drone",
+    "origBytes": 19,
+    "overflow": 4
+  },
+  {
+    "orig": "Toss this to target an area for a Drone Strike.",
+    "trans": "Ném cái này để đánh dấu khu vực cho một cuộc Tấn Công Drone.",
+    "origBytes": 47,
+    "overflow": 13
+  },
+  {
+    "orig": "Pistol: G 17C",
+    "trans": "Súng Lục: G 17C",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: Bz 75",
+    "trans": "Súng Lục: Bz 75",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "A favorite of police forces the world over.",
+    "trans": "Một loại súng yêu thích của lực lượng cảnh sát trên toàn thế giới.",
+    "origBytes": 43,
+    "overflow": 23
+  },
+  {
+    "orig": "Pistol: D 1911",
+    "trans": "Súng Lục: D 1911",
+    "origBytes": 14,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: G 19",
+    "trans": "Súng Lục: G 19",
+    "origBytes": 12,
+    "overflow": 2
+  },
+  {
+    "orig": "Compact, little brother of the G17C",
+    "trans": "Nhỏ gọn, phiên bản nhỏ hơn của G17C.",
+    "origBytes": 35,
+    "overflow": 1
+  },
+  {
+    "orig": "Pistol: G 26",
+    "trans": "Súng lục: G 26",
+    "origBytes": 12,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: M9",
+    "trans": "Súng lục: M9",
+    "origBytes": 10,
+    "overflow": 2
+  },
+  {
+    "orig": "The standard in most U.S. military branches since 1985.",
+    "trans": "Tiêu chuẩn trong hầu hết các quân chủng Hoa Kỳ kể từ năm 1985.",
+    "origBytes": 55,
+    "overflow": 7
+  },
+  {
+    "orig": "Pistol: P 226",
+    "trans": "Súng lục: P 226",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "European precision used by police and militaries worldwide.",
+    "trans": "Độ chính xác kiểu Châu Âu, được cảnh sát và quân đội trên toàn thế giới sử dụng.",
+    "origBytes": 59,
+    "overflow": 21
+  },
+  {
+    "orig": "Pistol: 1911A1 Officer",
+    "trans": "Súng lục: 1911A1 Officer",
+    "origBytes": 22,
+    "overflow": 2
+  },
+  {
+    "orig": "Historic collectible, still in good condition.",
+    "trans": "Vật phẩm sưu tầm lịch sử, vẫn còn trong tình trạng tốt.",
+    "origBytes": 46,
+    "overflow": 9
+  },
+  {
+    "orig": "Pistol: Condor",
+    "trans": "Súng lục: Condor",
+    "origBytes": 14,
+    "overflow": 2
+  },
+  {
+    "orig": "Uses the .50 AE pistol round, a show stopper.",
+    "trans": "Sử dụng đạn súng lục .50 AE, một phát bắn uy lực.",
+    "origBytes": 45,
+    "overflow": 4
+  },
+  {
+    "orig": "Pistol: G 20 ",
+    "trans": "Súng lục: G 20 ",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "Retooled from 10mm to .45 cal. Scope included.",
+    "trans": "Được chỉnh sửa từ 10mm sang cỡ nòng .45. Kính ngắm đi kèm.",
+    "origBytes": 46,
+    "overflow": 12
+  },
+  {
+    "orig": "Pistol: G21",
+    "trans": "Súng lục: G21",
+    "origBytes": 11,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: G22",
+    "trans": "Súng lục: G22",
+    "origBytes": 11,
+    "overflow": 2
+  },
+  {
+    "orig": "Beloved by police units, light and powerful.",
+    "trans": "Được các đơn vị cảnh sát yêu thích, nhẹ và mạnh mẽ.",
+    "origBytes": 44,
+    "overflow": 7
+  },
+  {
+    "orig": "Pistol: M11",
+    "trans": "Súng lục: M11",
+    "origBytes": 11,
+    "overflow": 2
+  },
+  {
+    "orig": "A P226 used by select U.S. military units.",
+    "trans": "Một khẩu P226 được các đơn vị quân đội Hoa Kỳ chọn lọc sử dụng.",
+    "origBytes": 42,
+    "overflow": 21
+  },
+  {
+    "orig": "Pistol: Mi.Le",
+    "trans": "Súng lục: Mi.Le",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "Designed for police and military uses.",
+    "trans": "Được thiết kế cho mục đích sử dụng của cảnh sát và quân đội.",
+    "origBytes": 38,
+    "overflow": 22
+  },
+  {
+    "orig": "Pistol: Mk. 3 Target",
+    "trans": "Súng lục: Mk. 3 Target",
+    "origBytes": 20,
+    "overflow": 2
+  },
+  {
+    "orig": "A favorite of target shooters and small game hunters.",
+    "trans": "Một lựa chọn yêu thích của xạ thủ bắn bia và thợ săn thú nhỏ.",
+    "origBytes": 53,
+    "overflow": 8
+  },
+  {
+    "orig": "Pistol: OHWS 40",
+    "trans": "Súng lục: OHWS 40",
+    "origBytes": 15,
+    "overflow": 2
+  },
+  {
+    "orig": "Used by special operations forces.",
+    "trans": "Được sử dụng bởi lực lượng đặc nhiệm.",
+    "origBytes": 34,
+    "overflow": 3
+  },
+  {
+    "orig": "Pistol: P 229",
+    "trans": "Súng lục: P 229",
+    "origBytes": 13,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: Tac Master 1911",
+    "trans": "Súng lục: Tac Master 1911",
+    "origBytes": 23,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: X-Lock",
+    "trans": "Súng lục: X-Lock",
+    "origBytes": 14,
+    "overflow": 2
+  },
+  {
+    "orig": "A U.S. competitor to the \"G\" line of pistols.",
+    "trans": "Một đối thủ cạnh tranh của Hoa Kỳ với dòng súng lục \"G\".",
+    "origBytes": 45,
+    "overflow": 11
+  },
+  {
+    "orig": "Pistol: X-Lock Tactical",
+    "trans": "Súng lục: X-Lock Tactical",
+    "origBytes": 23,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: Bz75 ST",
+    "trans": "Súng lục: Bz75 ST",
+    "origBytes": 15,
+    "overflow": 2
+  },
+  {
+    "orig": "Pistol: Carrier 1911",
+    "trans": "Súng lục: Carrier 1911",
+    "origBytes": 20,
+    "overflow": 2
+  },
+  {
+    "orig": "Revolver: Snub Special 22",
+    "trans": "Súng ổ quay: Snub Special 22",
+    "origBytes": 25,
+    "overflow": 3
+  },
+  {
+    "orig": "Reliable and inexpensive, a classic.",
+    "trans": "Đáng tin cậy và không đắt tiền, một lựa chọn kinh điển.",
+    "origBytes": 36,
+    "overflow": 19
+  },
+  {
+    "orig": "Revolver: Viper P357",
+    "trans": "Súng ổ quay: Viper P357",
+    "origBytes": 20,
+    "overflow": 3
+  },
+  {
+    "orig": "A revolver with a long history of police use.",
+    "trans": "Một khẩu súng lục ổ quay với lịch sử sử dụng lâu dài trong lực lượng cảnh sát.",
+    "origBytes": 45,
+    "overflow": 33
+  },
+  {
+    "orig": "Revolver: M 1917",
+    "trans": "Súng lục ổ quay: M 1917",
+    "origBytes": 16,
+    "overflow": 7
+  },
+  {
+    "orig": "Aging classic from the last days of WWI.",
+    "trans": "Một khẩu kinh điển đã cũ từ những ngày cuối Thế chiến I.",
+    "origBytes": 40,
+    "overflow": 16
+  },
+  {
+    "orig": "Revolver: Model 29",
+    "trans": "Súng lục ổ quay: Model 29",
+    "origBytes": 18,
+    "overflow": 7
+  },
+  {
+    "orig": "Powerful gun, made legendary in the movies.",
+    "trans": "Khẩu súng mạnh mẽ, trở thành huyền thoại trong các bộ phim.",
+    "origBytes": 43,
+    "overflow": 16
+  },
+  {
+    "orig": "Revolver: Toro Bravo",
+    "trans": "Súng lục ổ quay: Toro Bravo",
+    "origBytes": 20,
+    "overflow": 7
+  },
+  {
+    "orig": "An angry bull, this packs a big punch.",
+    "trans": "Một con bò tót giận dữ, khẩu súng này có sức công phá lớn.",
+    "origBytes": 38,
+    "overflow": 20
+  }
+]

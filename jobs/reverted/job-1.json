@@ -1,0 +1,812 @@
+[
+  {
+    "orig": "TIP: Hold [sprint] to sprint.",
+    "trans": "MẸO: Giữ [sprint] để chạy nước rút.",
+    "origBytes": 29,
+    "overflow": 6
+  },
+  {
+    "orig": "TIP: Hold [v_brake] for the handbrake. Press [vehicle.ul_melee_attack] for a door attack.",
+    "trans": "MẸO: Giữ [v_brake] để kéo phanh tay. Nhấn [vehicle.ul_melee_attack] để tấn công bằng cửa xe.",
+    "origBytes": 89,
+    "overflow": 3
+  },
+  {
+    "orig": "You've taken a lot of damage, reducing your MAXIMUM VITALITY.",
+    "trans": "Bạn đã chịu nhiều sát thương, làm giảm SỨC SỐNG TỐI ĐA của bạn.",
+    "origBytes": 61,
+    "overflow": 2
+  },
+  {
+    "orig": "TIP: Once you fully SEARCH this building, you can set up an OUTPOST here.",
+    "trans": "MẸO: Khi bạn đã TÌM KIẾM kỹ tòa nhà này, bạn có thể thiết lập một TIỀN ĐỒN ở đây.",
+    "origBytes": 73,
+    "overflow": 8
+  },
+  {
+    "orig": "TIP: Radio home using [ul_radio_menu] to create an OUTPOST here.",
+    "trans": "MẸO: Dùng bộ đàm về nhà bằng [ul_radio_menu] để tạo một TIỀN ĐỒN ở đây.",
+    "origBytes": 64,
+    "overflow": 7
+  },
+  {
+    "orig": "TIP: Radio home using [xi_dpad_down] (D-pad) to create an OUTPOST here.",
+    "trans": "MẸO: Dùng bộ đàm về nhà bằng [xi_dpad_down] (D-pad) để tạo một TIỀN ĐỒN ở đây.",
+    "origBytes": 71,
+    "overflow": 7
+  },
+  {
+    "orig": "TIP: Outposts create a small SAFE AREA and can be visited to RESUPPLY.",
+    "trans": "MẸO: Tiền đồn tạo ra một KHU VỰC AN TOÀN nhỏ và có thể ghé thăm để TIẾP TẾ.",
+    "origBytes": 70,
+    "overflow": 5
+  },
+  {
+    "orig": "TIP: Radio home using [ul_radio_menu] to relocate your home base.",
+    "trans": "MẸO: Dùng bộ đàm về nhà bằng [ul_radio_menu] để di dời căn cứ chính của bạn.",
+    "origBytes": 65,
+    "overflow": 11
+  },
+  {
+    "orig": "TIP: Radio home using [xi_dpad_down] (D-pad) to relocate your home base.",
+    "trans": "MẸO: Dùng bộ đàm về nhà bằng [xi_dpad_down] (D-pad) để di dời căn cứ chính của bạn.",
+    "origBytes": 72,
+    "overflow": 11
+  },
+  {
+    "orig": "TIP: If you relocate, you will abandon your current home.",
+    "trans": "MẸO: Nếu bạn di dời, bạn sẽ bỏ lại căn cứ hiện tại của mình.",
+    "origBytes": 57,
+    "overflow": 3
+  },
+  {
+    "orig": "TIP: Hold [cover] to crouch down and make yourself harder to spot.",
+    "trans": "MẸO: Giữ [cover] để cúi người và khiến bản thân khó bị phát hiện hơn.",
+    "origBytes": 66,
+    "overflow": 3
+  },
+  {
+    "orig": "TIP: Experiment with the different emotes your character can perform. Press [emote1], [emote2], [emote3], or [emote4].",
+    "trans": "MẸO: Thử nghiệm các biểu cảm khác nhau mà nhân vật của bạn có thể thực hiện. Nhấn [emote1], [emote2], [emote3], hoặc [emote4].",
+    "origBytes": 118,
+    "overflow": 8
+  },
+  {
+    "orig": "TIP: Experiment with the different emotes your character can perform. Hold [xi_triggerr] then press [xi_a], [xi_b], [xi_x], or [xi_y].",
+    "trans": "MẸO: Thử nghiệm các biểu cảm khác nhau mà nhân vật của bạn có thể thực hiện. Giữ [xi_triggerr] rồi nhấn [xi_a], [xi_b], [xi_x], hoặc [xi_y].",
+    "origBytes": 134,
+    "overflow": 6
+  },
+  {
+    "orig": "TIP: Hold [xi_use] to build a barricade.",
+    "trans": "MẸO: Giữ [xi_use] để xây dựng một chướng ngại vật.",
+    "origBytes": 40,
+    "overflow": 10
+  },
+  {
+    "orig": "TIP: Spend INFLUENCE to take items.",
+    "trans": "MẸO: Dùng ẢNH HƯỞNG để lấy vật phẩm.",
+    "origBytes": 35,
+    "overflow": 1
+  },
+  {
+    "orig": "TIP: Hold [xi_use] to search for supplies or useful items.",
+    "trans": "MẸO: Giữ [xi_use] để tìm kiếm vật tư hoặc vật phẩm hữu ích.",
+    "origBytes": 58,
+    "overflow": 1
+  },
+  {
+    "orig": "TIP: Hold [sprint] + [xi_use] to search FASTER but make more NOISE.",
+    "trans": "MẸO: Giữ [sprint] + [xi_use] để tìm kiếm NHANH HƠN nhưng gây ra nhiều TIẾNG ỒN hơn.",
+    "origBytes": 67,
+    "overflow": 16
+  },
+  {
+    "orig": "TIP: The green icons represent mission opportunities.",
+    "trans": "MẸO: Các biểu tượng màu xanh lá cây đại diện cho cơ hội nhiệm vụ.",
+    "origBytes": 53,
+    "overflow": 12
+  },
+  {
+    "orig": "TIP: The blue ring shows your mission objective.",
+    "trans": "MẸO: Vòng tròn màu xanh lam hiển thị mục tiêu nhiệm vụ của bạn.",
+    "origBytes": 48,
+    "overflow": 15
+  },
+  {
+    "orig": "Earn INFLUENCE by completing missions, gathering supplies, and defending your home.",
+    "trans": "Kiếm ẢNH HƯỞNG bằng cách hoàn thành nhiệm vụ, thu thập vật tư và bảo vệ căn cứ của bạn.",
+    "origBytes": 83,
+    "overflow": 4
+  },
+  {
+    "orig": "TIP: Use [ui_lb] and [ui_rb] to view other item types.",
+    "trans": "MẸO: Dùng [ui_lb] và [ui_rb] để xem các loại vật phẩm khác.",
+    "origBytes": 54,
+    "overflow": 5
+  },
+  {
+    "orig": "The Survivor page shows information on your character, such as Name, Equipment, Traits, Skills, and Status. Use the mouse to highlight specific items to see more information.&#xD;&#xA;You can also use the mouse to manage items in your inventory. This is where you will Equip and Unequip weapons, Reload guns, Use consumables, and Destroy unwanted items.",
+    "trans": "Trang Người sống sót hiển thị thông tin về nhân vật của bạn, như Tên, Trang bị, Đặc điểm, Kỹ năng và Trạng thái. Sử dụng chuột để làm nổi bật các vật phẩm cụ thể để xem thêm thông tin.\r\nBạn cũng có thể sử dụng chuột để quản lý các vật phẩm trong kho đồ của mình. Đây là nơi bạn sẽ Trang bị và Tháo trang bị vũ khí, Nạp đạn súng, Sử dụng vật phẩm tiêu hao và Hủy các vật phẩm không mong muốn.",
+    "origBytes": 353,
+    "overflow": 38
+  },
+  {
+    "orig": "The Survivor page shows information on your character, such as Name, Equipment, Traits, Skills, and Status.  Use the D-pad to highlight specific items to see more information.&#xD;&#xA;You can also use D-pad [xi_dpad_left] to manage items in your inventory.  This is where you will Equip and Unequip weapons, Reload guns, Use consumables, and Destroy unwanted items.",
+    "trans": "Trang Người sống sót hiển thị thông tin về nhân vật của bạn, như Tên, Trang bị, Đặc điểm, Kỹ năng và Trạng thái. Sử dụng D-pad để làm nổi bật các vật phẩm cụ thể để xem thêm thông tin.\r\nBạn cũng có thể sử dụng D-pad [xi_dpad_left] để quản lý các vật phẩm trong kho đồ của mình. Đây là nơi bạn sẽ Trang bị và Tháo trang bị vũ khí, Nạp đạn súng, Sử dụng vật phẩm tiêu hao và Hủy các vật phẩm không mong muốn.",
+    "origBytes": 366,
+    "overflow": 40
+  },
+  {
+    "orig": "You've joined a Community! Press [ul_journal_menu] to open your Journal and learn more about your fellow survivors on the Community page.",
+    "trans": "Bạn đã tham gia một Cộng đồng! Nhấn [ul_journal_menu] để mở Nhật ký và tìm hiểu thêm về những người sống sót khác của bạn trên trang Cộng đồng.",
+    "origBytes": 137,
+    "overflow": 6
+  },
+  {
+    "orig": "You've joined a Community! Press D-pad [xi_dpad_up] to open your Journal and learn more about your fellow survivors on the Community page.",
+    "trans": "Bạn đã tham gia một Cộng đồng! Nhấn D-pad [xi_dpad_up] để mở Nhật ký và tìm hiểu thêm về những người sống sót khác của bạn trên trang Cộng đồng.",
+    "origBytes": 138,
+    "overflow": 6
+  },
+  {
+    "orig": "The Community page shows information on characters in your community.  Character portraits may be shaded to indicate conditions such as Hurt, Sick, or Tired.&#xD;&#xA;Use the mouse to highlight a character and view Name, Equipment, Traits, Skills, and Status. Select the character to highlight specific items to see more information.",
+    "trans": "Trang Cộng đồng hiển thị thông tin về các nhân vật trong cộng đồng của bạn. Chân dung nhân vật có thể bị tô bóng để chỉ ra các tình trạng như Bị thương, Ốm hoặc Mệt mỏi.\r\nSử dụng chuột để làm nổi bật một nhân vật và xem Tên, Trang bị, Đặc điểm, Kỹ năng và Trạng thái. Chọn nhân vật để làm nổi bật các vật phẩm cụ thể để xem thêm thông tin.",
+    "origBytes": 333,
+    "overflow": 6
+  },
+  {
+    "orig": "The Community page shows information on characters in your community.  Character portraits may be shaded to indicate conditions such as Hurt, Sick, or Tired.&#xD;&#xA;Use the D-pad to highlight a character and view Name, Equipment, Traits, Skills, and Status.  Press [xi_a] and use the D-pad to highlight specific items to see more information.",
+    "trans": "Trang Cộng đồng hiển thị thông tin về các nhân vật trong cộng đồng của bạn. Chân dung nhân vật có thể bị tô bóng để chỉ ra các tình trạng như Bị thương, Ốm hoặc Mệt mỏi.\r\nSử dụng D-pad để làm nổi bật một nhân vật và xem Tên, Trang bị, Đặc điểm, Kỹ năng và Trạng thái. Nhấn [xi_a] và sử dụng D-pad để làm nổi bật các vật phẩm cụ thể để xem thêm thông tin.",
+    "origBytes": 344,
+    "overflow": 10
+  },
+  {
+    "orig": "Time to upgrade your Home! Press [ul_journal_menu] to open your Journal and build new Facilties on the Home page.",
+    "trans": "Đã đến lúc nâng cấp Ngôi nhà của bạn! Nhấn [ul_journal_menu] để mở Nhật ký và xây dựng các Cơ sở mới trên trang Ngôi nhà.",
+    "origBytes": 113,
+    "overflow": 8
+  },
+  {
+    "orig": "Time to upgrade your Home! Press D-pad [xi_dpad_up] to open your Journal and build new Facilties on the Home page.",
+    "trans": "Đã đến lúc nâng cấp Ngôi nhà của bạn! Nhấn D-pad [xi_dpad_up] để mở Nhật ký và xây dựng các Cơ sở mới trên trang Ngôi nhà.",
+    "origBytes": 114,
+    "overflow": 8
+  },
+  {
+    "orig": "You've added survivors to your Community! Press [ul_journal_menu] to open your Journal and learn about making Friends on the Community page.",
+    "trans": "Bạn đã thêm những người sống sót vào Cộng đồng của mình! Nhấn [ul_journal_menu] để mở Nhật ký và tìm hiểu về việc kết bạn trên trang Cộng đồng.",
+    "origBytes": 140,
+    "overflow": 3
+  },
+  {
+    "orig": "You've added survivors to your Community! Press D-pad [xi_dpad_up] to open your Journal and learn about making Friends on the Community page.",
+    "trans": "Bạn đã thêm những người sống sót vào Cộng đồng của mình! Nhấn D-pad [xi_dpad_up] để mở Nhật ký và tìm hiểu về việc kết bạn trên trang Cộng đồng.",
+    "origBytes": 141,
+    "overflow": 3
+  },
+  {
+    "orig": "You can become Friends with many characters in the game after earning their full Trust. Your level of Trust with each character is represented by the green gauge. You can earn Trust with characters by helping them out on Missions and keeping the Community defended and well provisioned.&#xD;&#xA;When a character becomes your Friend you can play as that character by highlighting his or her portrait and pressing [ui_x] to \"Switch to...\"",
+    "trans": "Bạn có thể trở thành Bạn bè với nhiều nhân vật trong trò chơi sau khi giành được sự Tin tưởng hoàn toàn của họ. Mức độ Tin tưởng của bạn với mỗi nhân vật được biểu thị bằng thanh màu xanh lá cây. Bạn có thể giành được Tin tưởng với các nhân vật bằng cách giúp đỡ họ trong Nhiệm vụ và giữ cho Cộng đồng được bảo vệ và cung cấp đầy đủ.\r\nKhi một nhân vật trở thành Bạn bè của bạn, bạn có thể chơi với nhân vật đó bằng cách làm nổi bật chân dung của họ và nhấn [ui_x] để ",
+    "origBytes": 437,
+    "overflow": 30
+  },
+  {
+    "orig": "TIP: Tap [cover] to defend.",
+    "trans": "MẸO: Nhấn [cover] để phòng thủ.",
+    "origBytes": 27,
+    "overflow": 4
+  },
+  {
+    "orig": "TIP: Press [ul_melee_attack] to attack.",
+    "trans": "MẸO: Nhấn [ul_melee_attack] để tấn công.",
+    "origBytes": 39,
+    "overflow": 1
+  },
+  {
+    "orig": "TIP: Press [execute] to finish off a downed foe.",
+    "trans": "MẸO: Nhấn [execute] để kết liễu kẻ thù bị hạ gục.",
+    "origBytes": 48,
+    "overflow": 1
+  },
+  {
+    "orig": "TIP: Press [sprint] + [xi_use] to finish off a downed foe.",
+    "trans": "MẸO: Nhấn [sprint] + [xi_use] để kết liễu kẻ thù bị hạ gục.",
+    "origBytes": 58,
+    "overflow": 1
+  },
+  {
+    "orig": "Press [camera] to toggle zoom with scoped weapons.",
+    "trans": "Nhấn [camera] để chuyển đổi phóng to/thu nhỏ với vũ khí có ống ngắm.",
+    "origBytes": 50,
+    "overflow": 18
+  },
+  {
+    "orig": "Click in on [camera] to toggle zoom with scoped weapons.",
+    "trans": "Nhấp [camera] để chuyển đổi phóng to/thu nhỏ với vũ khí có ống ngắm.",
+    "origBytes": 56,
+    "overflow": 12
+  },
+  {
+    "orig": "Tap [jump] while aiming to cycle fire modes with capable weapons.",
+    "trans": "Nhấn [jump] khi đang ngắm để chuyển đổi chế độ bắn với vũ khí tương thích.",
+    "origBytes": 65,
+    "overflow": 9
+  },
+  {
+    "orig": "TIP: Attach a suppressor to muffle your gunshots.",
+    "trans": "MẸO: Gắn bộ giảm thanh để làm giảm tiếng súng của bạn.",
+    "origBytes": 49,
+    "overflow": 5
+  },
+  {
+    "orig": "TIP: Use an EXPLOSIVE or INCENDIARY to go out in a Blaze of Glory.",
+    "trans": "MẸO: Dùng VẬT LIỆU NỔ hoặc VẬT LIỆU GÂY CHÁY để kết thúc trong vinh quang.",
+    "origBytes": 66,
+    "overflow": 8
+  },
+  {
+    "orig": "TIP: Press [execute] while sneaking to kill a zombie instantly",
+    "trans": "MẸO: Nhấn [execute] khi đang lén lút để tiêu diệt zombie ngay lập tức.",
+    "origBytes": 62,
+    "overflow": 8
+  },
+  {
+    "orig": "TIP: Hold [sprint] + [xi_use] while sneaking to kill a zombie instantly",
+    "trans": "MẸO: Giữ [sprint] + [xi_use] khi đang lén lút để tiêu diệt zombie ngay lập tức.",
+    "origBytes": 71,
+    "overflow": 8
+  },
+  {
+    "orig": "TIP: Move into a bush while crouched to hide completely.",
+    "trans": "MẸO: Di chuyển vào bụi cây khi đang cúi người để ẩn nấp hoàn toàn.",
+    "origBytes": 56,
+    "overflow": 10
+  },
+  {
+    "orig": "You are HIDDEN. Remain in cover to avoid detection.",
+    "trans": "Bạn đang ẨN NẤP. Hãy ở trong chỗ ẩn nấp để tránh bị phát hiện.",
+    "origBytes": 51,
+    "overflow": 11
+  },
+  {
+    "orig": "You are DROWNING. Get out of the water.",
+    "trans": "Bạn đang CHẾT ĐUỐI. Hãy ra khỏi mặt nước.",
+    "origBytes": 39,
+    "overflow": 2
+  },
+  {
+    "orig": "TIP: Your mobility and stamina are penalized if you carry too much weight.",
+    "trans": "MẸO: Khả năng di chuyển và thể lực của bạn sẽ bị giảm nếu bạn mang quá nhiều trọng lượng.",
+    "origBytes": 74,
+    "overflow": 15
+  },
+  {
+    "orig": "You are still ENCUMBERED. Stamina will drain rapidly while sprinting.",
+    "trans": "Bạn vẫn đang QUÁ TẢI. Thể lực sẽ cạn kiệt nhanh chóng khi chạy nước rút.",
+    "origBytes": 69,
+    "overflow": 3
+  },
+  {
+    "orig": "Your game is not being saved. Complete the mission to save your progress.",
+    "trans": "Trò chơi của bạn chưa được lưu. Hoàn thành nhiệm vụ để lưu tiến độ của bạn.",
+    "origBytes": 73,
+    "overflow": 2
+  },
+  {
+    "orig": "TIP: Your game is not saved while you are on a mission. Complete the mission to save your progress.",
+    "trans": "MẸO: Trò chơi của bạn không được lưu khi bạn đang thực hiện nhiệm vụ. Hoàn thành nhiệm vụ để lưu tiến độ của bạn.",
+    "origBytes": 99,
+    "overflow": 14
+  },
+  {
+    "orig": "Use [moveforward], [moveleft], [moveback], [moveright] to move.",
+    "trans": "Dùng [moveforward], [moveleft], [moveback], [moveright] để di chuyển.",
+    "origBytes": 63,
+    "overflow": 6
+  },
+  {
+    "orig": "Use [xi_thumblx] to move.",
+    "trans": "Dùng [xi_thumblx] để di chuyển.",
+    "origBytes": 25,
+    "overflow": 6
+  },
+  {
+    "orig": "Use the mouse to look around.",
+    "trans": "Dùng chuột để nhìn xung quanh.",
+    "origBytes": 29,
+    "overflow": 1
+  },
+  {
+    "orig": "Use [xi_thumbrx] to look around.",
+    "trans": "Dùng [xi_thumbrx] để nhìn xung quanh.",
+    "origBytes": 32,
+    "overflow": 5
+  },
+  {
+    "orig": "TIP: Tap [cover] to defend.",
+    "trans": "MẸO: Nhấn [cover] để phòng thủ.",
+    "origBytes": 27,
+    "overflow": 4
+  },
+  {
+    "orig": "TIP: Press [ul_melee_attack] to attack. Press [cover] to defend.",
+    "trans": "MẸO: Nhấn [ul_melee_attack] để tấn công. Nhấn [cover] để phòng thủ.",
+    "origBytes": 64,
+    "overflow": 3
+  },
+  {
+    "orig": "TIP: Press [ul_melee_attack] to attack.",
+    "trans": "MẸO: Nhấn [ul_melee_attack] để tấn công.",
+    "origBytes": 39,
+    "overflow": 1
+  },
+  {
+    "orig": "TIP: Press [jump] to jump and climb.",
+    "trans": "MẸO: Nhấn [jump] để nhảy và leo trèo.",
+    "origBytes": 36,
+    "overflow": 1
+  },
+  {
+    "orig": "TIP: Hold [sprint] to sprint.",
+    "trans": "MẸO: Giữ [sprint] để chạy nước rút.",
+    "origBytes": 29,
+    "overflow": 6
+  },
+  {
+    "orig": "TIP: Hold [sprint] to sprint. Press [jump] to jump and climb.",
+    "trans": "MẸO: Giữ [sprint] để chạy nước rút. Nhấn [jump] để nhảy và leo trèo.",
+    "origBytes": 61,
+    "overflow": 7
+  },
+  {
+    "orig": "Hold [cover] to crouch down and make yourself harder to spot.",
+    "trans": "Giữ [cover] để cúi người xuống và khiến bản thân khó bị phát hiện hơn.",
+    "origBytes": 61,
+    "overflow": 9
+  },
+  {
+    "orig": "TIP: Move into a bush while crouched to hide completely.",
+    "trans": "MẸO: Di chuyển vào bụi cây khi đang cúi người để ẩn nấp hoàn toàn.",
+    "origBytes": 56,
+    "overflow": 10
+  },
+  {
+    "orig": "Press [ul_map_menu] to view your Map.",
+    "trans": "Nhấn [ul_map_menu] để xem Bản đồ của bạn.",
+    "origBytes": 37,
+    "overflow": 4
+  },
+  {
+    "orig": "TIP: Surveying adds buildings and other points of interest to your map.",
+    "trans": "MẸO: Khảo sát sẽ thêm các tòa nhà và các điểm đáng chú ý khác vào bản đồ của bạn.",
+    "origBytes": 71,
+    "overflow": 10
+  },
+  {
+    "orig": "You can search all of these locations for resources, weapons, and other survivors.",
+    "trans": "Bạn có thể tìm kiếm tất cả các địa điểm này để lấy tài nguyên, vũ khí và những người sống sót khác.",
+    "origBytes": 82,
+    "overflow": 17
+  },
+  {
+    "orig": "Use [ui_scroll_down] to cycle between Mission Opportunities.",
+    "trans": "Sử dụng [ui_scroll_down] để chuyển đổi giữa các Cơ hội Nhiệm vụ.",
+    "origBytes": 60,
+    "overflow": 4
+  },
+  {
+    "orig": "You are now FATIGUED and have LOWER STAMINA.",
+    "trans": "Bạn hiện đang MỆT MỎI và có THỂ LỰC THẤP HƠN.",
+    "origBytes": 44,
+    "overflow": 1
+  },
+  {
+    "orig": "Earn INFLUENCE by completing missions, gathering supplies, and defending your home.",
+    "trans": "Kiếm ẢNH HƯỞNG bằng cách hoàn thành nhiệm vụ, thu thập vật tư và bảo vệ căn cứ của bạn.",
+    "origBytes": 83,
+    "overflow": 4
+  },
+  {
+    "orig": "Spend INFLUENCE for extra supplies or to influence others.",
+    "trans": "Dùng ẢNH HƯỞNG để có thêm vật tư hoặc để gây ảnh hưởng đến người khác.",
+    "origBytes": 58,
+    "overflow": 12
+  },
+  {
+    "orig": "Use a firecracker to draw zombie attention to an area.",
+    "trans": "Sử dụng pháo để thu hút sự chú ý của zombie đến một khu vực.",
+    "origBytes": 54,
+    "overflow": 6
+  },
+  {
+    "orig": "TIP: Your top survival needs are FOOD, MEDICINE, and AMMUNITION.",
+    "trans": "MẸO: Nhu cầu sinh tồn hàng đầu của bạn là THỰC PHẨM, THUỐC MEN và ĐẠN DƯỢC.",
+    "origBytes": 64,
+    "overflow": 11
+  },
+  {
+    "orig": "Acquired TRUCK KEYS and RADIO.",
+    "trans": "Đã nhận CHÌA KHÓA XE TẢI và RADIO.",
+    "origBytes": 30,
+    "overflow": 4
+  },
+  {
+    "orig": "Your equipped gun is fully loaded.",
+    "trans": "Súng bạn đang trang bị đã được nạp đầy.",
+    "origBytes": 34,
+    "overflow": 5
+  },
+  {
+    "orig": "You must be in a BUILDING to set up an outpost.",
+    "trans": "Bạn phải ở trong một TÒA NHÀ để thiết lập tiền đồn.",
+    "origBytes": 47,
+    "overflow": 4
+  },
+  {
+    "orig": "This location is OCCUPIED by someone else.",
+    "trans": "Địa điểm này ĐANG BỊ CHIẾM GIỮ bởi người khác.",
+    "origBytes": 42,
+    "overflow": 4
+  },
+  {
+    "orig": "Your community cannot support any more outposts.",
+    "trans": "Cộng đồng của bạn không thể hỗ trợ thêm tiền đồn nào nữa.",
+    "origBytes": 48,
+    "overflow": 9
+  },
+  {
+    "orig": "Use this after your MAXIMUM STAMINA has been reduced.",
+    "trans": "Sử dụng cái này sau khi THỂ LỰC TỐI ĐA của bạn đã bị giảm.",
+    "origBytes": 53,
+    "overflow": 5
+  },
+  {
+    "orig": "Use this after your MAXIMUM VITALITY has been reduced.",
+    "trans": "Sử dụng cái này sau khi SINH LỰC TỐI ĐA của bạn đã bị giảm.",
+    "origBytes": 54,
+    "overflow": 5
+  },
+  {
+    "orig": "You need to wait a bit before doing this again.",
+    "trans": "Bạn cần đợi một chút trước khi làm điều này lần nữa.",
+    "origBytes": 47,
+    "overflow": 5
+  },
+  {
+    "orig": "You cannot do this while in combat.",
+    "trans": "Bạn không thể làm điều này khi đang chiến đấu.",
+    "origBytes": 35,
+    "overflow": 11
+  },
+  {
+    "orig": "You aren't near any supplies!",
+    "trans": "Bạn không ở gần bất kỳ vật tư nào!",
+    "origBytes": 29,
+    "overflow": 5
+  },
+  {
+    "orig": "A SUPPLY RUN is already in progress here.",
+    "trans": "Một CHUYẾN CUNG ỨNG đã đang diễn ra ở đây.",
+    "origBytes": 41,
+    "overflow": 1
+  },
+  {
+    "orig": "There are NO KNOWN RESOURCES here.",
+    "trans": "Không có TÀI NGUYÊN NÀO ĐƯỢC BIẾT đến ở đây.",
+    "origBytes": 34,
+    "overflow": 10
+  },
+  {
+    "orig": "There are NO USABLE ITEMS in your inventory.",
+    "trans": "Không có VẬT PHẨM NÀO CÓ THỂ SỬ DỤNG trong kho đồ của bạn.",
+    "origBytes": 44,
+    "overflow": 14
+  },
+  {
+    "orig": "Max stamina is full. Stimulants temporarily recover some of your max stamina.",
+    "trans": "Thể lực tối đa đã đầy. Chất kích thích tạm thời hồi phục một phần thể lực tối đa của bạn.",
+    "origBytes": 77,
+    "overflow": 12
+  },
+  {
+    "orig": "You cannot switch to someone who is INJURED.",
+    "trans": "Bạn không thể chuyển sang người đang BỊ THƯƠNG.",
+    "origBytes": 44,
+    "overflow": 3
+  },
+  {
+    "orig": "Once you reach 100% TRUST you can become FRIENDS.",
+    "trans": "Khi bạn đạt 100% TIN TƯỞNG, bạn có thể trở thành BẠN BÈ.",
+    "origBytes": 49,
+    "overflow": 7
+  },
+  {
+    "orig": "You can SWITCH control to any of your FRIENDS.",
+    "trans": "Bạn có thể CHUYỂN quyền điều khiển cho bất kỳ người BẠN BÈ nào của mình.",
+    "origBytes": 46,
+    "overflow": 26
+  },
+  {
+    "orig": "It's hard to know how things stand when someone is MISSING.",
+    "trans": "Thật khó để biết mọi chuyện thế nào khi có người ĐANG MẤT TÍCH.",
+    "origBytes": 59,
+    "overflow": 4
+  },
+  {
+    "orig": "It's hard to know how things stand when someone is FLEEING.",
+    "trans": "Thật khó để biết mọi chuyện thế nào khi có người ĐANG BỎ TRỐN.",
+    "origBytes": 59,
+    "overflow": 3
+  },
+  {
+    "orig": "Some people are too INDEPENDENT to ever give 100% trust.",
+    "trans": "Một số người quá ĐỘC LẬP nên không bao giờ tin tưởng 100%.",
+    "origBytes": 56,
+    "overflow": 2
+  },
+  {
+    "orig": "You must earn 100% trust before BEFRIENDING someone.",
+    "trans": "Bạn phải đạt 100% tin tưởng trước khi KẾT BẠN với ai đó.",
+    "origBytes": 52,
+    "overflow": 4
+  },
+  {
+    "orig": "The pages are too blood-soaked to read.",
+    "trans": "Các trang giấy thấm đẫm máu nên không thể đọc được.",
+    "origBytes": 39,
+    "overflow": 12
+  },
+  {
+    "orig": "TIP: [ul_radio_menu] to talk to Pastor William again.",
+    "trans": "MẸO: [ul_radio_menu] để nói chuyện với Mục sư William lần nữa.",
+    "origBytes": 53,
+    "overflow": 9
+  },
+  {
+    "orig": "TIP: [xi_dpad_down] (D-pad) to talk to Pastor William again.",
+    "trans": "MẸO: [xi_dpad_down] (D-pad) để nói chuyện với Mục sư William lần nữa.",
+    "origBytes": 60,
+    "overflow": 9
+  },
+  {
+    "orig": "Use repeated or loud NOISE to create a DISTRACTION.",
+    "trans": "Dùng TIẾNG ỒN lặp lại hoặc lớn để tạo ra sự ĐÁNH LẠC HƯỚNG.",
+    "origBytes": 51,
+    "overflow": 8
+  },
+  {
+    "orig": "Leave the area.",
+    "trans": "Rời khỏi khu vực.",
+    "origBytes": 15,
+    "overflow": 2
+  },
+  {
+    "orig": "WIPED OUT: You and all your friends are DEAD.",
+    "trans": "BỊ TIÊU DIỆT: Bạn và tất cả bạn bè của bạn đã CHẾT.",
+    "origBytes": 45,
+    "overflow": 6
+  },
+  {
+    "orig": "Returning Home",
+    "trans": "Đang trở về Nhà",
+    "origBytes": 14,
+    "overflow": 1
+  },
+  {
+    "orig": "TIP: Use painkillers to restore Vitality",
+    "trans": "MẸO: Dùng thuốc giảm đau để hồi phục Sức sống.",
+    "origBytes": 40,
+    "overflow": 6
+  },
+  {
+    "orig": "DANGER: Feral Sighting",
+    "trans": "NGUY HIỂM: Phát hiện Feral",
+    "origBytes": 22,
+    "overflow": 4
+  },
+  {
+    "orig": "DANGER: Feral Sighting",
+    "trans": "NGUY HIỂM: Phát hiện Feral",
+    "origBytes": 22,
+    "overflow": 4
+  },
+  {
+    "orig": "DANGER: Juggernaut Sighting",
+    "trans": "NGUY HIỂM: Phát hiện Juggernaut",
+    "origBytes": 27,
+    "overflow": 4
+  },
+  {
+    "orig": "DANGER: Juggernaut Sighting",
+    "trans": "NGUY HIỂM: Phát hiện Juggernaut",
+    "origBytes": 27,
+    "overflow": 4
+  },
+  {
+    "orig": "DANGER: Armored Zed Sighting",
+    "trans": "NGUY HIỂM: Phát hiện Zed bọc thép",
+    "origBytes": 28,
+    "overflow": 5
+  },
+  {
+    "orig": "DANGER: Army Zed Sighting",
+    "trans": "NGUY HIỂM: Phát hiện Zed quân đội",
+    "origBytes": 25,
+    "overflow": 8
+  },
+  {
+    "orig": "DANGER: Bloater Sighting",
+    "trans": "NGUY HIỂM: Phát hiện Bloater",
+    "origBytes": 24,
+    "overflow": 4
+  },
+  {
+    "orig": "DANGER: Bloater Sighting",
+    "trans": "NGUY HIỂM: Phát hiện Bloater",
+    "origBytes": 24,
+    "overflow": 4
+  },
+  {
+    "orig": "CRISIS: Malnutrition (Need Food)",
+    "trans": "KHỦNG HOẢNG: Suy dinh dưỡng (Cần Thức ăn)",
+    "origBytes": 32,
+    "overflow": 9
+  },
+  {
+    "orig": "CRISIS: Malnutrition (Need Food)",
+    "trans": "KHỦNG HOẢNG: Suy dinh dưỡng (Cần Thức ăn)",
+    "origBytes": 32,
+    "overflow": 9
+  },
+  {
+    "orig": "Morale Issue: Sadness",
+    "trans": "Vấn đề Tinh thần: Buồn bã",
+    "origBytes": 21,
+    "overflow": 4
+  },
+  {
+    "orig": "Morale Issue: Sadness",
+    "trans": "Vấn đề Tinh thần: Buồn bã",
+    "origBytes": 21,
+    "overflow": 4
+  },
+  {
+    "orig": "Morale Issue: Anger",
+    "trans": "Vấn đề Tinh thần: Tức giận",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "Morale Issue: Anger",
+    "trans": "Vấn đề Tinh thần: Tức giận",
+    "origBytes": 19,
+    "overflow": 7
+  },
+  {
+    "orig": "Morale Issue: Fear",
+    "trans": "Vấn đề Tinh thần: Sợ hãi",
+    "origBytes": 18,
+    "overflow": 6
+  },
+  {
+    "orig": "Morale Issue: Fear",
+    "trans": "Vấn đề Tinh thần: Sợ hãi",
+    "origBytes": 18,
+    "overflow": 6
+  },
+  {
+    "orig": "Advice: Upgrade to Bunkhouse",
+    "trans": "Lời khuyên: Nâng cấp lên Nhà ngủ tập thể",
+    "origBytes": 28,
+    "overflow": 12
+  },
+  {
+    "orig": "Advice: Upgrade to Infirmary",
+    "trans": "Lời khuyên: Nâng cấp lên Bệnh xá",
+    "origBytes": 28,
+    "overflow": 4
+  },
+  {
+    "orig": "Advice: Upgrade to Medical Lab",
+    "trans": "Lời khuyên: Nâng cấp lên Phòng thí nghiệm Y tế",
+    "origBytes": 30,
+    "overflow": 16
+  },
+  {
+    "orig": "Advice: Build a Cooking Area",
+    "trans": "Lời khuyên: Xây Khu vực Nấu ăn",
+    "origBytes": 28,
+    "overflow": 2
+  },
+  {
+    "orig": "Advice: Establish More Outposts",
+    "trans": "Lời khuyên: Thiết lập thêm Tiền đồn",
+    "origBytes": 31,
+    "overflow": 4
+  },
+  {
+    "orig": "Advice: Establish An Outpost",
+    "trans": "Lời khuyên: Thiết lập một Tiền đồn",
+    "origBytes": 28,
+    "overflow": 6
+  },
+  {
+    "orig": "Advice: Build a Training Area",
+    "trans": "Lời khuyên: Xây Khu vực Huấn luyện",
+    "origBytes": 29,
+    "overflow": 5
+  },
+  {
+    "orig": "Advice: Upgrade to Dojo",
+    "trans": "Lời khuyên: Nâng cấp lên Võ đường",
+    "origBytes": 23,
+    "overflow": 10
+  },
+  {
+    "orig": "Advice: Build a Work Area",
+    "trans": "Lời khuyên: Xây Khu vực Làm việc",
+    "origBytes": 25,
+    "overflow": 7
+  },
+  {
+    "orig": "Advice: Upgrade to Workshop",
+    "trans": "Lời khuyên: Nâng cấp lên Xưởng",
+    "origBytes": 27,
+    "overflow": 3
+  },
+  {
+    "orig": "Advice: Upgrade to Munitions Shop",
+    "trans": "Lời khuyên: Nâng cấp lên Cửa hàng Đạn dược",
+    "origBytes": 33,
+    "overflow": 9
+  },
+  {
+    "orig": "Advice: Upgrade to Machine Shop",
+    "trans": "Lời khuyên: Nâng cấp lên Xưởng Cơ khí",
+    "origBytes": 31,
+    "overflow": 6
+  },
+  {
+    "orig": "For shotguns.",
+    "trans": "Dùng cho súng shotgun.",
+    "origBytes": 13,
+    "overflow": 4
+  },
+  {
+    "orig": "Incendiary ammo for compatible shotguns.",
+    "trans": "Đạn gây cháy dùng cho súng shotgun tương thích.",
+    "origBytes": 40,
+    "overflow": 2
+  },
+  {
+    "orig": "For grenade launchers. Obviously.",
+    "trans": "Dùng cho súng phóng lựu. Rõ ràng rồi.",
+    "origBytes": 33,
+    "overflow": 4
+  },
+  {
+    "orig": "9 mm",
+    "trans": "Đạn 9mm",
+    "origBytes": 4,
+    "overflow": 3
+  },
+  {
+    "orig": "Small-caliber rounds for pistols, revolvers and rifles.",
+    "trans": "Đạn cỡ nhỏ dùng cho súng lục, súng ổ quay và súng trường.",
+    "origBytes": 55,
+    "overflow": 2
+  },
+  {
+    "orig": "Powerful round for revolvers and some rifles.",
+    "trans": "Đạn mạnh dùng cho súng ổ quay và một số súng trường.",
+    "origBytes": 45,
+    "overflow": 7
+  },
+  {
+    "orig": "Mid-range round for pistols and some submachineguns.",
+    "trans": "Đạn tầm trung dùng cho súng lục và một số súng tiểu liên.",
+    "origBytes": 52,
+    "overflow": 5
+  }
+]

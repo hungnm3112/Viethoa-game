@@ -188,22 +188,52 @@ function parseDefineEditText(tag, content) {
 
   const flags1 = content[offset++];
   const flags2 = content[offset++];
-  const hasText = Boolean(flags1 & 0x80);
-  const hasTextColor = Boolean(flags1 & 0x20);
-  const hasMaxLength = Boolean(flags1 & 0x10);
-  const hasFont = Boolean(flags1 & 0x08);
-  const hasFontClass = Boolean(flags1 & 0x04);
-  const hasLayout = Boolean(flags2 & 0x80);
 
-  tag.editTextFlags = { hasText, hasTextColor, hasMaxLength, hasFont, hasFontClass, hasLayout };
+  const hasText = Boolean(flags1 & 0x80);
+  const wordWrap = Boolean(flags1 & 0x40);
+  const multiline = Boolean(flags1 & 0x20);
+  const password = Boolean(flags1 & 0x10);
+  const readOnly = Boolean(flags1 & 0x08);
+  const hasTextColor = Boolean(flags1 & 0x04);
+  const hasMaxLength = Boolean(flags1 & 0x02);
+  const hasFont = Boolean(flags1 & 0x01);
+
+  const hasFontClass = Boolean(flags2 & 0x80);
+  const autoSize = Boolean(flags2 & 0x40);
+  const hasLayout = Boolean(flags2 & 0x20);
+  const noSelect = Boolean(flags2 & 0x10);
+  const border = Boolean(flags2 & 0x08);
+  const html = Boolean(flags2 & 0x02);
+  const useOutlines = Boolean(flags2 & 0x01);
+
+  tag.editTextFlags = {
+    hasText,
+    wordWrap,
+    multiline,
+    password,
+    readOnly,
+    hasTextColor,
+    hasMaxLength,
+    hasFont,
+    hasFontClass,
+    autoSize,
+    hasLayout,
+    noSelect,
+    border,
+    html,
+    useOutlines
+  };
+
+  if (hasFont) {
+    tag.fontId = content.readUInt16LE(offset);
+    offset += 2;
+  }
 
   if (hasFontClass) {
+    tag.fontClassOffset = offset;
     const parsed = readCString(content, offset);
     tag.fontClass = parsed.value;
     offset = parsed.nextOffset;
-  } else if (hasFont) {
-    tag.fontId = content.readUInt16LE(offset);
-    offset += 2;
   }
 
   if (hasFont || hasFontClass) {
@@ -212,7 +242,7 @@ function parseDefineEditText(tag, content) {
   }
 
   if (hasTextColor) {
-    offset += 4;
+    offset += 4; // RGBA color
   }
 
   if (hasMaxLength) {
@@ -233,6 +263,7 @@ function parseDefineEditText(tag, content) {
     offset = initialText.nextOffset;
   }
 }
+
 
 function parseExports(tag, content) {
   let offset = 0;

@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "file": "jobs\\reverted\\job-1.json",
+    "count": 135
+  },
+  {
+    "id": 2,
+    "file": "jobs\\reverted\\job-2.json",
+    "count": 135
+  },
+  {
+    "id": 3,
+    "file": "jobs\\reverted\\job-3.json",
+    "count": 135
+  },
+  {
+    "id": 4,
+    "file": "jobs\\reverted\\job-4.json",
+    "count": 135
+  },
+  {
+    "id": 5,
+    "file": "jobs\\reverted\\job-5.json",
+    "count": 134
+  }
+]

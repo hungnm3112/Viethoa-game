@@ -147,7 +147,7 @@ Muc tieu:
 
 - text thong bao / alert / huong dan / leaderboard / pause menu khong vo font
 
-### Cum C - Journal / gameplay system
+### Cụm C - Journal / gameplay system
 
 Patch day du:
 
@@ -159,6 +159,22 @@ Muc tieu:
 
 - item / mission / character / facility / objective co the viet hoa ma van doc duoc
 
+### Cụm D - HUD / Banners / Notifications (Font Injection)
+
+Patch day du:
+
+- `class3hud.gfx`
+- `class3_notifications.gfx`
+- `class3_radar.gfx`
+- `class3_banners.gfx`
+- `class3_centerprompts.gfx`
+- `class3_survey.gfx`
+
+Tinh trang:
+
+- Nhóm này không nhúng font và không import font. Nó chỉ gọi tên font dưới dạng chuỗi (String).
+- Sử dụng công cụ `patch-cluster-d-fonts.js` để **tiêm (inject)** trực tiếp các thẻ DefineFont của Arial vào đầu tệp, ngụy trang thành tên các font cách điệu. Đã khắc phục thành công việc không hiển thị tiếng Việt trên thanh máu, thể lực và bảng thông báo ở giữa màn hình.
+
 ## Khuyen nghi
 
-Truoc khi mo rong Phase 2, nen khoa xong **Cum A** va it nhat mot phan **Cum B**.
+Truoc khi mo rong Phase 2, nen khoa xong **Cum A**, **Cum B**, **Cum C** và **Cum D**.
