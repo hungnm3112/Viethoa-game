@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nodemon --config nodemon.json",
+    "dev": "nodemon --config nodemon.json", 
+    "restore-vn": "node scripts/restore-vietnamese.js && node tools/build-all-bmd-samelength.js --allow-overflow && npm run sync-game",
     "extract": "node tools/extract.js",
     "extract:runtime": "node tools/extract.js --include-btxt",
     "scan": "node tools/scan.js",

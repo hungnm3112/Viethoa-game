@@ -8,6 +8,11 @@
       "phase": "phase-1"
     },
     {
+      "source": "output/gamedata/languages/embeddedstrings.xml",
+      "target": "languages/embeddedstrings.xml",
+      "phase": "phase-1"
+    },
+    {
       "source": "output/gamedata/libs/ui/class3_frontend.gfx",
       "target": "libs/ui/class3_frontend.gfx",
       "phase": "phase-1"

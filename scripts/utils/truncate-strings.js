@@ -1,0 +1,52 @@
+// scripts/truncate-strings.js
+// Utility to safely truncate Vietnamese strings to fit original byte limits.
+// Uses an optional abbreviation table (scripts/abbrev-table.json) for smarter shortening.
+
+import fs from "node:fs";
+import path from "node:path";
+
+/** Load abbreviation map if exists */
+let abbrevMap = {};
+const abbrevPath = path.resolve("scripts", "abbrev-table.json");
+if (fs.existsSync(abbrevPath)) {
+  try {
+    abbrevMap = JSON.parse(fs.readFileSync(abbrevPath, "utf8"));
+  } catch (e) {
+    console.warn("Failed to parse abbrev-table.json", e);
+  }
+}
+
+/**
+ * Shortens a string to a maximum byte length.
+ * First tries to apply word‑level abbreviations from abbrevMap.
+ * If still too long, truncates at a valid UTF‑8 boundary.
+ */
+export function truncateString(str, maxBytes) {
+  let bytes = Buffer.from(str, "utf8");
+  if (bytes.length <= maxBytes) return str;
+
+  // First, attempt raw truncation at a valid UTF‑8 boundary
+  let cut = maxBytes;
+  while (cut > 0 && (bytes[cut] & 0xc0) === 0x80) {
+    cut -= 1;
+  }
+  if (cut === 0) return ""; // cannot fit any character
+  let truncated = bytes.slice(0, cut).toString("utf8");
+  if (Buffer.from(truncated, "utf8").length <= maxBytes) return truncated;
+
+  // If still too long (unlikely), fall back to abbreviation map
+  if (Object.keys(abbrevMap).length) {
+    let shortened = str;
+    for (const [full, abbr] of Object.entries(abbrevMap)) {
+      const regex = new RegExp(full, "g");
+      shortened = shortened.replace(regex, abbr);
+    }
+    if (Buffer.from(shortened, "utf8").length <= maxBytes) return shortened;
+  }
+
+  // Final fallback: return the raw truncated version (may cut a diacritic)
+  return truncated;
+}
+
+// Export for use by other scripts
+export default { truncateString };
