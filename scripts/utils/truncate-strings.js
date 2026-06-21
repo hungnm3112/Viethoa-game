@@ -25,16 +25,7 @@ export function truncateString(str, maxBytes) {
   let bytes = Buffer.from(str, "utf8");
   if (bytes.length <= maxBytes) return str;
 
-  // First, attempt raw truncation at a valid UTF‑8 boundary
-  let cut = maxBytes;
-  while (cut > 0 && (bytes[cut] & 0xc0) === 0x80) {
-    cut -= 1;
-  }
-  if (cut === 0) return ""; // cannot fit any character
-  let truncated = bytes.slice(0, cut).toString("utf8");
-  if (Buffer.from(truncated, "utf8").length <= maxBytes) return truncated;
-
-  // If still too long (unlikely), fall back to abbreviation map
+  // First, attempt to apply word-level abbreviations from abbrevMap
   if (Object.keys(abbrevMap).length) {
     let shortened = str;
     for (const [full, abbr] of Object.entries(abbrevMap)) {
@@ -42,9 +33,19 @@ export function truncateString(str, maxBytes) {
       shortened = shortened.replace(regex, abbr);
     }
     if (Buffer.from(shortened, "utf8").length <= maxBytes) return shortened;
+    
+    // If still too long even after abbreviation, use the shortened version for raw truncation
+    str = shortened;
+    bytes = Buffer.from(str, "utf8");
   }
 
-  // Final fallback: return the raw truncated version (may cut a diacritic)
+  // Final fallback: attempt raw truncation at a valid UTF-8 boundary
+  let cut = maxBytes;
+  while (cut > 0 && (bytes[cut] & 0xc0) === 0x80) {
+    cut -= 1;
+  }
+  if (cut === 0) return ""; // cannot fit any character
+  let truncated = bytes.slice(0, cut).toString("utf8");
   return truncated;
 }
 

@@ -4,7 +4,7 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-$workspace = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
+$workspace = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 if ([string]::IsNullOrWhiteSpace($GameRoot)) {
   $GameRoot = "D:\SteamLibrary\steamapps\common\State of Decay YOSE\Game"
 }

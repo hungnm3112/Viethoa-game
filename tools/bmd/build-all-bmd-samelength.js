@@ -8,7 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { readPakIndex, extractEntry } from "../lib/pak.js";
-import { truncateString } from "../../scripts/truncate-strings.js";
+import { truncateString } from "../../scripts/utils/truncate-strings.js";
 
 const SOURCE_PAK = "data-game-park/gamedata.pak";
 const OUTPUT_DIR = "output/gamedata";
@@ -90,7 +90,11 @@ for (const entry of bmdEntries) {
       if (allowOverflow) {
         const truncated = truncateString(patch.text, origLen);
         if (truncated) {
-          Buffer.from(truncated, "utf8").copy(out, orig.start);
+          const truncBytes = Buffer.from(truncated, "utf8");
+          truncBytes.copy(out, orig.start);
+          if (truncBytes.length < origLen) {
+            out.fill(0x20, orig.start + truncBytes.length, orig.end);
+          }
           padded += 1; // counted as truncated/padded
         } else {
           // fallback to original English (revert)

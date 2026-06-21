@@ -7,13 +7,13 @@ const manifest = String(args.manifest ?? DEFAULT_MANIFEST);
 const shouldSync = Boolean(args.sync);
 
 runStep("Preview expanded BTXT", [
-  "tools/build-btxt-expanded.js",
+  "tools/btxt/build-btxt-expanded.js",
   `--manifest=${manifest}`,
   "--dry-run",
 ]);
 
 runStep("Build expanded BTXT", [
-  "tools/build-btxt-expanded.js",
+  "tools/btxt/build-btxt-expanded.js",
   `--manifest=${manifest}`,
 ]);
 
@@ -45,7 +45,7 @@ function runSyncStep() {
     "-ExecutionPolicy",
     "Bypass",
     "-File",
-    "scripts/sync-btxt-languages-to-game.ps1",
+    "scripts/sync/sync-btxt-languages-to-game.ps1",
   ], {
     stdio: "inherit",
     shell: false,
