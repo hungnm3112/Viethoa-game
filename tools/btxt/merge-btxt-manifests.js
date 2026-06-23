@@ -21,6 +21,14 @@ if (fs.existsSync(PILOT_MANIFEST)) {
 // Load chunks
 if (fs.existsSync(CHUNKS_DIR)) {
   const files = fs.readdirSync(CHUNKS_DIR).filter(f => f.endsWith(".json"));
+  
+  // Sort files by modified time (newest first) so that recently translated chunks take priority
+  files.sort((a, b) => {
+    const statA = fs.statSync(path.join(CHUNKS_DIR, a));
+    const statB = fs.statSync(path.join(CHUNKS_DIR, b));
+    return statB.mtimeMs - statA.mtimeMs;
+  });
+
   for (const file of files) {
     const chunk = JSON.parse(fs.readFileSync(path.join(CHUNKS_DIR, file), "utf8"));
     if (chunk.replacements) {

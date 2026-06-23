@@ -10,8 +10,16 @@ const BMD_SIG = 0x55424d44;
 console.log("Loading BMD translated chunks...");
 const translations = new Map();
 if (fs.existsSync(CHUNKS_DIR)) {
-  for (const file of fs.readdirSync(CHUNKS_DIR)) {
-    if (!file.endsWith('.json')) continue;
+  const files = fs.readdirSync(CHUNKS_DIR).filter(f => f.endsWith('.json'));
+  
+  // Sort files by modified time (oldest first) so newer translations overwrite older ones in the Map
+  files.sort((a, b) => {
+    const statA = fs.statSync(path.join(CHUNKS_DIR, a));
+    const statB = fs.statSync(path.join(CHUNKS_DIR, b));
+    return statA.mtimeMs - statB.mtimeMs;
+  });
+
+  for (const file of files) {
     const chunk = JSON.parse(fs.readFileSync(path.join(CHUNKS_DIR, file), "utf8"));
     if (chunk.replacements) {
       for (const r of chunk.replacements) {
