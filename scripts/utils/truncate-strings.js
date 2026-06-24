@@ -46,6 +46,39 @@ export function truncateString(str, maxBytes) {
   }
   if (cut === 0) return ""; // cannot fit any character
   let truncated = bytes.slice(0, cut).toString("utf8");
+
+  // Prevent cutting in the middle of a format specifier (e.g. %d, %s, %1$s, %%) or an XML tag (<font>)
+  let safe = false;
+  while (!safe) {
+    safe = true;
+    
+    // Check for open HTML tag without closing
+    const lastOpenTag = truncated.lastIndexOf('<');
+    const lastCloseTag = truncated.lastIndexOf('>');
+    if (lastOpenTag > lastCloseTag) {
+      truncated = truncated.slice(0, lastOpenTag);
+      safe = false;
+      continue;
+    }
+    
+    // Check for dangling % or incomplete format specifier.
+    const lastPercent = truncated.lastIndexOf('%');
+    if (lastPercent !== -1) {
+      const afterPercent = truncated.slice(lastPercent);
+      // Valid specifiers: %% or ends with a letter. We regex test to ensure it's fully formed.
+      // If afterPercent contains a space, then the % was probably not a format specifier but we shouldn't have spaces inside specifiers anyway.
+      // A broken specifier will look like "%", "%1", "%1$", "%.2"
+      // If it's fully formed, it will match exactly at the start.
+      const match = afterPercent.match(/^%([0-9]*\$?[0-9]*\.?[0-9]*[a-zA-Z]|%)/);
+      if (!match) {
+        // It's a broken format specifier (or an invalid % that would crash sprintf anyway)
+        truncated = truncated.slice(0, lastPercent);
+        safe = false;
+        continue;
+      }
+    }
+  }
+
   return truncated;
 }
 
